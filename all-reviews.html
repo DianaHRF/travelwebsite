@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Hotel Trail — honest hotel reviews, country by country</title>
+<title>All reviews — The Hotel Trail</title>
 <meta name="description" content="A travel blog reviewing hotels around the world — real photos, honest verdicts, and tips for making the most of every stay.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -308,6 +308,18 @@ h1,h2,h3,h4,p{margin:0}
   .country-grid{grid-template-columns:1fr 1fr}
   .footer-top{flex-direction:column;gap:var(--space-10)}
 }
+
+/* ============================================================
+   all reviews page
+   ============================================================ */
+.allrev{padding:var(--space-16) 0 var(--space-20)}
+.allrev-head{text-align:center;margin-bottom:var(--space-12)}
+.allrev-head .display-l{margin-top:var(--space-2)}
+.allrev-head .lead{margin:var(--space-5) auto 0}
+.year-group{margin-top:var(--space-12)}
+.year-label{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--accent-secondary);margin-bottom:var(--space-6);
+  padding-bottom:var(--space-3);border-bottom:1px solid var(--border-subtle)}
 </style>
 </head>
 <body>
@@ -315,17 +327,17 @@ h1,h2,h3,h4,p{margin:0}
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <a href="index.html" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
     <nav class="nav" aria-label="Primary">
       <a href="all-reviews.html">Reviews</a>
       <a href="destinations.html">Destinations</a>
-      <a href="#about">About</a>
+      <a href="index.html#about">About</a>
     </nav>
     <div class="header-actions">
       <button class="icon-btn" aria-label="Search">
         <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
-      <a href="#reviews" class="btn btn-primary">Latest reviews</a>
+      <a href="all-reviews.html" class="btn btn-primary">Latest reviews</a>
       <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -344,62 +356,21 @@ h1,h2,h3,h4,p{margin:0}
   <nav class="container mobile-nav-links" aria-label="Mobile">
     <a href="all-reviews.html">Reviews</a>
     <a href="destinations.html">Destinations</a>
-    <a href="#about">About</a>
+    <a href="index.html#about">About</a>
   </nav>
 </div>
 
 <main>
-
-<!-- ============================ HERO + FEATURED ============================ -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Featured stay</p>
-      <h1 class="display-xl">TA’AKTANA, a true luxury resort in Labuan Bajo, Indonesia</h1>
-      <p class="lead">This hotel offered us an unforgettable experience, with outstanding service and quality of food, while the proximity to Komodo Island is a bonus.</p>
-      <div class="hero-cta">
-        <a href="#" class="btn btn-primary">Read the full stay</a>
-        <a href="#reviews" class="btn btn-ghost">Browse all reviews</a>
-      </div>
-    </div>
-    <img class="hero-media" src="hero-web.jpg" alt="Featured hotel" loading="eager" />
-  </div>
-</section>
-
-<!-- ============================ REVIEWS GRID ============================ -->
-<section class="section" id="reviews">
+<section class="allrev">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Recent reviews</p>
-        <h2 class="display-l">The latest hotels we've checked into</h2>
-      </div>
-      <a href="all-reviews.html" class="btn-link">See all reviews
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+    <div class="allrev-head">
+      <p class="eyebrow">Every stay</p>
+      <h1 class="display-l">All reviews</h1>
+      <p class="lead">Every hotel we've checked into, in the order we visited &mdash; newest first.</p>
     </div>
-
-    <div class="card-grid" id="reviewGrid"><!-- cards injected by JS from placeholder data --></div>
+    <div id="allReviews"></div>
   </div>
 </section>
-
-<!-- ============================ BROWSE BY COUNTRY ============================ -->
-<section class="section country-section" id="countries">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Destinations</p>
-        <h2 class="display-l">Browse by country</h2>
-      </div>
-      <a href="destinations.html" class="btn-link">All destinations
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-
-    <div class="country-grid" id="countryGrid"><!-- tiles injected by JS from placeholder data --></div>
-  </div>
-</section>
-
 </main>
 
 <!-- ============================ FOOTER ============================ -->
@@ -408,7 +379,7 @@ h1,h2,h3,h4,p{margin:0}
     <div class="footer-top">
       <div>
         <span class="wordmark">The Hotel Trail</span>
-        <p class="footer-blurb">Honest hotel reviews from the road — real photos, plain verdicts, and the tips that make a stay worth it.</p>
+        <p class="footer-blurb">Honest hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -423,7 +394,7 @@ h1,h2,h3,h4,p{margin:0}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
+      <span>&copy; <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
       <span>Made on the road.</span>
     </div>
   </div>
@@ -431,12 +402,9 @@ h1,h2,h3,h4,p{margin:0}
 
 <script>
 /* ============================================================
-   The Hotel Trail — page behavior (vanilla JS)
-   Placeholder data lives here so you can swap in real reviews
-   by editing the two arrays below.
+   The Hotel Trail — All reviews (chronological, oldest first)
+   Keep this `reviews` array in sync with index.html.
    ============================================================ */
-
-// --- placeholder review data (edit these) ---
 var reviews = [
   { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"sheraton-hiroshima-web.jpg", date:"March 2026", dateSort:"2026-03" },
@@ -446,13 +414,6 @@ var reviews = [
   { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" }
 ];
 
-// --- placeholder country data (edit these) ---
-var countries = [
-  { name:"Japan",   count:"5 reviews", img:"japan-web.jpg" },
-  { name:"Jordan",  count:"1 review",  img:"jordan-web.jpg" }
-];
-
-// --- svg helpers ---
 function starRow(rating){
   var s = '';
   var starPath = 'M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z';
@@ -477,56 +438,46 @@ function pin(){
 function clock(){
   return '<svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
 }
-function photoLabel(text){
-  return '<span class="ph-label"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>'+text+'</span>';
-}
 
-// --- render review cards ---
+// --- render all reviews, chronological (oldest first), grouped by year ---
 (function(){
-  var grid = document.getElementById('reviewGrid');
-  reviews.forEach(function(r){
-    var card = document.createElement('article');
-    card.className = 'review-card';
-    var media = r.img
-      ? '<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />'
-      : '<div class="img-ph" role="img" aria-label="Hotel photo placeholder">'+photoLabel('Photo')+'</div>';
-    card.innerHTML =
-      media+
-      '<div class="card-body">'+
-        '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
-        '<h3 class="card-title">'+r.title+'</h3>'+
-        '<span class="card-place">'+pin()+r.place+'</span>'+
-        (r.date ? '<span class="card-place">'+clock()+r.date+'</span>' : '')+
-        '<p class="card-verdict">'+r.verdict+'</p>'+
-        '<div class="card-foot"><a href="#" class="btn-link">Read the full stay '+
-          '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
-      '</div>';
-    grid.appendChild(card);
+  var host = document.getElementById('allReviews');
+  var sorted = reviews.slice().sort(function(a,b){
+    return a.dateSort > b.dateSort ? -1 : a.dateSort < b.dateSort ? 1 : 0;
   });
-})();
-
-// --- render country tiles ---
-(function(){
-  var grid = document.getElementById('countryGrid');
-  countries.forEach(function(c){
-    var tile = document.createElement('a');
-    tile.href = '#';
-    tile.className = 'country-tile';
-    tile.setAttribute('aria-label', c.name + ' — ' + c.count);
-    var photo = c.img ? '<img class="country-photo" src="'+c.img+'" alt="'+c.name+'" loading="lazy" />' : '';
-    tile.innerHTML =
-      photo+
-      '<div class="country-label"><div class="name">'+c.name+'</div>'+
-      '<div class="count">'+c.count+'</div></div>';
-    grid.appendChild(tile);
+  var groups = {}; var order = [];
+  sorted.forEach(function(r){
+    var yr = (r.dateSort||'').slice(0,4) || 'Undated';
+    if(!groups[yr]){ groups[yr]=[]; order.push(yr); }
+    groups[yr].push(r);
+  });
+  order.forEach(function(yr){
+    var wrap = document.createElement('div'); wrap.className = 'year-group';
+    var grid = '<div class="card-grid">' + groups[yr].map(function(r){
+      var media = r.img
+        ? '<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />'
+        : '';
+      return '<article class="review-card">'+ media +
+        '<div class="card-body">'+
+          '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
+          '<h3 class="card-title">'+r.title+'</h3>'+
+          '<span class="card-place">'+pin()+r.place+'</span>'+
+          '<span class="card-place">'+clock()+r.date+'</span>'+
+          '<p class="card-verdict">'+r.verdict+'</p>'+
+          '<div class="card-foot"><a href="#" class="btn-link">Read the full stay '+
+            '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
+        '</div></article>';
+    }).join('') + '</div>';
+    wrap.innerHTML = '<h2 class="year-label">'+yr+'</h2>' + grid;
+    host.appendChild(wrap);
   });
 })();
 
 // --- mobile nav ---
 (function(){
-  var nav = document.getElementById('mobileNav');
-  var openBtn = document.getElementById('menuOpen');
-  var closeBtn = document.getElementById('menuClose');
+  var nav=document.getElementById('mobileNav');
+  var openBtn=document.getElementById('menuOpen');
+  var closeBtn=document.getElementById('menuClose');
   function open(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
   function close(){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
   openBtn.addEventListener('click', open);
@@ -535,7 +486,6 @@ function photoLabel(text){
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 })();
 
-// --- current year ---
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
