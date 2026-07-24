@@ -312,10 +312,10 @@ h1,h2,h3,h4,p{margin:0}
 /* ============================================================
    destinations page
    ============================================================ */
-.dest-hero{padding:var(--space-16) 0 var(--space-10)}
-.dest-hero .display-l{max-width:18ch;margin-top:var(--space-2)}
-.dest-hero .lead{margin-top:var(--space-5)}
-.dest-stats{display:flex;gap:var(--space-8);margin-top:var(--space-8);flex-wrap:wrap}
+.dest-hero{padding:var(--space-16) 0 var(--space-10);text-align:center}
+.dest-hero .display-l{max-width:18ch;margin:var(--space-2) auto 0}
+.dest-hero .lead{margin:var(--space-5) auto 0}
+.dest-stats{display:flex;gap:var(--space-8);margin-top:var(--space-8);flex-wrap:wrap;justify-content:center}
 .stat .num{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
   font-size:var(--text-display-m);color:var(--accent-primary);line-height:1}
 .stat .lbl{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);
@@ -336,12 +336,32 @@ h1,h2,h3,h4,p{margin:0}
 .world-map .marker-badge circle{fill:var(--accent-secondary);stroke:var(--white);stroke-width:1.5}
 .world-map .marker-badge text{fill:var(--white);font-family:var(--font-body);font-weight:var(--weight-semibold);
   font-size:14px;text-anchor:middle;dominant-baseline:central}
+.world-map .marker-label{fill:var(--ink-900);font-family:var(--font-display);font-style:italic;
+  font-weight:var(--weight-semibold);font-size:15px;dominant-baseline:central;
+  paint-order:stroke;stroke:var(--white);stroke-width:3px;stroke-linejoin:round}
 .map-legend{display:flex;gap:var(--space-6);margin-top:var(--space-5);flex-wrap:wrap;
   font-size:var(--text-body-s);color:var(--text-secondary)}
 .map-legend .key{display:inline-flex;align-items:center;gap:var(--space-2)}
 .map-legend .sw{width:14px;height:14px;border-radius:var(--radius-s);border:1px solid var(--white)}
 .map-legend .sw.on{background:var(--teal-400)}
 .map-legend .sw.off{background:var(--sand-300)}
+
+/* country finder dropdown */
+.dest-finder{margin:var(--space-8) auto 0;max-width:var(--container-narrow)}
+.dest-finder .finder-title{font-family:var(--font-display);font-style:italic;
+  font-weight:var(--weight-medium);font-size:var(--text-display-m);color:var(--ink-900);
+  margin-bottom:var(--space-4)}
+.select-wrap{position:relative;max-width:420px;margin:0 auto}
+.select-wrap svg{position:absolute;right:var(--space-4);top:50%;transform:translateY(-50%);
+  width:20px;height:20px;stroke:var(--accent-primary);stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.country-picker{appearance:none;-webkit-appearance:none;width:100%;
+  font-family:var(--font-body);font-size:var(--text-body-l);color:var(--ink-900);
+  background:var(--surface-card);border:1px solid var(--border-default);
+  border-radius:var(--radius-pill);padding:var(--space-3) var(--space-10) var(--space-3) var(--space-5);
+  cursor:pointer;transition:border-color var(--duration-fast) var(--ease-out),box-shadow var(--duration-fast) var(--ease-out)}
+.country-picker:hover{border-color:var(--accent-primary)}
+.country-picker:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
 
 /* continent index chips */
 .continent-index{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-8)}
@@ -432,7 +452,17 @@ h1,h2,h3,h4,p{margin:0}
   <div class="container">
     <p class="eyebrow">Explore</p>
     <h1 class="display-l">Destinations</h1>
-    <p class="lead">Every hotel we've reviewed, mapped by where in the world it sits. Tap a highlighted region on the map, or jump straight to a continent below.</p>
+    <p class="lead">Every hotel we've reviewed, mapped by where in the world it sits.</p>
+    <div class="dest-finder">
+      <p class="finder-title">Where would you like to go?</p>
+      <div class="select-wrap">
+        <label for="countryPicker" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Choose a country</label>
+        <select id="countryPicker" class="country-picker">
+          <option value="" disabled selected>Choose a country…</option>
+        </select>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+    </div>
     <div class="dest-stats">
       <div class="stat"><div class="num" id="statReviews">0</div><div class="lbl">Total reviews</div></div>
       <div class="stat"><div class="num" id="statCountries">0</div><div class="lbl">Countries</div></div>
@@ -788,6 +818,17 @@ function repImage(key){
   return list.length ? list[0].img : '';
 }
 
+// --- country finder dropdown (alphabetical; jumps to its section) ---
+(function(){
+  var sel=document.getElementById('countryPicker'); if(!sel) return;
+  countries.slice().sort(function(a,b){return a.name.localeCompare(b.name);}).forEach(function(c){
+    var o=document.createElement('option');
+    o.value=c.continent; o.textContent=c.name+' — '+reviewWord(c.reviews);
+    sel.appendChild(o);
+  });
+  sel.addEventListener('change', function(){ if(this.value) scrollToContinent(this.value); });
+})();
+
 // --- stats ---
 (function(){
   document.getElementById('statReviews').textContent = countries.reduce(function(n,c){return n+c.reviews;},0);
@@ -836,7 +877,11 @@ function repImage(key){
     bt.setAttribute('x',meta.cx+R-3); bt.setAttribute('y',meta.cy-R+3); bt.textContent=n;
     bg.appendChild(bc); bg.appendChild(bt);
 
-    g.appendChild(im); g.appendChild(ring); g.appendChild(bg);
+    var lbl=document.createElementNS(SVGNS,'text'); lbl.setAttribute('class','marker-label');
+    lbl.setAttribute('x',meta.cx+R+8); lbl.setAttribute('y',meta.cy);
+    lbl.textContent=meta.name;
+
+    g.appendChild(im); g.appendChild(ring); g.appendChild(bg); g.appendChild(lbl);
     markers.appendChild(g);
   });
 })();
