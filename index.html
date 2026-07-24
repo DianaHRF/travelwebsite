@@ -200,6 +200,7 @@ h1,h2,h3,h4,p{margin:0}
 }
 .review-card:hover{box-shadow:var(--shadow-raised);transform:translateY(-3px)}
 .review-card .img-ph{aspect-ratio:3/2;border:none;border-radius:0}
+.review-card .card-photo{aspect-ratio:3/2;width:100%;object-fit:cover}
 .review-card:hover .img-ph::before{transform:scale(1.03)}
 .review-card .img-ph::before{transition:transform var(--duration-normal) var(--ease-out)}
 .card-body{padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3);flex:1}
@@ -443,7 +444,7 @@ h1,h2,h3,h4,p{margin:0}
 
 // --- placeholder review data (edit these) ---
 var reviews = [
-  { tag:"City stay",   title:"Hotel name",     place:"City, Country", rating:4, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
+  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"nagasaki-marriott-web.jpg" },
   { tag:"Beach",       title:"Hotel name",     place:"City, Country", rating:5, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
   { tag:"Boutique",    title:"Hotel name",     place:"City, Country", rating:3, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
   { tag:"Mountain",    title:"Hotel name",     place:"City, Country", rating:4, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
@@ -481,8 +482,11 @@ function photoLabel(text){
   reviews.forEach(function(r){
     var card = document.createElement('article');
     card.className = 'review-card';
+    var media = r.img
+      ? '<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />'
+      : '<div class="img-ph" role="img" aria-label="Hotel photo placeholder">'+photoLabel('Photo')+'</div>';
     card.innerHTML =
-      '<div class="img-ph" role="img" aria-label="Hotel photo placeholder">'+photoLabel('Photo')+'</div>'+
+      media+
       '<div class="card-body">'+
         '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
         '<h3 class="card-title">'+r.title+'</h3>'+
