@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Hotel Trail — honest hotel reviews, country by country</title>
+<title>Search — The Hotel Trail</title>
 <meta name="description" content="A travel blog reviewing hotels around the world — real photos, honest verdicts, and tips for making the most of every stay.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,15 +151,6 @@ h1,h2,h3,h4,p{margin:0}
   color:var(--ink-700);cursor:pointer;transition:background var(--duration-fast) var(--ease-out)}
 .icon-btn:hover{background:var(--sand-200);color:var(--ink-900)}
 .menu-toggle{display:none}
-.header-search{display:inline-flex;align-items:center}
-.header-search-input{width:0;opacity:0;pointer-events:none;padding:0;border:1px solid transparent;
-  border-radius:var(--radius-pill);background:var(--surface-card);font-family:var(--font-body);
-  font-size:var(--text-body-s);color:var(--ink-900);
-  transition:width var(--duration-normal) var(--ease-out),opacity var(--duration-fast) var(--ease-out),
-  padding var(--duration-normal) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
-.header-search.open .header-search-input{width:200px;opacity:1;pointer-events:auto;
-  padding:var(--space-2) var(--space-4);border-color:var(--border-default);margin-right:var(--space-1)}
-.header-search-input:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
 
 /* ============================================================
    hero + featured
@@ -317,6 +308,32 @@ h1,h2,h3,h4,p{margin:0}
   .country-grid{grid-template-columns:1fr 1fr}
   .footer-top{flex-direction:column;gap:var(--space-10)}
 }
+
+/* ============================================================
+   search page
+   ============================================================ */
+.search-sec{padding:var(--space-16) 0 var(--space-20)}
+.search-head{text-align:center;margin-bottom:var(--space-10)}
+.search-head .display-l{margin-top:var(--space-2)}
+.search-field{position:relative;max-width:520px;margin:var(--space-8) auto 0}
+.search-field svg{position:absolute;left:var(--space-5);top:50%;transform:translateY(-50%);
+  width:20px;height:20px;stroke:var(--accent-primary);stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+.search-input{width:100%;font-family:var(--font-body);font-size:var(--text-body-l);color:var(--ink-900);
+  background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-pill);
+  padding:var(--space-3) var(--space-6) var(--space-3) var(--space-10);
+  transition:border-color var(--duration-fast) var(--ease-out),box-shadow var(--duration-fast) var(--ease-out)}
+.search-input:hover{border-color:var(--accent-primary)}
+.search-input:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
+.search-count{text-align:center;color:var(--text-secondary);font-size:var(--text-body-s);margin-top:var(--space-5)}
+.search-empty{text-align:center;color:var(--text-secondary);max-width:44ch;margin:var(--space-12) auto 0;
+  font-size:var(--text-body-l);line-height:var(--lh-relaxed)}
+.year-group{margin-top:var(--space-12)}
+.year-label{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--accent-secondary);margin-bottom:var(--space-6);
+  padding-bottom:var(--space-3);border-bottom:1px solid var(--border-subtle)}
+mark{background:var(--clay-100);color:var(--clay-700);font-weight:var(--weight-semibold);
+  padding:0 2px;border-radius:var(--radius-s)}
 </style>
 </head>
 <body>
@@ -324,20 +341,17 @@ h1,h2,h3,h4,p{margin:0}
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <a href="index.html" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
     <nav class="nav" aria-label="Primary">
       <a href="all-reviews.html">Reviews</a>
       <a href="destinations.html">Destinations</a>
-      <a href="#about">About</a>
+      <a href="index.html#about">About</a>
     </nav>
     <div class="header-actions">
-      <div class="header-search" id="headerSearch">
-        <input type="search" id="searchInput" class="header-search-input" placeholder="Search reviews&hellip;" aria-label="Search reviews" autocomplete="off" />
-        <button class="icon-btn" id="searchToggle" aria-label="Search" aria-expanded="false">
-          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-        </button>
-      </div>
-      <a href="#reviews" class="btn btn-primary">Latest reviews</a>
+      <button class="icon-btn" id="searchToggle" aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a href="all-reviews.html" class="btn btn-primary">Latest reviews</a>
       <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -356,62 +370,25 @@ h1,h2,h3,h4,p{margin:0}
   <nav class="container mobile-nav-links" aria-label="Mobile">
     <a href="all-reviews.html">Reviews</a>
     <a href="destinations.html">Destinations</a>
-    <a href="#about">About</a>
+    <a href="index.html#about">About</a>
   </nav>
 </div>
 
 <main>
-
-<!-- ============================ HERO + FEATURED ============================ -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Featured stay</p>
-      <h1 class="display-xl">TA’AKTANA, a true luxury resort in Labuan Bajo, Indonesia</h1>
-      <p class="lead">This hotel offered us an unforgettable experience, with outstanding service and quality of food, while the proximity to Komodo Island is a bonus.</p>
-      <div class="hero-cta">
-        <a href="#" class="btn btn-primary">Read the full stay</a>
-        <a href="#reviews" class="btn btn-ghost">Browse all reviews</a>
-      </div>
-    </div>
-    <img class="hero-media" src="hero-web.jpg" alt="Featured hotel" loading="eager" />
-  </div>
-</section>
-
-<!-- ============================ REVIEWS GRID ============================ -->
-<section class="section" id="reviews">
+<section class="search-sec">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Recent reviews</p>
-        <h2 class="display-l">The latest hotels we've checked into</h2>
+    <div class="search-head">
+      <p class="eyebrow">Search</p>
+      <h1 class="display-l">Search reviews</h1>
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="search" id="q" class="search-input" placeholder="Search by hotel, place, month or word&hellip;" autocomplete="off" aria-label="Search reviews" />
       </div>
-      <a href="all-reviews.html" class="btn-link">See all reviews
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+      <p class="search-count" id="count"></p>
     </div>
-
-    <div class="card-grid" id="reviewGrid"><!-- cards injected by JS from placeholder data --></div>
+    <div id="results"></div>
   </div>
 </section>
-
-<!-- ============================ BROWSE BY COUNTRY ============================ -->
-<section class="section country-section" id="countries">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Destinations</p>
-        <h2 class="display-l">Browse by country</h2>
-      </div>
-      <a href="destinations.html" class="btn-link">All destinations
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-
-    <div class="country-grid" id="countryGrid"><!-- tiles injected by JS from placeholder data --></div>
-  </div>
-</section>
-
 </main>
 
 <!-- ============================ FOOTER ============================ -->
@@ -420,7 +397,7 @@ h1,h2,h3,h4,p{margin:0}
     <div class="footer-top">
       <div>
         <span class="wordmark">The Hotel Trail</span>
-        <p class="footer-blurb">Honest hotel reviews from the road — real photos, plain verdicts, and the tips that make a stay worth it.</p>
+        <p class="footer-blurb">Honest hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -435,7 +412,7 @@ h1,h2,h3,h4,p{margin:0}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
+      <span>&copy; <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
       <span>Made on the road.</span>
     </div>
   </div>
@@ -443,12 +420,8 @@ h1,h2,h3,h4,p{margin:0}
 
 <script>
 /* ============================================================
-   The Hotel Trail — page behavior (vanilla JS)
-   Placeholder data lives here so you can swap in real reviews
-   by editing the two arrays below.
+   The Hotel Trail — Search (keep `reviews` in sync with index.html)
    ============================================================ */
-
-// --- placeholder review data (edit these) ---
 var reviews = [
   { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"sheraton-hiroshima-web.jpg", date:"March 2026", dateSort:"2026-03" },
@@ -458,13 +431,6 @@ var reviews = [
   { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" }
 ];
 
-// --- placeholder country data (edit these) ---
-var countries = [
-  { name:"Japan",   count:"5 reviews", img:"japan-web.jpg" },
-  { name:"Jordan",  count:"1 review",  img:"jordan-web.jpg" }
-];
-
-// --- svg helpers ---
 function starRow(rating){
   var s = '';
   var starPath = 'M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z';
@@ -489,56 +455,77 @@ function pin(){
 function clock(){
   return '<svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
 }
-function photoLabel(text){
-  return '<span class="ph-label"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>'+text+'</span>';
+
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function hl(text,q){
+  var safe=esc(text);
+  if(!q) return safe;
+  var qe=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  return safe.replace(new RegExp('('+qe+')','ig'),'<mark>$1</mark>');
+}
+function matches(r,q){
+  if(!q) return true;
+  var hay=(r.title+' '+r.place+' '+r.verdict+' '+r.tag+' '+r.date).toLowerCase();
+  return hay.indexOf(q.toLowerCase())!==-1;
 }
 
-// --- render review cards ---
-(function(){
-  var grid = document.getElementById('reviewGrid');
-  reviews.forEach(function(r){
-    var card = document.createElement('article');
-    card.className = 'review-card';
-    var media = r.img
-      ? '<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />'
-      : '<div class="img-ph" role="img" aria-label="Hotel photo placeholder">'+photoLabel('Photo')+'</div>';
-    card.innerHTML =
-      media+
-      '<div class="card-body">'+
-        '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
-        '<h3 class="card-title">'+r.title+'</h3>'+
-        '<span class="card-place">'+pin()+r.place+'</span>'+
-        (r.date ? '<span class="card-place">'+clock()+r.date+'</span>' : '')+
-        '<p class="card-verdict">'+r.verdict+'</p>'+
-        '<div class="card-foot"><a href="#" class="btn-link">Read the full stay '+
-          '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
-      '</div>';
-    grid.appendChild(card);
-  });
-})();
+function render(q){
+  var host=document.getElementById('results');
+  var count=document.getElementById('count');
+  host.innerHTML='';
+  var hits=reviews.filter(function(r){return matches(r,q);})
+    .sort(function(a,b){return a.dateSort>b.dateSort?-1:a.dateSort<b.dateSort?1:0;});
 
-// --- render country tiles ---
-(function(){
-  var grid = document.getElementById('countryGrid');
-  countries.forEach(function(c){
-    var tile = document.createElement('a');
-    tile.href = '#';
-    tile.className = 'country-tile';
-    tile.setAttribute('aria-label', c.name + ' — ' + c.count);
-    var photo = c.img ? '<img class="country-photo" src="'+c.img+'" alt="'+c.name+'" loading="lazy" />' : '';
-    tile.innerHTML =
-      photo+
-      '<div class="country-label"><div class="name">'+c.name+'</div>'+
-      '<div class="count">'+c.count+'</div></div>';
-    grid.appendChild(tile);
+  if(q){ count.textContent = hits.length+(hits.length===1?' review':' reviews')+' matching “'+q+'”'; }
+  else { count.textContent = 'Showing all '+reviews.length+' reviews'; }
+
+  if(!hits.length){
+    host.innerHTML='<p class="search-empty">No reviews match “'+esc(q)+'” yet. Try a hotel name, a city, a month, or a word from a verdict.</p>';
+    return;
+  }
+  var groups={}, order=[];
+  hits.forEach(function(r){ var y=(r.dateSort||'').slice(0,4)||'Undated'; if(!groups[y]){groups[y]=[];order.push(y);} groups[y].push(r); });
+  order.forEach(function(y){
+    var wrap=document.createElement('div'); wrap.className='year-group';
+    var cards=groups[y].map(function(r){
+      var media=r.img?'<img class="card-photo" src="'+r.img+'" alt="'+esc(r.title)+'" loading="lazy" />':'';
+      return '<article class="review-card">'+media+
+        '<div class="card-body">'+
+          '<div class="card-meta"><span class="tag">'+hl(r.tag,q)+'</span>'+starRow(r.rating)+'</div>'+
+          '<h3 class="card-title">'+hl(r.title,q)+'</h3>'+
+          '<span class="card-place">'+pin()+hl(r.place,q)+'</span>'+
+          '<span class="card-place">'+clock()+hl(r.date,q)+'</span>'+
+          '<p class="card-verdict">'+hl(r.verdict,q)+'</p>'+
+          '<div class="card-foot"><a href="#" class="btn-link">Read the full stay '+
+            '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
+        '</div></article>';
+    }).join('');
+    wrap.innerHTML='<h2 class="year-label">'+y+'</h2><div class="card-grid">'+cards+'</div>';
+    host.appendChild(wrap);
   });
+}
+
+(function(){
+  var input=document.getElementById('q');
+  var params=new URLSearchParams(location.search);
+  input.value=(params.get('q')||'');
+  function run(){
+    var q=input.value.trim();
+    render(q);
+    var u=new URL(location);
+    if(q) u.searchParams.set('q',q); else u.searchParams.delete('q');
+    history.replaceState(null,'',u);
+  }
+  input.addEventListener('input', run);
+  run();
+  input.focus();
 })();
 
 // --- mobile nav ---
 (function(){
-  var nav = document.getElementById('mobileNav');
-  var openBtn = document.getElementById('menuOpen');
-  var closeBtn = document.getElementById('menuClose');
+  var nav=document.getElementById('mobileNav');
+  var openBtn=document.getElementById('menuOpen');
+  var closeBtn=document.getElementById('menuClose');
   function open(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
   function close(){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
   openBtn.addEventListener('click', open);
@@ -547,23 +534,11 @@ function photoLabel(text){
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 })();
 
-// --- current year ---
-// --- header search (expands on click; navigates only on Enter) ---
+// --- header search icon focuses the on-page search box ---
 (function(){
-  var box=document.getElementById('headerSearch');
-  var btn=document.getElementById('searchToggle');
-  var inp=document.getElementById('searchInput');
-  if(!box||!btn||!inp) return;
-  btn.addEventListener('click', function(e){
-    e.preventDefault();
-    var open=box.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open?'true':'false');
-    if(open){ inp.focus(); } else { inp.value=''; }
-  });
-  inp.addEventListener('keydown', function(e){
-    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search.html?q='+encodeURIComponent(q); }
-    else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
-  });
+  var st=document.getElementById('searchToggle');
+  var q=document.getElementById('q');
+  if(st&&q){ st.addEventListener('click', function(e){ e.preventDefault(); q.focus(); q.scrollIntoView({behavior:'smooth',block:'center'}); }); }
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();
