@@ -445,10 +445,10 @@ h1,h2,h3,h4,p{margin:0}
 // --- placeholder review data (edit these) ---
 var reviews = [
   { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"nagasaki-marriott-web.jpg" },
-  { tag:"Beach",       title:"Hotel name",     place:"City, Country", rating:5, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
-  { tag:"Boutique",    title:"Hotel name",     place:"City, Country", rating:3, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
-  { tag:"Mountain",    title:"Hotel name",     place:"City, Country", rating:4, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
-  { tag:"Design",      title:"Hotel name",     place:"City, Country", rating:5, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
+  { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"sheraton-hiroshima-web.jpg" },
+  { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"aloft-osaka-web.jpg" },
+  { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"fuji-marriott-web.jpg" },
+  { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"sheraton-tokyo-bay-web.jpg" },
   { tag:"Budget",      title:"Hotel name",     place:"City, Country", rating:4, verdict:"One-line verdict — the thing you'd tell a friend before they book." }
 ];
 
@@ -463,9 +463,19 @@ var countries = [
 // --- svg helpers ---
 function starRow(rating){
   var s = '';
+  var starPath = 'M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z';
   for (var i=1;i<=5;i++){
-    var cls = i<=rating ? 'star-filled' : 'star-empty';
-    s += '<svg class="icon '+cls+'" viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z"/></svg>';
+    if (i<=rating){
+      s += '<svg class="icon star-filled" viewBox="0 0 24 24"><path d="'+starPath+'"/></svg>';
+    } else if (i-0.5<=rating){
+      var gid = 'half'+i+'-'+Math.round(rating*10);
+      s += '<svg class="icon star-half" viewBox="0 0 24 24">'+
+        '<defs><linearGradient id="'+gid+'"><stop offset="50%" stop-color="var(--accent-secondary)"/>'+
+        '<stop offset="50%" stop-color="transparent"/></linearGradient></defs>'+
+        '<path d="'+starPath+'" fill="url(#'+gid+')" stroke="var(--accent-secondary)"/></svg>';
+    } else {
+      s += '<svg class="icon star-empty" viewBox="0 0 24 24"><path d="'+starPath+'"/></svg>';
+    }
   }
   return '<span class="rating" aria-label="'+rating+' out of 5">'+s+'</span>';
 }
