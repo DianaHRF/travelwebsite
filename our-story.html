@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Hotel Trail — honest hotel reviews, country by country</title>
+<title>Our story — The Hotel Trail</title>
 <meta name="description" content="A travel blog reviewing hotels around the world — real photos, honest verdicts, and tips for making the most of every stay.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -308,6 +308,17 @@ h1,h2,h3,h4,p{margin:0}
   .country-grid{grid-template-columns:1fr 1fr}
   .footer-top{flex-direction:column;gap:var(--space-10)}
 }
+
+/* ============================================================
+   our story page
+   ============================================================ */
+.story{padding:var(--space-16) 0 var(--space-20)}
+.story-head{text-align:center;margin-bottom:var(--space-12)}
+.story-head .display-l{margin-top:var(--space-2)}
+.story-body{max-width:var(--container-narrow);margin:0 auto}
+.story-body p{font-size:var(--text-body-l);color:var(--text-secondary);
+  line-height:var(--lh-relaxed);margin-bottom:var(--space-6)}
+.story-body p:last-child{margin-bottom:0}
 </style>
 </head>
 <body>
@@ -315,17 +326,17 @@ h1,h2,h3,h4,p{margin:0}
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <a href="index.html" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
     <nav class="nav" aria-label="Primary">
-      <a href="#reviews">Reviews</a>
+      <a href="index.html#reviews">Reviews</a>
       <a href="destinations.html">Destinations</a>
-      <a href="#about">About</a>
+      <a href="index.html#about">About</a>
     </nav>
     <div class="header-actions">
       <button class="icon-btn" aria-label="Search">
         <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
-      <a href="#reviews" class="btn btn-primary">Latest reviews</a>
+      <a href="index.html#reviews" class="btn btn-primary">Latest reviews</a>
       <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -342,64 +353,27 @@ h1,h2,h3,h4,p{margin:0}
     </button>
   </div>
   <nav class="container mobile-nav-links" aria-label="Mobile">
-    <a href="#reviews">Reviews</a>
+    <a href="index.html#reviews">Reviews</a>
     <a href="destinations.html">Destinations</a>
-    <a href="#about">About</a>
+    <a href="index.html#about">About</a>
   </nav>
 </div>
 
 <main>
-
-<!-- ============================ HERO + FEATURED ============================ -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Featured stay</p>
-      <h1 class="display-xl">TA’AKTANA, a true luxury resort in Labuan Bajo, Indonesia</h1>
-      <p class="lead">This hotel offered us an unforgettable experience, with outstanding service and quality of food, while the proximity to Komodo Island is a bonus.</p>
-      <div class="hero-cta">
-        <a href="#" class="btn btn-primary">Read the full stay</a>
-        <a href="#reviews" class="btn btn-ghost">Browse all reviews</a>
-      </div>
-    </div>
-    <img class="hero-media" src="hero-web.jpg" alt="Featured hotel" loading="eager" />
-  </div>
-</section>
-
-<!-- ============================ REVIEWS GRID ============================ -->
-<section class="section" id="reviews">
+<section class="story">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Recent reviews</p>
-        <h2 class="display-l">The latest hotels we've checked into</h2>
-      </div>
-      <a href="#" class="btn-link">See all reviews
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+    <div class="story-head">
+      <p class="eyebrow">About</p>
+      <h1 class="display-l">Our story</h1>
     </div>
-
-    <div class="card-grid" id="reviewGrid"><!-- cards injected by JS from placeholder data --></div>
+    <div class="story-body">
+      <p>We are a couple based in the UK, the kind of people who measure our lives not in years but in boarding passes! We literally count down the days until we fly out again, even if it is a place we have seen multiple times before. Fifty-something countries later, we&rsquo;ve become fluent in three things: reading a room, packing a carry-on with alarming efficiency, and knowing within a rather short time whether a hotel is going to be magic or a mistake.</p>
+      <p>We have slept in castles (this will not make it to the blog as it has been a while!) and pod-like rooms, in converted lighthouses and boutique hotels that turned out to be a genuine gem (and a few that very much did not). We notice the things you can&rsquo;t see in the listing: whether the pillows are clouds or bricks, whether &ldquo;sea view&rdquo; means the ocean or a car park with ambition, and whether the breakfast buffet is worth setting an alarm for.</p>
+      <p>So we started writing it all down. Honestly, and occasionally at length, because we&rsquo;d rather tell you the truth than the brochure version. Our reviews are the reviews we wish we had had before booking &mdash; the details that matter, the warnings that save a trip, and the hidden treasures worth crossing a continent for. Whether you are planning a once-in-a-lifetime splurge or just trying to avoid the hotel with the mysteriously damp corridor, we have probably been there. Literally.</p>
+      <p>Welcome. Kick off your shoes, pour yourself a cup of tea, and let us help you find your next favourite place to stay.</p>
+    </div>
   </div>
 </section>
-
-<!-- ============================ BROWSE BY COUNTRY ============================ -->
-<section class="section country-section" id="countries">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Destinations</p>
-        <h2 class="display-l">Browse by country</h2>
-      </div>
-      <a href="destinations.html" class="btn-link">All destinations
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-
-    <div class="country-grid" id="countryGrid"><!-- tiles injected by JS from placeholder data --></div>
-  </div>
-</section>
-
 </main>
 
 <!-- ============================ FOOTER ============================ -->
@@ -408,7 +382,7 @@ h1,h2,h3,h4,p{margin:0}
     <div class="footer-top">
       <div>
         <span class="wordmark">The Hotel Trail</span>
-        <p class="footer-blurb">Honest hotel reviews from the road — real photos, plain verdicts, and the tips that make a stay worth it.</p>
+        <p class="footer-blurb">Honest hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -423,106 +397,17 @@ h1,h2,h3,h4,p{margin:0}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
+      <span>&copy; <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
       <span>Made on the road.</span>
     </div>
   </div>
 </footer>
 
 <script>
-/* ============================================================
-   The Hotel Trail — page behavior (vanilla JS)
-   Placeholder data lives here so you can swap in real reviews
-   by editing the two arrays below.
-   ============================================================ */
-
-// --- placeholder review data (edit these) ---
-var reviews = [
-  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"nagasaki-marriott-web.jpg" },
-  { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"sheraton-hiroshima-web.jpg" },
-  { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"aloft-osaka-web.jpg" },
-  { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"fuji-marriott-web.jpg" },
-  { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"sheraton-tokyo-bay-web.jpg" },
-  { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"w-amman-web.jpg" }
-];
-
-// --- placeholder country data (edit these) ---
-var countries = [
-  { name:"Japan",   count:"5 reviews", img:"japan-web.jpg" },
-  { name:"Jordan",  count:"1 review",  img:"jordan-web.jpg" }
-];
-
-// --- svg helpers ---
-function starRow(rating){
-  var s = '';
-  var starPath = 'M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z';
-  for (var i=1;i<=5;i++){
-    if (i<=rating){
-      s += '<svg class="icon star-filled" viewBox="0 0 24 24"><path d="'+starPath+'"/></svg>';
-    } else if (i-0.5<=rating){
-      var gid = 'half'+i+'-'+Math.round(rating*10);
-      s += '<svg class="icon star-half" viewBox="0 0 24 24">'+
-        '<defs><linearGradient id="'+gid+'"><stop offset="50%" stop-color="var(--accent-secondary)"/>'+
-        '<stop offset="50%" stop-color="transparent"/></linearGradient></defs>'+
-        '<path d="'+starPath+'" fill="url(#'+gid+')" stroke="var(--accent-secondary)"/></svg>';
-    } else {
-      s += '<svg class="icon star-empty" viewBox="0 0 24 24"><path d="'+starPath+'"/></svg>';
-    }
-  }
-  return '<span class="rating" aria-label="'+rating+' out of 5">'+s+'</span>';
-}
-function pin(){
-  return '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
-}
-function photoLabel(text){
-  return '<span class="ph-label"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>'+text+'</span>';
-}
-
-// --- render review cards ---
 (function(){
-  var grid = document.getElementById('reviewGrid');
-  reviews.forEach(function(r){
-    var card = document.createElement('article');
-    card.className = 'review-card';
-    var media = r.img
-      ? '<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />'
-      : '<div class="img-ph" role="img" aria-label="Hotel photo placeholder">'+photoLabel('Photo')+'</div>';
-    card.innerHTML =
-      media+
-      '<div class="card-body">'+
-        '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
-        '<h3 class="card-title">'+r.title+'</h3>'+
-        '<span class="card-place">'+pin()+r.place+'</span>'+
-        '<p class="card-verdict">'+r.verdict+'</p>'+
-        '<div class="card-foot"><a href="#" class="btn-link">Read the full stay '+
-          '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
-      '</div>';
-    grid.appendChild(card);
-  });
-})();
-
-// --- render country tiles ---
-(function(){
-  var grid = document.getElementById('countryGrid');
-  countries.forEach(function(c){
-    var tile = document.createElement('a');
-    tile.href = '#';
-    tile.className = 'country-tile';
-    tile.setAttribute('aria-label', c.name + ' — ' + c.count);
-    var photo = c.img ? '<img class="country-photo" src="'+c.img+'" alt="'+c.name+'" loading="lazy" />' : '';
-    tile.innerHTML =
-      photo+
-      '<div class="country-label"><div class="name">'+c.name+'</div>'+
-      '<div class="count">'+c.count+'</div></div>';
-    grid.appendChild(tile);
-  });
-})();
-
-// --- mobile nav ---
-(function(){
-  var nav = document.getElementById('mobileNav');
-  var openBtn = document.getElementById('menuOpen');
-  var closeBtn = document.getElementById('menuClose');
+  var nav=document.getElementById('mobileNav');
+  var openBtn=document.getElementById('menuOpen');
+  var closeBtn=document.getElementById('menuClose');
   function open(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
   function close(){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
   openBtn.addEventListener('click', open);
@@ -530,8 +415,6 @@ function photoLabel(text){
   nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 })();
-
-// --- current year ---
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
