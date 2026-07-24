@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hotel Trail — honest hotel reviews, country by country</title>
+<meta name="description" content="A travel blog reviewing hotels around the world — real photos, honest verdicts, and tips for making the most of every stay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   The Hotel Trail — design tokens (from brand design system)
+   ============================================================ */
+:root{
+  /* color */
+  --teal-900:#123642; --teal-700:#1c5a6b; --teal-600:#256f83; --teal-500:#2f8598;
+  --teal-400:#5aa3b3; --teal-100:#dcedf0;
+  --clay-700:#9a4a2c; --clay-600:#b85f38; --clay-500:#c8703d; --clay-400:#d99560; --clay-100:#f3ddc9;
+  --sand-050:#fdfaf5; --sand-100:#faf5ec; --sand-200:#f2e9d8; --sand-300:#e6d7bd;
+  --ink-900:#221f1c; --ink-700:#4a4540; --ink-500:#6f6a63; --ink-300:#a8a196; --ink-100:#d8d2c7;
+  --white:#ffffff;
+  --success-500:#4d7a52; --error-500:#b0452f; --warning-500:#c8942f;
+
+  --surface-page:var(--sand-050); --surface-card:var(--white); --surface-sunken:var(--sand-200);
+  --surface-inverse:var(--ink-900);
+  --text-primary:var(--ink-900); --text-secondary:var(--ink-500); --text-muted:var(--ink-300);
+  --text-inverse:var(--sand-050); --text-link:var(--teal-700); --text-link-hover:var(--teal-600);
+  --accent-primary:var(--teal-600); --accent-primary-hover:var(--teal-700);
+  --accent-secondary:var(--clay-500); --accent-secondary-hover:var(--clay-600);
+  --border-subtle:var(--sand-300); --border-default:var(--ink-100); --border-strong:var(--ink-500);
+  --focus-ring:var(--teal-500);
+
+  /* type */
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Jost',-apple-system,'Segoe UI',sans-serif;
+  --text-display-xl:clamp(2.75rem,5vw,4.5rem);
+  --text-display-l:clamp(2.25rem,3.6vw,3.25rem);
+  --text-display-m:1.75rem; --text-title:1.375rem;
+  --text-body-l:1.125rem; --text-body:1rem; --text-body-s:0.875rem;
+  --text-caption:0.75rem; --text-overline:0.75rem;
+  --lh-tight:1.1; --lh-snug:1.28; --lh-normal:1.55; --lh-relaxed:1.7;
+  --tracking-tight:-0.01em; --tracking-wide:0.08em; --tracking-wider:0.16em;
+  --weight-regular:400; --weight-medium:500; --weight-semibold:600;
+
+  /* space */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px;
+  --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px; --space-20:80px;
+  --space-24:96px; --space-32:128px;
+  --container-max:1200px; --container-narrow:760px; --gutter:24px;
+
+  /* effects */
+  --radius-s:2px; --radius-m:4px; --radius-l:8px; --radius-pill:999px;
+  --shadow-card:0 1px 2px rgba(34,31,28,0.04),0 6px 20px rgba(34,31,28,0.06);
+  --shadow-raised:0 4px 12px rgba(34,31,28,0.08),0 1px 3px rgba(34,31,28,0.05);
+  --shadow-overlay:0 20px 48px rgba(34,31,28,0.18);
+  --shadow-focus:0 0 0 3px rgba(47,133,152,0.28);
+  --ease-standard:cubic-bezier(0.4,0,0.2,1); --ease-out:cubic-bezier(0,0,0.2,1);
+  --duration-fast:140ms; --duration-normal:220ms; --blur-overlay:8px;
+}
+
+/* ============================================================
+   base reset
+   ============================================================ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:var(--font-body); color:var(--text-primary);
+  background:var(--surface-page); line-height:var(--lh-normal);
+  -webkit-font-smoothing:antialiased; font-size:var(--text-body);
+}
+img{max-width:100%;display:block}
+a{color:var(--text-link);text-decoration:none;transition:color var(--duration-fast) var(--ease-out)}
+a:hover{color:var(--text-link-hover)}
+:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-m)}
+h1,h2,h3,h4,p{margin:0}
+
+.container{max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter)}
+
+/* wordmark */
+.wordmark{
+  font-family:var(--font-display); font-style:italic; font-weight:var(--weight-semibold);
+  color:var(--ink-900); letter-spacing:var(--tracking-tight); font-size:1.375rem;
+}
+
+/* eyebrow / overline */
+.eyebrow{
+  font-size:var(--text-overline); text-transform:uppercase; letter-spacing:var(--tracking-wider);
+  font-weight:var(--weight-semibold); color:var(--accent-secondary); margin-bottom:var(--space-4);
+}
+
+/* headings */
+.display-xl{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-xl);line-height:var(--lh-tight);letter-spacing:var(--tracking-tight)}
+.display-l{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-l);line-height:var(--lh-tight);letter-spacing:var(--tracking-tight)}
+.display-m{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-display-m);line-height:var(--lh-snug)}
+.lead{font-size:var(--text-body-l);color:var(--text-secondary);line-height:var(--lh-relaxed);max-width:52ch}
+
+/* ============================================================
+   buttons
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-body);
+  font-size:var(--text-body-s);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);
+  text-transform:uppercase;padding:var(--space-3) var(--space-6);border-radius:var(--radius-pill);
+  border:1px solid transparent;cursor:pointer;transition:background var(--duration-fast) var(--ease-out),
+  transform var(--duration-fast) var(--ease-out),color var(--duration-fast) var(--ease-out);
+}
+.btn:hover{text-decoration:none}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:var(--accent-primary);color:var(--text-inverse)}
+.btn-primary:hover{background:var(--accent-primary-hover);color:var(--text-inverse)}
+.btn-ghost{background:transparent;color:var(--ink-900);border-color:var(--border-default)}
+.btn-ghost:hover{background:var(--sand-100);color:var(--ink-900)}
+.btn-link{
+  display:inline-flex;align-items:center;gap:var(--space-2);font-weight:var(--weight-semibold);
+  font-size:var(--text-body-s);letter-spacing:var(--tracking-wide);text-transform:uppercase;
+  color:var(--text-link);
+}
+.btn-link:hover{color:var(--text-link-hover)}
+.btn-link svg{transition:transform var(--duration-fast) var(--ease-out)}
+.btn-link:hover svg{transform:translateX(3px)}
+
+/* icons */
+.icon{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+.icon-sm{width:16px;height:16px}
+
+/* ============================================================
+   header
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--sand-050) 82%,transparent);
+  backdrop-filter:blur(var(--blur-overlay));-webkit-backdrop-filter:blur(var(--blur-overlay));
+  border-bottom:1px solid var(--border-subtle);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav{display:flex;align-items:center;gap:var(--space-8)}
+.nav a{
+  font-size:var(--text-body-s);font-weight:var(--weight-medium);color:var(--ink-700);
+  letter-spacing:var(--tracking-wide);text-transform:uppercase;
+}
+.nav a:hover{color:var(--accent-primary)}
+.header-actions{display:flex;align-items:center;gap:var(--space-4)}
+.icon-btn{
+  display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border-radius:var(--radius-round);background:transparent;border:1px solid transparent;
+  color:var(--ink-700);cursor:pointer;transition:background var(--duration-fast) var(--ease-out)}
+.icon-btn:hover{background:var(--sand-200);color:var(--ink-900)}
+.menu-toggle{display:none}
+
+/* ============================================================
+   hero + featured
+   ============================================================ */
+.hero{padding:var(--space-20) 0 var(--space-16)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-16);align-items:center}
+.hero-copy .display-xl{margin-bottom:var(--space-6)}
+.hero-cta{display:flex;gap:var(--space-4);margin-top:var(--space-8);flex-wrap:wrap}
+
+/* image placeholders (no photography supplied — warm brand blocks) */
+.img-ph{
+  position:relative;border-radius:var(--radius-m);overflow:hidden;
+  background:var(--sand-200);border:1px solid var(--border-subtle);
+  display:flex;align-items:flex-end;color:var(--ink-500);
+}
+.img-ph::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(120% 90% at 78% 18%, var(--clay-100) 0%, transparent 46%),
+    radial-gradient(120% 90% at 12% 92%, var(--teal-100) 0%, transparent 44%),
+    var(--sand-200);
+  opacity:.9;
+}
+.img-ph .ph-label{
+  position:relative;z-index:1;display:inline-flex;align-items:center;gap:var(--space-2);
+  margin:var(--space-4);padding:var(--space-1) var(--space-3);font-size:var(--text-caption);
+  letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-700);
+  background:color-mix(in srgb,var(--sand-050) 78%,transparent);border-radius:var(--radius-pill);
+  backdrop-filter:blur(4px);
+}
+.hero-media{aspect-ratio:4/5}
+.hero-media.img-ph{box-shadow:var(--shadow-raised)}
+
+/* section scaffolding */
+.section{padding:var(--space-24) 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;
+  gap:var(--space-8);margin-bottom:var(--space-12)}
+.section-head .display-l{max-width:16ch}
+
+/* ============================================================
+   reviews grid
+   ============================================================ */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8)}
+.review-card{
+  background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-m);
+  overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column;
+  transition:box-shadow var(--duration-normal) var(--ease-out),transform var(--duration-normal) var(--ease-out);
+}
+.review-card:hover{box-shadow:var(--shadow-raised);transform:translateY(-3px)}
+.review-card .img-ph{aspect-ratio:3/2;border:none;border-radius:0}
+.review-card:hover .img-ph::before{transform:scale(1.03)}
+.review-card .img-ph::before{transition:transform var(--duration-normal) var(--ease-out)}
+.card-body{padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3);flex:1}
+.card-meta{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
+.tag{
+  display:inline-flex;align-items:center;gap:var(--space-1);font-size:var(--text-caption);
+  letter-spacing:var(--tracking-wide);text-transform:uppercase;font-weight:var(--weight-semibold);
+  color:var(--clay-700);background:var(--clay-100);padding:var(--space-1) var(--space-2);
+  border-radius:var(--radius-s);
+}
+.rating{display:inline-flex;align-items:center;gap:2px;color:var(--accent-secondary)}
+.rating .icon{width:15px;height:15px;stroke-width:1.5}
+.rating .star-filled{fill:var(--accent-secondary);stroke:var(--accent-secondary)}
+.rating .star-empty{fill:none;stroke:var(--ink-300)}
+.card-title{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);line-height:var(--lh-snug);color:var(--ink-900)}
+.card-place{display:inline-flex;align-items:center;gap:var(--space-1);
+  font-size:var(--text-body-s);color:var(--text-secondary)}
+.card-verdict{font-size:var(--text-body-s);color:var(--text-secondary);line-height:var(--lh-normal)}
+.card-foot{margin-top:auto;padding-top:var(--space-2)}
+
+/* ============================================================
+   browse by country
+   ============================================================ */
+.country-section{background:var(--surface-sunken)}
+.country-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6)}
+.country-tile{
+  position:relative;aspect-ratio:3/4;border-radius:var(--radius-m);overflow:hidden;
+  border:1px solid var(--border-subtle);box-shadow:var(--shadow-card);cursor:pointer;
+  display:flex;align-items:flex-end;
+  transition:box-shadow var(--duration-normal) var(--ease-out),transform var(--duration-normal) var(--ease-out);
+}
+.country-tile::before{
+  content:"";position:absolute;inset:0;transition:transform var(--duration-normal) var(--ease-out);
+  background:
+    radial-gradient(120% 80% at 70% 20%, var(--teal-100) 0%, transparent 50%),
+    radial-gradient(120% 80% at 20% 90%, var(--clay-100) 0%, transparent 48%),
+    var(--sand-300);
+}
+.country-tile::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(34,31,28,0.55) 0%, rgba(34,31,28,0.05) 55%, transparent 100%);
+}
+.country-tile:hover{box-shadow:var(--shadow-raised);transform:translateY(-3px)}
+.country-tile:hover::before{transform:scale(1.04)}
+.country-label{position:relative;z-index:1;padding:var(--space-5);color:var(--sand-050)}
+.country-label .name{font-family:var(--font-display);font-style:italic;
+  font-weight:var(--weight-medium);font-size:var(--text-title);line-height:1.2}
+.country-label .count{font-size:var(--text-caption);letter-spacing:var(--tracking-wide);
+  text-transform:uppercase;color:var(--sand-200);margin-top:var(--space-1)}
+
+/* ============================================================
+   footer
+   ============================================================ */
+.site-footer{background:var(--surface-inverse);color:var(--sand-200);padding:var(--space-20) 0 var(--space-10)}
+.footer-top{display:flex;justify-content:space-between;gap:var(--space-16);
+  flex-wrap:wrap;padding-bottom:var(--space-12);border-bottom:1px solid rgba(255,255,255,0.1)}
+.site-footer .wordmark{color:var(--sand-050)}
+.footer-blurb{color:var(--ink-300);max-width:34ch;margin-top:var(--space-4);font-size:var(--text-body-s)}
+.footer-cols{display:flex;gap:var(--space-16);flex-wrap:wrap}
+.footer-col h4{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wider);
+  color:var(--ink-300);margin-bottom:var(--space-4);font-weight:var(--weight-semibold)}
+.footer-col a{display:block;color:var(--sand-200);font-size:var(--text-body-s);
+  margin-bottom:var(--space-3)}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{padding-top:var(--space-8);display:flex;justify-content:space-between;
+  gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-caption);color:var(--ink-300)}
+
+/* ============================================================
+   mobile nav
+   ============================================================ */
+.mobile-nav{
+  position:fixed;inset:0;z-index:60;background:var(--surface-page);
+  display:flex;flex-direction:column;padding:var(--space-6) var(--gutter);
+  transform:translateY(-100%);transition:transform var(--duration-normal) var(--ease-standard);
+  visibility:hidden;
+}
+.mobile-nav.open{transform:translateY(0);visibility:visible}
+.mobile-nav-head{display:flex;align-items:center;justify-content:space-between;height:72px}
+.mobile-nav-links{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-8)}
+.mobile-nav-links a{font-family:var(--font-display);font-style:italic;font-size:1.75rem;
+  color:var(--ink-900);padding:var(--space-3) 0;border-bottom:1px solid var(--border-subtle)}
+.mobile-nav-links a:hover{color:var(--accent-primary)}
+
+/* ============================================================
+   responsive
+   ============================================================ */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:var(--space-10)}
+  .hero-media{aspect-ratio:16/10;order:-1}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .country-grid{grid-template-columns:repeat(2,1fr)}
+  .section-head{flex-direction:column;align-items:flex-start;gap:var(--space-5)}
+}
+@media (max-width:640px){
+  .nav,.header-actions .btn{display:none}
+  .menu-toggle{display:inline-flex}
+  .section{padding:var(--space-16) 0}
+  .section-head{margin-bottom:var(--space-8)}
+  .hero{padding:var(--space-12) 0}
+  .card-grid{grid-template-columns:1fr}
+  .country-grid{grid-template-columns:1fr 1fr}
+  .footer-top{flex-direction:column;gap:var(--space-10)}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#reviews">Reviews</a>
+      <a href="#countries">Destinations</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="Search">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <a href="#reviews" class="btn btn-primary">Latest reviews</a>
+      <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="container mobile-nav-head">
+    <span class="wordmark">The Hotel Trail</span>
+    <button class="icon-btn" id="menuClose" aria-label="Close menu">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="container mobile-nav-links" aria-label="Mobile">
+    <a href="#reviews">Reviews</a>
+    <a href="#countries">Destinations</a>
+    <a href="#about">About</a>
+  </nav>
+</div>
+
+<main>
+
+<!-- ============================ HERO + FEATURED ============================ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Featured stay</p>
+      <h1 class="display-xl">Your featured review headline goes here</h1>
+      <p class="lead">A short, opinionated intro to the hotel you're spotlighting — why it matters, who it's for, and the one thing you'd tell a friend before they book.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary">Read the full stay</a>
+        <a href="#reviews" class="btn btn-ghost">Browse all reviews</a>
+      </div>
+    </div>
+    <div class="hero-media img-ph" role="img" aria-label="Featured hotel photo placeholder">
+      <span class="ph-label">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+        Hero photo
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ REVIEWS GRID ============================ -->
+<section class="section" id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Recent reviews</p>
+        <h2 class="display-l">The latest hotels we've checked into</h2>
+      </div>
+      <a href="#" class="btn-link">See all reviews
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="card-grid" id="reviewGrid"><!-- cards injected by JS from placeholder data --></div>
+  </div>
+</section>
+
+<!-- ============================ BROWSE BY COUNTRY ============================ -->
+<section class="section country-section" id="countries">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Destinations</p>
+        <h2 class="display-l">Browse by country</h2>
+      </div>
+      <a href="#" class="btn-link">All destinations
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="country-grid" id="countryGrid"><!-- tiles injected by JS from placeholder data --></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer" id="about">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="wordmark">The Hotel Trail</span>
+        <p class="footer-blurb">Honest hotel reviews from the road — real photos, plain verdicts, and the tips that make a stay worth it.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="#reviews">Reviews</a>
+          <a href="#countries">Destinations</a>
+          <a href="#">Travel tips</a>
+        </div>
+        <div class="footer-col">
+          <h4>About</h4>
+          <a href="#">Our story</a>
+          <a href="#">How we rate</a>
+          <a href="#">Get in touch</a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Newsletter</a>
+          <a href="#">RSS</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
+      <span>Made on the road.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   The Hotel Trail — page behavior (vanilla JS)
+   Placeholder data lives here so you can swap in real reviews
+   by editing the two arrays below.
+   ============================================================ */
+
+// --- placeholder review data (edit these) ---
+var reviews = [
+  { tag:"City stay",   title:"Hotel name",     place:"City, Country", rating:4, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
+  { tag:"Beach",       title:"Hotel name",     place:"City, Country", rating:5, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
+  { tag:"Boutique",    title:"Hotel name",     place:"City, Country", rating:3, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
+  { tag:"Mountain",    title:"Hotel name",     place:"City, Country", rating:4, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
+  { tag:"Design",      title:"Hotel name",     place:"City, Country", rating:5, verdict:"One-line verdict — the thing you'd tell a friend before they book." },
+  { tag:"Budget",      title:"Hotel name",     place:"City, Country", rating:4, verdict:"One-line verdict — the thing you'd tell a friend before they book." }
+];
+
+// --- placeholder country data (edit these) ---
+var countries = [
+  { name:"Country",  count:"0 reviews" },
+  { name:"Country",  count:"0 reviews" },
+  { name:"Country",  count:"0 reviews" },
+  { name:"Country",  count:"0 reviews" }
+];
+
+// --- svg helpers ---
+function starRow(rating){
+  var s = '';
+  for (var i=1;i<=5;i++){
+    var cls = i<=rating ? 'star-filled' : 'star-empty';
+    s += '<svg class="icon '+cls+'" viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z"/></svg>';
+  }
+  return '<span class="rating" aria-label="'+rating+' out of 5">'+s+'</span>';
+}
+function pin(){
+  return '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+}
+function photoLabel(text){
+  return '<span class="ph-label"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>'+text+'</span>';
+}
+
+// --- render review cards ---
+(function(){
+  var grid = document.getElementById('reviewGrid');
+  reviews.forEach(function(r){
+    var card = document.createElement('article');
+    card.className = 'review-card';
+    card.innerHTML =
+      '<div class="img-ph" role="img" aria-label="Hotel photo placeholder">'+photoLabel('Photo')+'</div>'+
+      '<div class="card-body">'+
+        '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
+        '<h3 class="card-title">'+r.title+'</h3>'+
+        '<span class="card-place">'+pin()+r.place+'</span>'+
+        '<p class="card-verdict">'+r.verdict+'</p>'+
+        '<div class="card-foot"><a href="#" class="btn-link">Read the full stay '+
+          '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
+      '</div>';
+    grid.appendChild(card);
+  });
+})();
+
+// --- render country tiles ---
+(function(){
+  var grid = document.getElementById('countryGrid');
+  countries.forEach(function(c){
+    var tile = document.createElement('a');
+    tile.href = '#';
+    tile.className = 'country-tile';
+    tile.setAttribute('aria-label', c.name + ' — ' + c.count);
+    tile.innerHTML =
+      '<div class="country-label"><div class="name">'+c.name+'</div>'+
+      '<div class="count">'+c.count+'</div></div>';
+    grid.appendChild(tile);
+  });
+})();
+
+// --- mobile nav ---
+(function(){
+  var nav = document.getElementById('mobileNav');
+  var openBtn = document.getElementById('menuOpen');
+  var closeBtn = document.getElementById('menuClose');
+  function open(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function close(){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+
+// --- current year ---
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
