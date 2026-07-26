@@ -423,7 +423,8 @@ var reviews = [
   { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"images/aloft-osaka-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"images/fuji-marriott-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"images/sheraton-tokyo-bay-web.jpg", date:"April 2026", dateSort:"2026-04" },
-  { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"images/w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" }
+  { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"images/w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" },
+  { tag:"Resort",      title:"Ta’aktana, a Luxury Collection Resort & Spa", place:"Labuan Bajo, Indonesia", rating:5, verdict:"Our top stay yet — outstanding service and food, a short hop from Komodo Island.", img:"images/taaktana-22.jpg", date:"November 2025", dateSort:"2025-11", link:"taaktana.html" }
 ];
 
 function starRow(rating){
@@ -476,7 +477,7 @@ function clock(){
           '<span class="card-place">'+pin()+r.place+'</span>'+
           '<span class="card-place">'+clock()+r.date+'</span>'+
           '<p class="card-verdict">'+r.verdict+'</p>'+
-          '<div class="card-foot"><a href="#" class="btn-link">Read the full stay '+
+          '<div class="card-foot"><a href="'+(r.link||'#')+'" class="btn-link">Read the full stay '+
             '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
         '</div></article>';
     }).join('') + '</div>';
