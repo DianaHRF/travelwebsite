@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nagasaki Marriott Hotel — The Hotel Trail</title>
+<meta name="description" content="A travel blog reviewing hotels around the world — real photos, honest verdicts, and tips for making the most of every stay.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   The Hotel Trail — design tokens (from brand design system)
+   ============================================================ */
+:root{
+  /* color */
+  --teal-900:#123642; --teal-700:#1c5a6b; --teal-600:#256f83; --teal-500:#2f8598;
+  --teal-400:#5aa3b3; --teal-100:#dcedf0;
+  --clay-700:#9a4a2c; --clay-600:#b85f38; --clay-500:#c8703d; --clay-400:#d99560; --clay-100:#f3ddc9;
+  --sand-050:#fdfaf5; --sand-100:#faf5ec; --sand-200:#f2e9d8; --sand-300:#e6d7bd;
+  --ink-900:#221f1c; --ink-700:#4a4540; --ink-500:#6f6a63; --ink-300:#a8a196; --ink-100:#d8d2c7;
+  --white:#ffffff;
+  --success-500:#4d7a52; --error-500:#b0452f; --warning-500:#c8942f;
+
+  --surface-page:var(--sand-050); --surface-card:var(--white); --surface-sunken:var(--sand-200);
+  --surface-inverse:var(--ink-900);
+  --text-primary:var(--ink-900); --text-secondary:var(--ink-500); --text-muted:var(--ink-300);
+  --text-inverse:var(--sand-050); --text-link:var(--teal-700); --text-link-hover:var(--teal-600);
+  --accent-primary:var(--teal-600); --accent-primary-hover:var(--teal-700);
+  --accent-secondary:var(--clay-500); --accent-secondary-hover:var(--clay-600);
+  --border-subtle:var(--sand-300); --border-default:var(--ink-100); --border-strong:var(--ink-500);
+  --focus-ring:var(--teal-500);
+
+  /* type */
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Jost',-apple-system,'Segoe UI',sans-serif;
+  --text-display-xl:clamp(2.75rem,5vw,4.5rem);
+  --text-display-l:clamp(2.25rem,3.6vw,3.25rem);
+  --text-display-m:1.75rem; --text-title:1.375rem;
+  --text-body-l:1.125rem; --text-body:1rem; --text-body-s:0.875rem;
+  --text-caption:0.75rem; --text-overline:0.75rem;
+  --lh-tight:1.1; --lh-snug:1.28; --lh-normal:1.55; --lh-relaxed:1.7;
+  --tracking-tight:-0.01em; --tracking-wide:0.08em; --tracking-wider:0.16em;
+  --weight-regular:400; --weight-medium:500; --weight-semibold:600;
+
+  /* space */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px;
+  --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px; --space-20:80px;
+  --space-24:96px; --space-32:128px;
+  --container-max:1200px; --container-narrow:760px; --gutter:24px;
+
+  /* effects */
+  --radius-s:2px; --radius-m:4px; --radius-l:8px; --radius-pill:999px;
+  --shadow-card:0 1px 2px rgba(34,31,28,0.04),0 6px 20px rgba(34,31,28,0.06);
+  --shadow-raised:0 4px 12px rgba(34,31,28,0.08),0 1px 3px rgba(34,31,28,0.05);
+  --shadow-overlay:0 20px 48px rgba(34,31,28,0.18);
+  --shadow-focus:0 0 0 3px rgba(47,133,152,0.28);
+  --ease-standard:cubic-bezier(0.4,0,0.2,1); --ease-out:cubic-bezier(0,0,0.2,1);
+  --duration-fast:140ms; --duration-normal:220ms; --blur-overlay:8px;
+}
+
+/* ============================================================
+   base reset
+   ============================================================ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:var(--font-body); color:var(--text-primary);
+  background:var(--surface-page); line-height:var(--lh-normal);
+  -webkit-font-smoothing:antialiased; font-size:var(--text-body);
+}
+img{max-width:100%;display:block}
+a{color:var(--text-link);text-decoration:none;transition:color var(--duration-fast) var(--ease-out)}
+a:hover{color:var(--text-link-hover)}
+:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-m)}
+h1,h2,h3,h4,p{margin:0}
+
+.container{max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter)}
+
+/* wordmark */
+.wordmark{
+  font-family:var(--font-display); font-style:italic; font-weight:var(--weight-semibold);
+  color:var(--ink-900); letter-spacing:var(--tracking-tight); font-size:1.625rem;
+}
+
+/* eyebrow / overline */
+.eyebrow{
+  font-size:var(--text-overline); text-transform:uppercase; letter-spacing:var(--tracking-wider);
+  font-weight:var(--weight-semibold); color:var(--accent-secondary); margin-bottom:var(--space-4);
+}
+
+/* headings */
+.display-xl{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-xl);line-height:var(--lh-tight);letter-spacing:var(--tracking-tight)}
+.display-l{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-l);line-height:var(--lh-tight);letter-spacing:var(--tracking-tight)}
+.display-m{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-display-m);line-height:var(--lh-snug)}
+.lead{font-size:var(--text-body-l);color:var(--text-secondary);line-height:var(--lh-relaxed);max-width:52ch}
+
+/* ============================================================
+   buttons
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-body);
+  font-size:var(--text-body-s);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);
+  text-transform:uppercase;padding:var(--space-3) var(--space-6);border-radius:var(--radius-pill);
+  border:1px solid transparent;cursor:pointer;transition:background var(--duration-fast) var(--ease-out),
+  transform var(--duration-fast) var(--ease-out),color var(--duration-fast) var(--ease-out);
+}
+.btn:hover{text-decoration:none}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:var(--accent-primary);color:var(--text-inverse)}
+.btn-primary:hover{background:var(--accent-primary-hover);color:var(--text-inverse)}
+.btn-ghost{background:transparent;color:var(--ink-900);border-color:var(--border-default)}
+.btn-ghost:hover{background:var(--sand-100);color:var(--ink-900)}
+.btn-link{
+  display:inline-flex;align-items:center;gap:var(--space-2);font-weight:var(--weight-semibold);
+  font-size:var(--text-body-s);letter-spacing:var(--tracking-wide);text-transform:uppercase;
+  color:var(--text-link);
+}
+.btn-link:hover{color:var(--text-link-hover)}
+.btn-link svg{transition:transform var(--duration-fast) var(--ease-out)}
+.btn-link:hover svg{transform:translateX(3px)}
+
+/* icons */
+.icon{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+.icon-sm{width:16px;height:16px}
+
+/* ============================================================
+   header
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--sand-050) 82%,transparent);
+  backdrop-filter:blur(var(--blur-overlay));-webkit-backdrop-filter:blur(var(--blur-overlay));
+  border-bottom:1px solid var(--border-subtle);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav{display:flex;align-items:center;gap:var(--space-8)}
+.nav a{
+  font-size:var(--text-body-s);font-weight:var(--weight-medium);color:var(--ink-700);
+  letter-spacing:var(--tracking-wide);text-transform:uppercase;
+}
+.nav a:hover{color:var(--accent-primary)}
+.header-actions{display:flex;align-items:center;gap:var(--space-4)}
+.icon-btn{
+  display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border-radius:var(--radius-round);background:transparent;border:1px solid transparent;
+  color:var(--ink-700);cursor:pointer;transition:background var(--duration-fast) var(--ease-out)}
+.icon-btn:hover{background:var(--sand-200);color:var(--ink-900)}
+.menu-toggle{display:none}
+.header-search{display:inline-flex;align-items:center}
+.header-search-input{width:0;opacity:0;pointer-events:none;padding:0;border:1px solid transparent;
+  border-radius:var(--radius-pill);background:var(--surface-card);font-family:var(--font-body);
+  font-size:var(--text-body-s);color:var(--ink-900);
+  transition:width var(--duration-normal) var(--ease-out),opacity var(--duration-fast) var(--ease-out),
+  padding var(--duration-normal) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
+.header-search.open .header-search-input{width:200px;opacity:1;pointer-events:auto;
+  padding:var(--space-2) var(--space-4);border-color:var(--border-default);margin-right:var(--space-1)}
+.header-search-input:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
+
+/* ============================================================
+   hero + featured
+   ============================================================ */
+.hero{padding:var(--space-20) 0 var(--space-16)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-16);align-items:center}
+.hero-copy .display-xl{margin-bottom:var(--space-6)}
+.hero-cta{display:flex;gap:var(--space-4);margin-top:var(--space-8);flex-wrap:wrap}
+
+/* image placeholders (no photography supplied — warm brand blocks) */
+.img-ph{
+  position:relative;border-radius:var(--radius-m);overflow:hidden;
+  background:var(--sand-200);border:1px solid var(--border-subtle);
+  display:flex;align-items:flex-end;color:var(--ink-500);
+}
+.img-ph::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(120% 90% at 78% 18%, var(--clay-100) 0%, transparent 46%),
+    radial-gradient(120% 90% at 12% 92%, var(--teal-100) 0%, transparent 44%),
+    var(--sand-200);
+  opacity:.9;
+}
+.img-ph .ph-label{
+  position:relative;z-index:1;display:inline-flex;align-items:center;gap:var(--space-2);
+  margin:var(--space-4);padding:var(--space-1) var(--space-3);font-size:var(--text-caption);
+  letter-spacing:var(--tracking-wide);text-transform:uppercase;color:var(--ink-700);
+  background:color-mix(in srgb,var(--sand-050) 78%,transparent);border-radius:var(--radius-pill);
+  backdrop-filter:blur(4px);
+}
+.hero-media{aspect-ratio:4/5;width:100%;height:100%;object-fit:cover;border-radius:var(--radius-m);box-shadow:var(--shadow-raised)}
+
+/* section scaffolding */
+.section{padding:var(--space-24) 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;
+  gap:var(--space-8);margin-bottom:var(--space-12)}
+.section-head .display-l{max-width:16ch}
+
+/* ============================================================
+   reviews grid
+   ============================================================ */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-8)}
+.review-card{
+  background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-m);
+  overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column;
+  transition:box-shadow var(--duration-normal) var(--ease-out),transform var(--duration-normal) var(--ease-out);
+}
+.review-card:hover{box-shadow:var(--shadow-raised);transform:translateY(-3px)}
+.review-card .img-ph{aspect-ratio:3/2;border:none;border-radius:0}
+.review-card .card-photo{aspect-ratio:3/2;width:100%;object-fit:cover}
+.review-card:hover .img-ph::before{transform:scale(1.03)}
+.review-card .img-ph::before{transition:transform var(--duration-normal) var(--ease-out)}
+.card-body{padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-3);flex:1}
+.card-meta{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3)}
+.tag{
+  display:inline-flex;align-items:center;gap:var(--space-1);font-size:var(--text-caption);
+  letter-spacing:var(--tracking-wide);text-transform:uppercase;font-weight:var(--weight-semibold);
+  color:var(--clay-700);background:var(--clay-100);padding:var(--space-1) var(--space-2);
+  border-radius:var(--radius-s);
+}
+.rating{display:inline-flex;align-items:center;gap:2px;color:var(--accent-secondary)}
+.rating .icon{width:15px;height:15px;stroke-width:1.5}
+.rating .star-filled{fill:var(--accent-secondary);stroke:var(--accent-secondary)}
+.rating .star-empty{fill:none;stroke:var(--ink-300)}
+.card-title{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);line-height:var(--lh-snug);color:var(--ink-900)}
+.card-place{display:inline-flex;align-items:center;gap:var(--space-1);
+  font-size:var(--text-body-s);color:var(--text-secondary)}
+.card-verdict{font-size:var(--text-body-s);color:var(--text-secondary);line-height:var(--lh-normal)}
+.card-foot{margin-top:auto;padding-top:var(--space-2)}
+
+/* ============================================================
+   browse by country
+   ============================================================ */
+.country-section{background:var(--surface-sunken)}
+.country-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6)}
+.country-tile{
+  position:relative;aspect-ratio:3/4;border-radius:var(--radius-m);overflow:hidden;
+  border:1px solid var(--border-subtle);box-shadow:var(--shadow-card);cursor:pointer;
+  display:flex;align-items:flex-end;
+  transition:box-shadow var(--duration-normal) var(--ease-out),transform var(--duration-normal) var(--ease-out);
+}
+.country-tile::before{
+  content:"";position:absolute;inset:0;transition:transform var(--duration-normal) var(--ease-out);
+  background:
+    radial-gradient(120% 80% at 70% 20%, var(--teal-100) 0%, transparent 50%),
+    radial-gradient(120% 80% at 20% 90%, var(--clay-100) 0%, transparent 48%),
+    var(--sand-300);
+}
+.country-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  transition:transform var(--duration-normal) var(--ease-out)}
+.country-tile::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top, rgba(34,31,28,0.55) 0%, rgba(34,31,28,0.05) 55%, transparent 100%);
+}
+.country-tile:hover{box-shadow:var(--shadow-raised);transform:translateY(-3px)}
+.country-tile:hover::before{transform:scale(1.04)}
+.country-tile:hover .country-photo{transform:scale(1.04)}
+.country-label{position:relative;z-index:2;padding:var(--space-5);color:var(--sand-050)}
+.country-label .name{font-family:var(--font-display);font-style:italic;
+  font-weight:var(--weight-medium);font-size:var(--text-title);line-height:1.2}
+.country-label .count{font-size:var(--text-caption);letter-spacing:var(--tracking-wide);
+  text-transform:uppercase;color:var(--sand-200);margin-top:var(--space-1)}
+
+/* ============================================================
+   footer
+   ============================================================ */
+.site-footer{background:var(--surface-inverse);color:var(--sand-200);padding:var(--space-20) 0 var(--space-10)}
+.footer-top{display:flex;justify-content:space-between;gap:var(--space-16);
+  flex-wrap:wrap;padding-bottom:var(--space-12);border-bottom:1px solid rgba(255,255,255,0.1)}
+.site-footer .wordmark{color:var(--sand-050)}
+.footer-blurb{color:var(--ink-300);max-width:34ch;margin-top:var(--space-4);font-size:var(--text-body-s)}
+.footer-cols{display:flex;gap:var(--space-16);flex-wrap:wrap}
+.footer-col h4{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wider);
+  color:var(--ink-300);margin-bottom:var(--space-4);font-weight:var(--weight-semibold)}
+.footer-col a{display:block;color:var(--sand-200);font-size:var(--text-body-s);
+  margin-bottom:var(--space-3)}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{padding-top:var(--space-8);display:flex;justify-content:space-between;
+  gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-caption);color:var(--ink-300)}
+
+/* ============================================================
+   mobile nav
+   ============================================================ */
+.mobile-nav{
+  position:fixed;inset:0;z-index:60;background:var(--surface-page);
+  display:flex;flex-direction:column;padding:var(--space-6) var(--gutter);
+  transform:translateY(-100%);transition:transform var(--duration-normal) var(--ease-standard);
+  visibility:hidden;
+}
+.mobile-nav.open{transform:translateY(0);visibility:visible}
+.mobile-nav-head{display:flex;align-items:center;justify-content:space-between;height:72px}
+.mobile-nav-links{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-8)}
+.mobile-nav-links a{font-family:var(--font-display);font-style:italic;font-size:1.75rem;
+  color:var(--ink-900);padding:var(--space-3) 0;border-bottom:1px solid var(--border-subtle)}
+.mobile-nav-links a:hover{color:var(--accent-primary)}
+
+/* ============================================================
+   responsive
+   ============================================================ */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:var(--space-10)}
+  .hero-media{aspect-ratio:16/10;order:-1}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+  .country-grid{grid-template-columns:repeat(2,1fr)}
+  .section-head{flex-direction:column;align-items:flex-start;gap:var(--space-5)}
+}
+@media (max-width:640px){
+  .nav,.header-actions .btn{display:none}
+  .menu-toggle{display:inline-flex}
+  .section{padding:var(--space-16) 0}
+  .section-head{margin-bottom:var(--space-8)}
+  .hero{padding:var(--space-12) 0}
+  .card-grid{grid-template-columns:1fr}
+  .country-grid{grid-template-columns:1fr 1fr}
+  .footer-top{flex-direction:column;gap:var(--space-10)}
+}
+
+/* ============================================================
+   taaktana full review page
+   ============================================================ */
+.post-hero{position:relative;height:min(78vh,720px);min-height:420px;overflow:hidden;
+  display:flex;align-items:flex-end}
+.post-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.post-hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top, rgba(18,54,66,0.82) 0%, rgba(18,54,66,0.25) 45%, rgba(18,54,66,0.05) 100%)}
+.post-hero .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:var(--space-16)}
+.post-hero .eyebrow{color:var(--clay-400)}
+.post-hero h1{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-l);line-height:var(--lh-tight);color:var(--sand-050);max-width:20ch}
+.post-meta{display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-5);
+  color:var(--sand-100);font-size:var(--text-body-s)}
+.post-meta .rating .icon{width:16px;height:16px}
+.post-meta .dot{opacity:.5}
+.post-meta .m{display:inline-flex;align-items:center;gap:var(--space-2)}
+.post-meta .m .icon{width:16px;height:16px;stroke:var(--sand-100);stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round}
+
+.post{padding:var(--space-16) 0 var(--space-20)}
+.post-body{max-width:var(--container-narrow);margin:0 auto}
+.post-body p{font-size:var(--text-body-l);color:var(--text-secondary);line-height:var(--lh-relaxed);
+  margin-bottom:var(--space-6);text-align:justify}
+.post-section-title{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-m);color:var(--ink-900);margin:var(--space-12) 0 var(--space-6)}
+.post-lead{font-size:var(--text-body-l);color:var(--text-primary);line-height:var(--lh-relaxed);
+  font-weight:var(--weight-medium);text-align:justify}
+
+/* figures — full bleed to the wider container */
+.figs{max-width:var(--container-narrow);margin:var(--space-10) auto;padding:0 var(--gutter)}
+.figs figure{margin:0}
+.figs img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-m);
+  box-shadow:var(--shadow-card);display:block}
+.fig-full img{aspect-ratio:16/9}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+.grid-2.land img{aspect-ratio:16/9}
+.grid-3.land img{aspect-ratio:16/9}
+.grid-2.port img{aspect-ratio:3/4}
+.grid-3.port img{aspect-ratio:3/4}
+.grid-4.port img{aspect-ratio:3/4}
+.figcap{text-align:center;font-size:var(--text-caption);color:var(--text-muted);
+  margin-top:var(--space-3);letter-spacing:var(--tracking-wide);text-transform:uppercase}
+
+/* verdict callout */
+.verdict-block{max-width:var(--container-narrow);margin:var(--space-16) auto 0;
+  background:var(--surface-sunken);border:1px solid var(--border-subtle);border-left:4px solid var(--accent-secondary);
+  border-radius:var(--radius-m);padding:var(--space-8)}
+.verdict-block .eyebrow{color:var(--accent-secondary)}
+.verdict-block p{font-size:var(--text-body-l);color:var(--text-primary);line-height:var(--lh-relaxed);
+  margin-bottom:0;text-align:justify}
+.post-back{max-width:var(--container-narrow);margin:var(--space-12) auto 0}
+
+@media (max-width:900px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr 1fr}
+  .fig-full img{aspect-ratio:4/3}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="all-reviews.html">Reviews</a>
+      <a href="destinations.html">Destinations</a>
+      <a href="index.html#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <div class="header-search" id="headerSearch">
+        <input type="search" id="searchInput" class="header-search-input" placeholder="Search reviews&hellip;" aria-label="Search reviews" autocomplete="off" />
+        <button class="icon-btn" id="searchToggle" aria-label="Search" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      </div>
+      <a href="all-reviews.html" class="btn btn-primary">Latest reviews</a>
+      <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="container mobile-nav-head">
+    <span class="wordmark">The Hotel Trail</span>
+    <button class="icon-btn" id="menuClose" aria-label="Close menu">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="container mobile-nav-links" aria-label="Mobile">
+    <a href="all-reviews.html">Reviews</a>
+    <a href="destinations.html">Destinations</a>
+    <a href="index.html#about">About</a>
+  </nav>
+</div>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="post-hero">
+  <img src="images/nagasaki-08.jpg" alt="Nagasaki Marriott Hotel" />
+  <div class="container hero-inner">
+    <p class="eyebrow">City stay &middot; Japan</p>
+    <h1>Nagasaki Marriott Hotel</h1>
+    <div class="post-meta">
+      <span class="rating" id="heroStars" aria-label="5 out of 5"></span>
+      <span class="dot">&middot;</span>
+      <span class="m"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Nagasaki, Japan</span>
+      <span class="dot">&middot;</span>
+      <span class="m"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>3-night stay</span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <div class="container">
+
+    <div class="post-body">
+      <p class="post-lead">This ended up being our favourite hotel in Japan so far &mdash; unbeatable location right by the train station, a beautiful suite with sweeping views, and the best hotel breakfast we had in the country.</p>
+
+      <h2 class="post-section-title">Arrival and Suite</h2>
+      <p>Our Japan adventure started in Nagasaki and we picked the Nagasaki Marriott Hotel as our accommodation for 3 nights. It was a 1 minute walk (not exaggerating!) from the train station, which proved to be quite handy as it was pouring when we arrived, so the location is a massive advantage. The hotel has 5&ast; and it opened in January 2024. It did not feel crowded (Nagasaki is a lot less touristy than other cities in Japan) and our experience from the start was very positive. Despite booking a regular king room, we got upgraded to the Kamome suite for the duration of our stay as a result of being Titanium members with Marriott Bonvoy. The 86 square meter suite was minimalistic and beautifully designed.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/nagasaki-01.jpg" alt="Kamome suite with city view" loading="lazy" /></figure></div>
+    </div>
+    <div class="post-body">
+      <p>All curtains were electric and, the next morning, revealed a view over the train station, city and surrounding hills.</p>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title">Bathroom</h2>
+      <p>The bathroom was very spacious and modern, with his and hers sinks, and the suite had two toilets, one in the main bathroom and one closer to the entrance (Japanese, of course!).</p>
+    </div>
+    <div class="figs">
+      <div class="grid-2 port">
+        <figure><img src="images/nagasaki-02.jpg" alt="His and hers sinks" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-03.jpg" alt="Walk-in shower and bath" loading="lazy" /></figure>
+      </div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title">Bedroom</h2>
+      <p>The bedroom was cosy, had a large TV facing the bed, and great views. The bed was of very high quality and comfortable.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/nagasaki-04.jpg" alt="Bedroom" loading="lazy" /></figure></div>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/nagasaki-05.jpg" alt="Bedroom with a view" loading="lazy" /></figure></div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title">Amenities</h2>
+      <p>There were bathrobes, as well as flip flops and umbrellas. The tea and coffee were of high quality, and we also received some traditional Japanese cake as welcome gifts.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-2 port">
+        <figure><img src="images/nagasaki-06.jpg" alt="Bathrobe and welcome gifts" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-07.jpg" alt="Dressing area" loading="lazy" /></figure>
+      </div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title">Balcony</h2>
+      <p>The suite had a big balcony surrounding the entire corner, although there were no chairs or table to be able to sit, but the views were gorgeous.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/nagasaki-08.jpg" alt="Balcony view over the city and station" loading="lazy" /></figure></div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title">Breakfast</h2>
+      <p>The breakfast restaurant was spacious and had a beautiful view. The breakfast was buffet style, and the selection was of very high quality and produce locally sourced. The fish, miso soup, tofu and pickles were outstanding. They also had an automatic dispenser for iced matcha latte &ndash; a bonus! Overall, breakfast was fantastic and the best one we had in a hotel in Japan.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-3 port">
+        <figure><img src="images/nagasaki-09.jpg" alt="Breakfast restaurant" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-10.jpg" alt="Buffet selection" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-11.jpg" alt="Buffet spread" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-12.jpg" alt="Fresh fish and sashimi" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-13.jpg" alt="Miso soup and tofu" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-14.jpg" alt="Breakfast plate" loading="lazy" /></figure>
+      </div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title">Lounge</h2>
+      <p>The lounge was one of the nicest Marriott hotel lounges we have been at. It offered high quality coffee and tea all day, as well as nibbles at different points of the day. The lounge also has a nice view over the city and the music was pleasant, overall creating a very relaxed atmosphere. The food was of a high quality, albeit not substantial in choice.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-3 port" style="grid-template-columns:repeat(3,1fr)">
+        <figure><img src="images/nagasaki-15.jpg" alt="Lounge interior" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-16.jpg" alt="Lounge nibbles" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-17.jpg" alt="Lounge with city view" loading="lazy" /></figure>
+      </div>
+    </div>
+
+    <div class="verdict-block">
+      <p class="eyebrow">The verdict</p>
+      <p>This ended up being our favourite hotel in Japan so far. First of all, it is difficult to beat its location, basically in the train station! The area is less touristy than others, so the hotel felt quieter and the service was worthy of 5&ast;. The suite and its views were beautiful, as well as breakfast and lounge experience. Overall, this is the hotel to spend a few nights in Nagasaki!</p>
+    </div>
+
+    <div class="post-back">
+      <a href="index.html" class="btn-link"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to home</a>
+    </div>
+
+  </div>
+</article>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer" id="about">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="wordmark">The Hotel Trail</span>
+        <p class="footer-blurb">Honest hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>About</h4>
+          <a href="our-story.html">Our story</a>
+          <a href="#">Get in touch</a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
+      <span>Made on the road.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// --- hero star rating ---
+(function(){
+  var el=document.getElementById('heroStars'); if(!el) return;
+  var sp='M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z';
+  var s='';for(var i=0;i<5;i++){ s+='<svg class="icon star-filled" viewBox="0 0 24 24"><path d="'+sp+'"/></svg>'; }
+  el.innerHTML=s;
+})();
+
+// --- mobile nav ---
+(function(){
+  var nav=document.getElementById('mobileNav');
+  var openBtn=document.getElementById('menuOpen');
+  var closeBtn=document.getElementById('menuClose');
+  function open(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function close(){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+
+// --- header search (expands on click; navigates only on Enter) ---
+(function(){
+  var box=document.getElementById('headerSearch');
+  var btn=document.getElementById('searchToggle');
+  var inp=document.getElementById('searchInput');
+  if(!box||!btn||!inp) return;
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    var open=box.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+    if(open){ inp.focus(); } else { inp.value=''; }
+  });
+  inp.addEventListener('keydown', function(e){
+    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search.html?q='+encodeURIComponent(q); }
+    else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
+  });
+})();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
