@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our story — The Hotel Trail</title>
-<meta name="description" content="A travel blog reviewing hotels around the world — real photos, honest verdicts, and tips for making the most of every stay.">
+<meta name="description" content="The story behind The Hotel Trail — a UK couple who measure life in boarding passes, reviewing hotels honestly, one stay at a time.">
+<link rel="canonical" href="https://thehoteltrail.com/our-story.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Hotel Trail">
+<meta property="og:title" content="Our story — The Hotel Trail">
+<meta property="og:description" content="A UK couple who measure life in boarding passes, reviewing hotels honestly, one stay at a time.">
+<meta property="og:url" content="https://thehoteltrail.com/our-story.html">
+<meta property="og:image" content="https://thehoteltrail.com/images/hero-web.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Our story — The Hotel Trail">
+<meta name="twitter:description" content="A UK couple who measure life in boarding passes, reviewing hotels honestly, one stay at a time.">
+<meta name="twitter:image" content="https://thehoteltrail.com/images/hero-web.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -151,6 +162,15 @@ h1,h2,h3,h4,p{margin:0}
   color:var(--ink-700);cursor:pointer;transition:background var(--duration-fast) var(--ease-out)}
 .icon-btn:hover{background:var(--sand-200);color:var(--ink-900)}
 .menu-toggle{display:none}
+.header-search{display:inline-flex;align-items:center}
+.header-search-input{width:0;opacity:0;pointer-events:none;padding:0;border:1px solid transparent;
+  border-radius:var(--radius-pill);background:var(--surface-card);font-family:var(--font-body);
+  font-size:var(--text-body-s);color:var(--ink-900);
+  transition:width var(--duration-normal) var(--ease-out),opacity var(--duration-fast) var(--ease-out),
+  padding var(--duration-normal) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
+.header-search.open .header-search-input{width:200px;opacity:1;pointer-events:auto;
+  padding:var(--space-2) var(--space-4);border-color:var(--border-default);margin-right:var(--space-1)}
+.header-search-input:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
 
 /* ============================================================
    hero + featured
@@ -328,14 +348,17 @@ h1,h2,h3,h4,p{margin:0}
   <div class="container header-inner">
     <a href="index.html" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
     <nav class="nav" aria-label="Primary">
-      <a href="index.html#reviews">Reviews</a>
+      <a href="all-reviews.html">Reviews</a>
       <a href="destinations.html">Destinations</a>
       <a href="index.html#about">About</a>
     </nav>
     <div class="header-actions">
-      <button class="icon-btn" aria-label="Search">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      </button>
+      <div class="header-search" id="headerSearch">
+        <input type="search" id="searchInput" class="header-search-input" placeholder="Search reviews&hellip;" aria-label="Search reviews" autocomplete="off" />
+        <button class="icon-btn" id="searchToggle" aria-label="Search" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      </div>
       <a href="index.html#reviews" class="btn btn-primary">Latest reviews</a>
       <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -353,7 +376,7 @@ h1,h2,h3,h4,p{margin:0}
     </button>
   </div>
   <nav class="container mobile-nav-links" aria-label="Mobile">
-    <a href="index.html#reviews">Reviews</a>
+    <a href="all-reviews.html">Reviews</a>
     <a href="destinations.html">Destinations</a>
     <a href="index.html#about">About</a>
   </nav>
@@ -415,6 +438,24 @@ h1,h2,h3,h4,p{margin:0}
   nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 })();
+// --- header search (expands on click; navigates only on Enter) ---
+(function(){
+  var box=document.getElementById('headerSearch');
+  var btn=document.getElementById('searchToggle');
+  var inp=document.getElementById('searchInput');
+  if(!box||!btn||!inp) return;
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    var open=box.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+    if(open){ inp.focus(); } else { inp.value=''; }
+  });
+  inp.addEventListener('keydown', function(e){
+    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search.html?q='+encodeURIComponent(q); }
+    else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
+  });
+})();
+
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
