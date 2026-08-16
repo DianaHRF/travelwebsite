@@ -382,6 +382,15 @@ h1,h2,h3,h4,p{margin:0}
 .verdict-block .eyebrow{color:var(--accent-secondary)}
 .verdict-block p{font-size:var(--text-body-l);color:var(--text-primary);line-height:var(--lh-relaxed);
   margin-bottom:0;text-align:justify}
+.glance{max-width:var(--container-narrow);margin:var(--space-8) auto;background:var(--surface-sunken);
+  border:1px solid var(--border-subtle);border-radius:var(--radius-l);padding:var(--space-6) var(--space-8);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5) var(--space-6)}
+.glance-item{display:flex;flex-direction:column;gap:3px}
+.glance-label{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);
+  color:var(--text-secondary);font-weight:var(--weight-semibold)}
+.glance-value{font-size:var(--text-body);color:var(--ink-900);font-weight:var(--weight-medium)}
+.glance-stars{color:var(--accent-secondary);letter-spacing:2px}
+@media (max-width:640px){.glance{grid-template-columns:repeat(2,1fr);padding:var(--space-5) var(--space-6)}}
 .book-cta{max-width:var(--container-narrow);margin:var(--space-10) auto;display:flex;align-items:center;
   justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;background:var(--surface-sunken);
   border:1px solid var(--border-subtle);border-radius:var(--radius-l);padding:var(--space-6) var(--space-8)}
@@ -489,12 +498,13 @@ h1,h2,h3,h4,p{margin:0}
       <p class="post-lead">This hotel offered us an unforgettable experience, with outstanding service and quality of food, while the proximity to Komodo Island is a bonus. So far, it was our top stay in terms of overall stay, service and quality of food.</p>
     </div>
 
-    <div class="book-cta">
-      <div>
-        <p class="book-cta-title">Thinking of staying at Ta&rsquo;aktana?</p>
-        <p class="book-cta-note">We may earn a small commission if you book through our link &mdash; at no extra cost to you.</p>
-      </div>
-      <a class="btn btn-primary" href="https://www.stay22.com/allez/roam?aid=thehoteltrail&amp;address=Ta%27aktana%2C%20a%20Luxury%20Collection%20Resort%20%26%20Spa%2C%20Labuan%20Bajo%2C%20Indonesia&amp;campaign=taaktana-review" target="_blank" rel="sponsored nofollow noopener">Check rates &amp; availability</a>
+    <div class="glance">
+      <div class="glance-item"><span class="glance-label">Location</span><span class="glance-value">Labuan Bajo, Indonesia</span></div>
+      <div class="glance-item"><span class="glance-label">Room</span><span class="glance-value">One-bedroom sea-view villa</span></div>
+      <div class="glance-item"><span class="glance-label">Length of stay</span><span class="glance-value">5 nights</span></div>
+      <div class="glance-item"><span class="glance-label">When</span><span class="glance-value">November 2025</span></div>
+      <div class="glance-item"><span class="glance-label">Price</span><span class="glance-value">&pound;&pound;&pound; &middot; luxury</span></div>
+      <div class="glance-item"><span class="glance-label">Our rating</span><span class="glance-value"><span class="glance-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5/5</span></div>
     </div>
 
     <div class="post-body">
