@@ -382,6 +382,14 @@ h1,h2,h3,h4,p{margin:0}
 .verdict-block .eyebrow{color:var(--accent-secondary)}
 .verdict-block p{font-size:var(--text-body-l);color:var(--text-primary);line-height:var(--lh-relaxed);
   margin-bottom:0;text-align:justify}
+.book-cta{max-width:var(--container-narrow);margin:var(--space-10) auto;display:flex;align-items:center;
+  justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;background:var(--surface-sunken);
+  border:1px solid var(--border-subtle);border-radius:var(--radius-l);padding:var(--space-6) var(--space-8)}
+.book-cta-title{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--ink-900)}
+.book-cta-note{font-size:var(--text-caption);color:var(--text-secondary);margin-top:var(--space-2);max-width:48ch}
+.book-cta .btn{flex:none}
+@media (max-width:520px){.book-cta{flex-direction:column;align-items:flex-start}}
 .post-back{max-width:var(--container-narrow);margin:var(--space-12) auto 0}
 
 @media (max-width:900px){
@@ -479,7 +487,17 @@ h1,h2,h3,h4,p{margin:0}
 
     <div class="post-body">
       <p class="post-lead">This ended up being our favourite hotel in Japan so far &mdash; unbeatable location right by the train station, a beautiful suite with sweeping views, and the best hotel breakfast we had in the country.</p>
+    </div>
 
+    <div class="book-cta">
+      <div>
+        <p class="book-cta-title">Thinking of staying at the Nagasaki Marriott?</p>
+        <p class="book-cta-note">We may earn a small commission if you book through our link &mdash; at no extra cost to you.</p>
+      </div>
+      <a class="btn btn-primary" href="https://www.stay22.com/allez/roam?aid=thehoteltrail&amp;address=Nagasaki%20Marriott%20Hotel%2C%20Nagasaki%2C%20Japan&amp;campaign=nagasaki-review" target="_blank" rel="sponsored nofollow noopener">Check rates &amp; availability</a>
+    </div>
+
+    <div class="post-body">
       <h2 class="post-section-title">Arrival and Suite</h2>
       <p>Our Japan adventure started in Nagasaki and we picked the Nagasaki Marriott Hotel as our accommodation for 3 nights. It was a 1 minute walk (not exaggerating!) from the train station, which proved to be quite handy as it was pouring when we arrived, so the location is a massive advantage. The hotel has 5&ast; and it opened in January 2024. It did not feel crowded (Nagasaki is a lot less touristy than other cities in Japan) and our experience from the start was very positive. Despite booking a regular king room, we got upgraded to the Kamome suite for the duration of our stay as a result of being Titanium members with Marriott Bonvoy. The 86 square meter suite was minimalistic and beautifully designed.</p>
     </div>
@@ -563,6 +581,14 @@ h1,h2,h3,h4,p{margin:0}
       <p>This ended up being our favourite hotel in Japan so far. First of all, it is difficult to beat its location, basically in the train station! The area is less touristy than others, so the hotel felt quieter and the service was worthy of 5&ast;. The suite and its views were beautiful, as well as breakfast and lounge experience. Overall, this is the hotel to spend a few nights in Nagasaki!</p>
     </div>
 
+    <div class="book-cta">
+      <div>
+        <p class="book-cta-title">Ready to book the Nagasaki Marriott?</p>
+        <p class="book-cta-note">Compare live rates across booking sites. We may earn a small commission if you book through our link &mdash; at no extra cost to you.</p>
+      </div>
+      <a class="btn btn-primary" href="https://www.stay22.com/allez/roam?aid=thehoteltrail&amp;address=Nagasaki%20Marriott%20Hotel%2C%20Nagasaki%2C%20Japan&amp;campaign=nagasaki-review-foot" target="_blank" rel="sponsored nofollow noopener">Check rates &amp; availability</a>
+    </div>
+
     <div class="post-back">
       <a href="index.html" class="btn-link"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to home</a>
     </div>
@@ -592,6 +618,7 @@ h1,h2,h3,h4,p{margin:0}
       </div>
     </div>
     <div class="footer-bottom">
+      <span style="flex-basis:100%">Some links on The Hotel Trail are affiliate links &mdash; if you book through them we may earn a small commission, at no extra cost to you.</span>
       <span>&copy; <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
       <span>Made on the road.</span>
     </div>
