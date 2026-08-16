@@ -359,6 +359,8 @@ h1,h2,h3,h4,p{margin:0}
   font-weight:var(--weight-medium);text-align:justify}
 
 /* figures — full bleed to the wider container */
+.post-subtitle{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--accent-primary);margin:var(--space-8) 0 var(--space-4)}
 .figs{max-width:var(--container-narrow);margin:var(--space-10) auto;padding:0 var(--gutter)}
 .figs figure{margin:0}
 .figs img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-m);
@@ -391,6 +393,32 @@ h1,h2,h3,h4,p{margin:0}
 .glance-value{font-size:var(--text-body);color:var(--ink-900);font-weight:var(--weight-medium)}
 .glance-stars{color:var(--accent-secondary);letter-spacing:2px}
 @media (max-width:640px){.glance{grid-template-columns:repeat(2,1fr);padding:var(--space-5) var(--space-6)}}
+.subratings{max-width:var(--container-narrow);margin:var(--space-2) auto var(--space-8);display:grid;
+  grid-template-columns:1fr 1fr;gap:var(--space-3) var(--space-10)}
+.subrating{display:grid;grid-template-columns:5.5em 1fr 2.4em;align-items:center;gap:var(--space-3)}
+.subrating-label{font-size:var(--text-body-s);color:var(--ink-700);font-weight:var(--weight-medium)}
+.subrating-bar{height:8px;background:var(--sand-300);border-radius:var(--radius-pill);overflow:hidden}
+.subrating-fill{display:block;height:100%;background:var(--accent-secondary);border-radius:var(--radius-pill)}
+.subrating-num{font-size:var(--text-body-s);color:var(--ink-900);font-weight:var(--weight-semibold);text-align:right}
+@media (max-width:640px){.subratings{grid-template-columns:1fr}}
+.figs img{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(18,54,66,0.94);
+  display:none;align-items:center;justify-content:center;padding:var(--space-6)}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:var(--radius-m);box-shadow:var(--shadow-overlay)}
+.lightbox-cap{position:absolute;bottom:var(--space-6);left:0;right:0;text-align:center;
+  color:var(--sand-100);font-size:var(--text-body-s);padding:0 var(--space-8);margin:0}
+.lb-counter{position:absolute;top:var(--space-6);left:var(--space-8);color:var(--sand-200);
+  font-size:var(--text-caption);letter-spacing:var(--tracking-wide)}
+.lb-btn{position:absolute;background:rgba(255,255,255,0.12);border:none;color:#fff;
+  width:48px;height:48px;border-radius:var(--radius-pill);cursor:pointer;display:flex;
+  align-items:center;justify-content:center;transition:background var(--duration-fast) var(--ease-out)}
+.lb-btn:hover{background:rgba(255,255,255,0.25)}
+.lb-btn svg{width:24px;height:24px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lb-close{top:var(--space-5);right:var(--space-5)}
+.lb-prev{left:var(--space-5);top:50%;transform:translateY(-50%)}
+.lb-next{right:var(--space-5);top:50%;transform:translateY(-50%)}
+@media(max-width:640px){.lb-btn{width:40px;height:40px}.lb-prev{left:8px}.lb-next{right:8px}}
 .book-cta{max-width:var(--container-narrow);margin:var(--space-10) auto;display:flex;align-items:center;
   justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;background:var(--surface-sunken);
   border:1px solid var(--border-subtle);border-radius:var(--radius-l);padding:var(--space-6) var(--space-8)}
@@ -399,6 +427,12 @@ h1,h2,h3,h4,p{margin:0}
 .book-cta-note{font-size:var(--text-caption);color:var(--text-secondary);margin-top:var(--space-2);max-width:48ch}
 .book-cta .btn{flex:none}
 @media (max-width:520px){.book-cta{flex-direction:column;align-items:flex-start}}
+.breadcrumbs{max-width:var(--container-narrow);margin:0 auto var(--space-8);display:flex;flex-wrap:wrap;
+  align-items:center;gap:var(--space-2);font-size:var(--text-body-s);color:var(--text-secondary)}
+.breadcrumbs a{color:var(--text-link)}
+.breadcrumbs a:hover{color:var(--text-link-hover)}
+.breadcrumbs .bc-sep{color:var(--text-muted)}
+.breadcrumbs [aria-current="page"]{color:var(--ink-700)}
 .post-back{max-width:var(--container-narrow);margin:var(--space-12) auto 0}
 
 @media (max-width:900px){
@@ -429,6 +463,17 @@ h1,h2,h3,h4,p{margin:0}
   "publisher": { "@type": "Organization", "name": "The Hotel Trail" },
   "datePublished": "2026-03-31",
   "url": "https://thehoteltrail.com/nagasaki"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thehoteltrail.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Japan", "item": "https://thehoteltrail.com/destinations?country=Japan" },
+    { "@type": "ListItem", "position": 3, "name": "Nagasaki Marriott Hotel" }
+  ]
 }
 </script>
 </head>
@@ -494,8 +539,16 @@ h1,h2,h3,h4,p{margin:0}
 <article class="post">
   <div class="container">
 
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">&rsaquo;</span>
+      <a href="destinations?country=Japan">Japan</a>
+      <span class="bc-sep">&rsaquo;</span>
+      <span aria-current="page">Nagasaki Marriott Hotel</span>
+    </nav>
+
     <div class="post-body">
-      <p class="post-lead">This ended up being our favourite hotel in Japan so far &mdash; unbeatable location right by the train station, a beautiful suite with sweeping views, and the best hotel breakfast we had in the country.</p>
+      <p class="post-lead">This turned out to be our favourite hotel in Japan so far &mdash; a location you could throw a suitcase to from the train station, a beautiful suite with sweeping views, and, no small thing, the best hotel breakfast we had in the entire country.</p>
     </div>
 
     <div class="glance">
@@ -507,20 +560,57 @@ h1,h2,h3,h4,p{margin:0}
       <div class="glance-item"><span class="glance-label">Our rating</span><span class="glance-value"><span class="glance-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5/5</span></div>
     </div>
 
+    <div class="subratings">
+      <div class="subrating"><span class="subrating-label">Location</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
+      <div class="subrating"><span class="subrating-label">Service</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
+      <div class="subrating"><span class="subrating-label">Room</span><span class="subrating-bar"><span class="subrating-fill" style="width:90%"></span></span><span class="subrating-num">4.5</span></div>
+      <div class="subrating"><span class="subrating-label">Value</span><span class="subrating-bar"><span class="subrating-fill" style="width:90%"></span></span><span class="subrating-num">4.5</span></div>
+      <div class="subrating"><span class="subrating-label">Food</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
+    </div>
+
     <div class="post-body">
-      <h2 class="post-section-title">Arrival and Suite</h2>
-      <p>Our Japan adventure started in Nagasaki and we picked the Nagasaki Marriott Hotel as our accommodation for 3 nights. It was a 1 minute walk (not exaggerating!) from the train station, which proved to be quite handy as it was pouring when we arrived, so the location is a massive advantage. The hotel has 5&ast; and it opened in January 2024. It did not feel crowded (Nagasaki is a lot less touristy than other cities in Japan) and our experience from the start was very positive. Despite booking a regular king room, we got upgraded to the Kamome suite for the duration of our stay as a result of being Titanium members with Marriott Bonvoy. The 86 square meter suite was minimalistic and beautifully designed.</p>
+      <h2 class="post-section-title">Arrival</h2>
+      <p>Our Japan adventure kicked off in Nagasaki, and we picked the Nagasaki Marriott for three nights. It is a one-minute walk from the train station &mdash; and we do mean one minute, not the optimistic kind &mdash; which was a genuine gift given it was absolutely bucketing down when we arrived. The hotel is a 5&ast; that opened in January 2024, and it never felt crowded (Nagasaki is far less touristy than Japan&rsquo;s bigger names), so first impressions were lovely. We had booked a regular king room, but our Titanium status with Marriott Bonvoy quietly bumped us up to the Kamome suite for the whole stay &mdash; and what a suite: 86 square metres of minimalist, beautifully judged design.</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/nagasaki-01.jpg" alt="Kamome suite with city view" loading="lazy" /></figure></div>
     </div>
     <div class="post-body">
-      <p>All curtains were electric and, the next morning, revealed a view over the train station, city and surrounding hills.</p>
+      <p>The curtains were all electric, and the next morning they slid back to reveal the train station, the city and the surrounding hills laid out below &mdash; the sort of view that makes you forget the coffee for a minute.</p>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title">Room</h2>
+      <h3 class="post-subtitle">Bedroom</h3>
+      <p>The bedroom was cosy, with a large TV facing the bed and, again, those views. The bed itself was excellent &mdash; the sort you sink into and immediately renegotiate your morning plans.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/nagasaki-04.jpg" alt="Bedroom" loading="lazy" /></figure></div>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/nagasaki-05.jpg" alt="Bedroom with a view" loading="lazy" /></figure></div>
+    </div>
+    <div class="post-body">
+      <h3 class="post-subtitle">Amenities</h3>
+      <p>There were bathrobes, flip flops and umbrellas on hand, and the tea and coffee were a cut above the usual. A little plate of traditional Japanese cake was waiting for us as a welcome gift &mdash; the kind of small, thoughtful touch we always notice.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-2 port">
+        <figure><img src="images/nagasaki-06.jpg" alt="Bathrobe and welcome gifts" loading="lazy" /></figure>
+        <figure><img src="images/nagasaki-07.jpg" alt="Dressing area" loading="lazy" /></figure>
+      </div>
+    </div>
+    <div class="post-body">
+      <h3 class="post-subtitle">Balcony</h3>
+      <p>The suite wrapped around the corner with a big balcony &mdash; no chairs or table to actually sit at, sadly, but the views out over the city more than made up for it.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/nagasaki-08.jpg" alt="Balcony view over the city and station" loading="lazy" /></figure></div>
     </div>
 
     <div class="post-body">
       <h2 class="post-section-title">Bathroom</h2>
-      <p>The bathroom was very spacious and modern, with his and hers sinks, and the suite had two toilets, one in the main bathroom and one closer to the entrance (Japanese, of course!).</p>
+      <p>The bathroom was gloriously spacious and modern, with his-and-hers sinks, and the suite had two toilets &mdash; one in the main bathroom and one nearer the entrance (both Japanese, naturally, with all the buttons one could wish for).</p>
     </div>
     <div class="figs">
       <div class="grid-2 port">
@@ -530,38 +620,8 @@ h1,h2,h3,h4,p{margin:0}
     </div>
 
     <div class="post-body">
-      <h2 class="post-section-title">Bedroom</h2>
-      <p>The bedroom was cosy, had a large TV facing the bed, and great views. The bed was of very high quality and comfortable.</p>
-    </div>
-    <div class="figs">
-      <div class="fig-full"><figure><img src="images/nagasaki-04.jpg" alt="Bedroom" loading="lazy" /></figure></div>
-    </div>
-    <div class="figs">
-      <div class="fig-full"><figure><img src="images/nagasaki-05.jpg" alt="Bedroom with a view" loading="lazy" /></figure></div>
-    </div>
-
-    <div class="post-body">
-      <h2 class="post-section-title">Amenities</h2>
-      <p>There were bathrobes, as well as flip flops and umbrellas. The tea and coffee were of high quality, and we also received some traditional Japanese cake as welcome gifts.</p>
-    </div>
-    <div class="figs">
-      <div class="grid-2 port">
-        <figure><img src="images/nagasaki-06.jpg" alt="Bathrobe and welcome gifts" loading="lazy" /></figure>
-        <figure><img src="images/nagasaki-07.jpg" alt="Dressing area" loading="lazy" /></figure>
-      </div>
-    </div>
-
-    <div class="post-body">
-      <h2 class="post-section-title">Balcony</h2>
-      <p>The suite had a big balcony surrounding the entire corner, although there were no chairs or table to be able to sit, but the views were gorgeous.</p>
-    </div>
-    <div class="figs">
-      <div class="fig-full"><figure><img src="images/nagasaki-08.jpg" alt="Balcony view over the city and station" loading="lazy" /></figure></div>
-    </div>
-
-    <div class="post-body">
-      <h2 class="post-section-title">Breakfast</h2>
-      <p>The breakfast restaurant was spacious and had a beautiful view. The breakfast was buffet style, and the selection was of very high quality and produce locally sourced. The fish, miso soup, tofu and pickles were outstanding. They also had an automatic dispenser for iced matcha latte &ndash; a bonus! Overall, breakfast was fantastic and the best one we had in a hotel in Japan.</p>
+      <h2 class="post-section-title">Food</h2>
+      <p>Now, breakfast. The restaurant was spacious with a beautiful view, and the buffet was genuinely high quality, much of it locally sourced. The fish, miso soup, tofu and pickles were outstanding, and there was an automatic dispenser for iced matcha latte, which frankly felt like a personal gift to us. All told, it was the best hotel breakfast we had anywhere in Japan &mdash; worth setting an alarm for.</p>
     </div>
     <div class="figs">
       <div class="grid-3 port">
@@ -575,8 +635,8 @@ h1,h2,h3,h4,p{margin:0}
     </div>
 
     <div class="post-body">
-      <h2 class="post-section-title">Lounge</h2>
-      <p>The lounge was one of the nicest Marriott hotel lounges we have been at. It offered high quality coffee and tea all day, as well as nibbles at different points of the day. The lounge also has a nice view over the city and the music was pleasant, overall creating a very relaxed atmosphere. The food was of a high quality, albeit not substantial in choice.</p>
+      <h2 class="post-section-title">Facilities</h2>
+      <p>The lounge was one of the nicest Marriott lounges we have parked ourselves in. Good coffee and tea flowed all day, with nibbles appearing at various points, and it all came with a lovely city view and pleasant music &mdash; a properly relaxed spot to while away an hour. The food was high quality, if not exactly generous in choice.</p>
     </div>
     <div class="figs">
       <div class="grid-3 port" style="grid-template-columns:repeat(3,1fr)">
@@ -588,7 +648,7 @@ h1,h2,h3,h4,p{margin:0}
 
     <div class="verdict-block">
       <p class="eyebrow">The verdict</p>
-      <p>This ended up being our favourite hotel in Japan so far. First of all, it is difficult to beat its location, basically in the train station! The area is less touristy than others, so the hotel felt quieter and the service was worthy of 5&ast;. The suite and its views were beautiful, as well as breakfast and lounge experience. Overall, this is the hotel to spend a few nights in Nagasaki!</p>
+      <p>This ended up being our favourite hotel in Japan so far, and it is not hard to see why. The location is almost impossible to beat &mdash; it is basically in the train station. The area is quieter and less touristy than most, the service was every inch the 5&ast; it claims, and the suite, the views, the breakfast and the lounge were all a joy. In short: if you are spending a few nights in Nagasaki, this is the one.</p>
     </div>
 
     <div class="book-cta">
@@ -606,6 +666,16 @@ h1,h2,h3,h4,p{margin:0}
   </div>
 </article>
 </main>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+  <span class="lb-counter" id="lbCounter"></span>
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close (Esc)"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <img id="lbImg" src="" alt="" />
+  <p class="lightbox-cap" id="lbCap"></p>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
 
 <!-- ============================ FOOTER ============================ -->
 <footer class="site-footer" id="about">
@@ -673,6 +743,22 @@ h1,h2,h3,h4,p{margin:0}
     if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search?q='+encodeURIComponent(q); }
     else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
   });
+})();
+
+// --- lightbox gallery ---
+(function(){
+  var imgs=[].slice.call(document.querySelectorAll('.figs img'));
+  var lb=document.getElementById('lightbox'); if(!imgs.length||!lb) return;
+  var lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),lbCount=document.getElementById('lbCounter'),idx=0;
+  function show(i){ idx=(i+imgs.length)%imgs.length; var im=imgs[idx]; lbImg.setAttribute('src',im.currentSrc||im.src); lbImg.setAttribute('alt',im.alt||''); lbCap.textContent=im.alt||''; lbCount.textContent=(idx+1)+' / '+imgs.length; }
+  function open(i){ show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  imgs.forEach(function(im,i){ im.addEventListener('click',function(){ open(i); }); });
+  document.getElementById('lbClose').addEventListener('click',close);
+  document.getElementById('lbPrev').addEventListener('click',function(e){ e.stopPropagation(); show(idx-1); });
+  document.getElementById('lbNext').addEventListener('click',function(e){ e.stopPropagation(); show(idx+1); });
+  lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown',function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(idx-1); else if(e.key==='ArrowRight') show(idx+1); });
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();

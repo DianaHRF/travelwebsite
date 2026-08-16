@@ -336,6 +336,17 @@ h1,h2,h3,h4,p{margin:0}
 .allrev-head{text-align:center;margin-bottom:var(--space-12)}
 .allrev-head .display-l{margin-top:var(--space-2)}
 .allrev-head .lead{margin:var(--space-5) auto 0}
+.rev-controls{display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:flex-end;justify-content:center;margin-bottom:var(--space-5)}
+.rev-controls label{display:flex;flex-direction:column;gap:var(--space-1);font-size:var(--text-caption);
+  text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--text-secondary);font-weight:var(--weight-semibold)}
+.rev-controls select{font-family:var(--font-body);font-size:var(--text-body-s);color:var(--ink-900);
+  background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-m);
+  padding:var(--space-2) var(--space-3);cursor:pointer}
+.rev-controls select:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
+.rev-clear{background:none;border:none;color:var(--text-link);cursor:pointer;font:inherit;
+  font-size:var(--text-body-s);font-weight:var(--weight-semibold);padding:var(--space-2)}
+.rev-clear:hover{color:var(--text-link-hover)}
+.rev-count{text-align:center;color:var(--text-secondary);font-size:var(--text-body-s);margin-bottom:var(--space-8)}
 .year-group{margin-top:var(--space-12)}
 .year-label{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
   font-size:var(--text-title);color:var(--accent-secondary);margin-bottom:var(--space-6);
@@ -389,8 +400,16 @@ h1,h2,h3,h4,p{margin:0}
     <div class="allrev-head">
       <p class="eyebrow">Every stay</p>
       <h1 class="display-l">All reviews</h1>
-      <p class="lead">Every hotel we've checked into, in the order we visited &mdash; newest first.</p>
+      <p class="lead">Every hotel we've checked into. Filter by country, chain or rating &mdash; and sort to taste.</p>
     </div>
+    <div class="rev-controls">
+      <label>Country <select id="fCountry"><option value="">All countries</option></select></label>
+      <label>Chain <select id="fChain"><option value="">All chains</option></select></label>
+      <label>Rating <select id="fRating"><option value="0">Any rating</option><option value="4.5">4.5+</option><option value="4">4+</option><option value="3.5">3.5+</option></select></label>
+      <label>Sort <select id="fSort"><option value="new">Newest first</option><option value="old">Oldest first</option><option value="rhi">Highest rated</option><option value="rlo">Lowest rated</option><option value="az">Name A&ndash;Z</option></select></label>
+      <button type="button" class="rev-clear" id="fClear">Reset</button>
+    </div>
+    <p class="rev-count" id="revCount"></p>
     <div id="allReviews"></div>
   </div>
 </section>
@@ -430,13 +449,13 @@ h1,h2,h3,h4,p{margin:0}
    Keep this `reviews` array in sync with /.
    ============================================================ */
 var reviews = [
-  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"images/nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"nagasaki" },
-  { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"images/sheraton-hiroshima-web.jpg", date:"March 2026", dateSort:"2026-03" },
-  { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"images/aloft-osaka-web.jpg", date:"March 2026", dateSort:"2026-03" },
-  { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"images/fuji-marriott-web.jpg", date:"March 2026", dateSort:"2026-03" },
-  { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"images/sheraton-tokyo-bay-web.jpg", date:"April 2026", dateSort:"2026-04" },
-  { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"images/w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" },
-  { tag:"Resort",      title:"Ta’aktana, a Luxury Collection Resort & Spa", place:"Labuan Bajo, Indonesia", rating:5, verdict:"Our top stay yet — outstanding service and food, a short hop from Komodo Island.", img:"images/taaktana-22.jpg", date:"November 2025", dateSort:"2025-11", link:"taaktana" }
+  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", country:"Japan", chain:"Marriott", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"images/nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"nagasaki" },
+  { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", country:"Japan", chain:"Sheraton", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"images/sheraton-hiroshima-web.jpg", date:"March 2026", dateSort:"2026-03" },
+  { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", country:"Japan", chain:"Aloft", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"images/aloft-osaka-web.jpg", date:"March 2026", dateSort:"2026-03" },
+  { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", country:"Japan", chain:"Marriott", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"images/fuji-marriott-web.jpg", date:"March 2026", dateSort:"2026-03" },
+  { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", country:"Japan", chain:"Sheraton", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"images/sheraton-tokyo-bay-web.jpg", date:"April 2026", dateSort:"2026-04" },
+  { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", country:"Jordan", chain:"W Hotels", rating:4.5, verdict:"A bit of luxury amongst history.", img:"images/w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" },
+  { tag:"Resort",      title:"Ta’aktana, a Luxury Collection Resort & Spa", place:"Labuan Bajo, Indonesia", country:"Indonesia", chain:"Luxury Collection", rating:5, verdict:"Our top stay yet — outstanding service and food, a short hop from Komodo Island.", img:"images/taaktana-22.jpg", date:"November 2025", dateSort:"2025-11", link:"taaktana" }
 ];
 
 function starRow(rating){
@@ -464,38 +483,52 @@ function clock(){
   return '<svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
 }
 
-// --- render all reviews, chronological (oldest first), grouped by year ---
+// --- filter + sort render ---
+function renderReviews(){
+  var host=document.getElementById('allReviews');
+  var country=document.getElementById('fCountry').value;
+  var chain=document.getElementById('fChain').value;
+  var minR=parseFloat(document.getElementById('fRating').value)||0;
+  var sort=document.getElementById('fSort').value;
+  var list=reviews.filter(function(r){
+    if(country && r.country!==country) return false;
+    if(chain && r.chain!==chain) return false;
+    if((r.rating||0)<minR) return false;
+    return true;
+  });
+  list.sort(function(a,b){
+    if(sort==='old') return a.dateSort<b.dateSort?-1:a.dateSort>b.dateSort?1:0;
+    if(sort==='rhi') return (b.rating-a.rating) || (a.dateSort<b.dateSort?1:-1);
+    if(sort==='rlo') return (a.rating-b.rating) || (a.dateSort<b.dateSort?1:-1);
+    if(sort==='az') return a.title.localeCompare(b.title);
+    return a.dateSort>b.dateSort?-1:a.dateSort<b.dateSort?1:0;
+  });
+  document.getElementById('revCount').textContent=list.length+(list.length===1?' review':' reviews');
+  if(!list.length){ host.innerHTML='<p class="rev-count">No reviews match those filters. Try resetting.</p>'; return; }
+  host.innerHTML='<div class="card-grid">'+list.map(function(r){
+    var media=r.img?'<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />':'';
+    return '<article class="review-card">'+media+
+      '<div class="card-body">'+
+        '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
+        '<h3 class="card-title">'+r.title+'</h3>'+
+        '<span class="card-place">'+pin()+r.place+'</span>'+
+        '<span class="card-place">'+clock()+r.date+'</span>'+
+        '<p class="card-verdict">'+r.verdict+'</p>'+
+        '<div class="card-foot"><a href="'+(r.link||'#')+'" class="btn-link">Read the full stay '+
+          '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
+      '</div></article>';
+  }).join('')+'</div>';
+}
 (function(){
-  var host = document.getElementById('allReviews');
-  var sorted = reviews.slice().sort(function(a,b){
-    return a.dateSort > b.dateSort ? -1 : a.dateSort < b.dateSort ? 1 : 0;
+  function uniq(key){ var set={}; reviews.forEach(function(r){ if(r[key]) set[r[key]]=1; }); return Object.keys(set).sort(); }
+  var cSel=document.getElementById('fCountry'), chSel=document.getElementById('fChain');
+  uniq('country').forEach(function(v){ cSel.insertAdjacentHTML('beforeend','<option value="'+v+'">'+v+'</option>'); });
+  uniq('chain').forEach(function(v){ chSel.insertAdjacentHTML('beforeend','<option value="'+v+'">'+v+'</option>'); });
+  ['fCountry','fChain','fRating','fSort'].forEach(function(id){ document.getElementById(id).addEventListener('change', renderReviews); });
+  document.getElementById('fClear').addEventListener('click', function(){
+    cSel.value=''; chSel.value=''; document.getElementById('fRating').value='0'; document.getElementById('fSort').value='new'; renderReviews();
   });
-  var groups = {}; var order = [];
-  sorted.forEach(function(r){
-    var yr = (r.dateSort||'').slice(0,4) || 'Undated';
-    if(!groups[yr]){ groups[yr]=[]; order.push(yr); }
-    groups[yr].push(r);
-  });
-  order.forEach(function(yr){
-    var wrap = document.createElement('div'); wrap.className = 'year-group';
-    var grid = '<div class="card-grid">' + groups[yr].map(function(r){
-      var media = r.img
-        ? '<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />'
-        : '';
-      return '<article class="review-card">'+ media +
-        '<div class="card-body">'+
-          '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
-          '<h3 class="card-title">'+r.title+'</h3>'+
-          '<span class="card-place">'+pin()+r.place+'</span>'+
-          '<span class="card-place">'+clock()+r.date+'</span>'+
-          '<p class="card-verdict">'+r.verdict+'</p>'+
-          '<div class="card-foot"><a href="'+(r.link||'#')+'" class="btn-link">Read the full stay '+
-            '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
-        '</div></article>';
-    }).join('') + '</div>';
-    wrap.innerHTML = '<h2 class="year-label">'+yr+'</h2>' + grid;
-    host.appendChild(wrap);
-  });
+  renderReviews();
 })();
 
 // --- mobile nav ---

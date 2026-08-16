@@ -385,6 +385,14 @@ h1,h2,h3,h4,p{margin:0}
 
 /* continent index chips */
 .continent-index{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-8)}
+.dest-filterbar{display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-8);
+  font-size:var(--text-body);color:var(--text-secondary)}
+.dest-filterbar .fb-pill{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--accent-primary);
+  color:var(--text-inverse);border-radius:var(--radius-pill);padding:var(--space-2) var(--space-4);
+  font-size:var(--text-body-s);font-weight:var(--weight-semibold)}
+.dest-filterbar .fb-clear{background:none;border:none;color:var(--text-link);cursor:pointer;font:inherit;
+  display:inline-flex;align-items:center;gap:var(--space-1);font-weight:var(--weight-semibold)}
+.dest-filterbar .fb-clear svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
 .chip{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4) var(--space-2) var(--space-2);
   border-radius:var(--radius-pill);border:1px solid var(--border-default);background:var(--surface-card);
   font-size:var(--text-body-s);font-weight:var(--weight-medium);color:var(--ink-700);
@@ -775,6 +783,14 @@ h1,h2,h3,h4,p{margin:0}
   <div class="container" id="continentSections"></div>
 </section>
 
+<section class="section" id="reviewsSection" style="padding-top:var(--space-4)">
+  <div class="container">
+    <div class="section-head"><div><p class="eyebrow">Reviews</p><h2 class="display-l">Browse the reviews</h2></div></div>
+    <div class="dest-filterbar" id="destFilterBar"></div>
+    <div class="card-grid" id="destReviews"></div>
+  </div>
+</section>
+
 </main>
 
 <!-- ============================ FOOTER ============================ -->
@@ -843,15 +859,73 @@ function repImage(key){
   return list.length ? list[0].img : '';
 }
 
+// --- reviews data (keep in sync with all-reviews) ---
+var reviews = [
+  { tag:'City stay', title:'Nagasaki Marriott Hotel', place:'Nagasaki, Japan', country:'Japan', continent:'asia', rating:5, verdict:'A true gem in a less touristy area of Japan.', img:'images/nagasaki-marriott-web.jpg', date:'March 2026', dateSort:'2026-03', link:'nagasaki' },
+  { tag:'City stay', title:'Sheraton Grand Hiroshima Hotel', place:'Hiroshima, Japan', country:'Japan', continent:'asia', rating:4, verdict:'Great location overlooking the Shinkansen trains.', img:'images/sheraton-hiroshima-web.jpg', date:'March 2026', dateSort:'2026-03', link:'#' },
+  { tag:'City stay', title:'Aloft by Marriott Osaka Dojima', place:'Osaka, Japan', country:'Japan', continent:'asia', rating:3.5, verdict:'Perfect for getting some rest after a day of steps.', img:'images/aloft-osaka-web.jpg', date:'March 2026', dateSort:'2026-03', link:'#' },
+  { tag:'Mountain', title:'Fuji Marriott Hotel Lake Yamanaka', place:'Lake Yamanaka, Japan', country:'Japan', continent:'asia', rating:4, verdict:'Great location for hiking and admiring Mount Fuji.', img:'images/fuji-marriott-web.jpg', date:'March 2026', dateSort:'2026-03', link:'#' },
+  { tag:'Resort', title:'Sheraton Grande Tokyo Bay Hotel', place:'Tokyo, Japan', country:'Japan', continent:'asia', rating:3.5, verdict:'Right next to Disneyland, so a bit crowded, but good value for money.', img:'images/sheraton-tokyo-bay-web.jpg', date:'April 2026', dateSort:'2026-04', link:'#' },
+  { tag:'City stay', title:'W Amman', place:'Amman, Jordan', country:'Jordan', continent:'middle-east', rating:4.5, verdict:'A bit of luxury amongst history.', img:'images/w-amman-web.jpg', date:'February 2026', dateSort:'2026-02', link:'#' },
+  { tag:'Resort', title:'Ta’aktana, a Luxury Collection Resort &amp; Spa', place:'Labuan Bajo, Indonesia', country:'Indonesia', continent:'asia', rating:5, verdict:'Our top stay yet — outstanding service and food, a short hop from Komodo Island.', img:'images/taaktana-22.jpg', date:'November 2025', dateSort:'2025-11', link:'taaktana' }
+];
+
+function starRow(rating){
+  var s='', sp='M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z';
+  for(var i=1;i<=5;i++){
+    if(i<=rating){ s+='<svg class="icon star-filled" viewBox="0 0 24 24"><path d="'+sp+'"/></svg>'; }
+    else if(i-0.5<=rating){ var gid='dh'+i; s+='<svg class="icon star-half" viewBox="0 0 24 24"><defs><linearGradient id="'+gid+'"><stop offset="50%" stop-color="var(--accent-secondary)"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs><path d="'+sp+'" fill="url(#'+gid+')" stroke="var(--accent-secondary)"/></svg>'; }
+    else { s+='<svg class="icon star-empty" viewBox="0 0 24 24"><path d="'+sp+'"/></svg>'; }
+  }
+  return '<span class="rating" aria-label="'+rating+' out of 5">'+s+'</span>';
+}
+function pin(){ return '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>'; }
+function clock(){ return '<svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>'; }
+
+var currentFilter={type:'all'};
+function matchesFilter(r){
+  if(currentFilter.type==='country') return r.country===currentFilter.value;
+  if(currentFilter.type==='continent') return r.continent===currentFilter.value;
+  return true;
+}
+function renderReviews(){
+  var host=document.getElementById('destReviews'); var bar=document.getElementById('destFilterBar');
+  if(!host||!bar) return;
+  var hits=reviews.filter(matchesFilter).sort(function(a,b){return a.dateSort>b.dateSort?-1:a.dateSort<b.dateSort?1:0;});
+  if(currentFilter.type==='all'){
+    bar.innerHTML='<span>Showing all '+reviews.length+' reviews</span>';
+  } else {
+    bar.innerHTML='<span>Showing</span> <span class="fb-pill">'+currentFilter.label+' &middot; '+hits.length+(hits.length===1?' review':' reviews')+'</span> <button class="fb-clear" id="fbClear"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg> Show all</button>';
+    var cl=document.getElementById('fbClear'); if(cl) cl.addEventListener('click', function(){ setFilter({type:'all'}); });
+  }
+  host.innerHTML=hits.map(function(r){
+    return '<article class="review-card">'+
+      '<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />'+
+      '<div class="card-body">'+
+        '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
+        '<h3 class="card-title">'+r.title+'</h3>'+
+        '<span class="card-place">'+pin()+r.place+'</span>'+
+        '<span class="card-place">'+clock()+r.date+'</span>'+
+        '<p class="card-verdict">'+r.verdict+'</p>'+
+        '<div class="card-foot"><a href="'+(r.link||'#')+'" class="btn-link">Read the full stay <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
+      '</div></article>';
+  }).join('');
+}
+function setFilter(fl, scroll){
+  currentFilter=fl; renderReviews();
+  if(scroll){ var el=document.getElementById('reviewsSection'); if(el) el.scrollIntoView({behavior:'smooth', block:'start'}); }
+}
+renderReviews();
+
 // --- country finder dropdown (alphabetical; jumps to its section) ---
 (function(){
   var sel=document.getElementById('countryPicker'); if(!sel) return;
   countries.slice().sort(function(a,b){return a.name.localeCompare(b.name);}).forEach(function(c){
     var o=document.createElement('option');
-    o.value=c.continent; o.textContent=c.name+' — '+reviewWord(c.reviews);
+    o.value=c.name; o.textContent=c.name+' — '+reviewWord(c.reviews);
     sel.appendChild(o);
   });
-  sel.addEventListener('change', function(){ if(this.value) scrollToContinent(this.value); });
+  sel.addEventListener('change', function(){ if(this.value) setFilter({type:'country',value:this.value,label:this.value}, true); });
 })();
 
 // --- stats ---
@@ -868,7 +942,7 @@ function repImage(key){
     var key=p.getAttribute('data-c');
     if(continentReviews(key)>0){
       p.classList.add('in-active');
-      p.addEventListener('click', function(){ scrollToContinent(key); });
+      p.addEventListener('click', function(){ setFilter({type:'continent',value:key,label:CONTINENT_META[key].name}, true); });
     }
   });
   var defs=document.getElementById('mapDefs');
@@ -883,7 +957,7 @@ function repImage(key){
     clip.appendChild(cc); defs.appendChild(clip);
 
     var g=document.createElementNS(SVGNS,'g'); g.setAttribute('class','marker');
-    g.addEventListener('click', function(){ scrollToContinent(key); });
+    g.addEventListener('click', function(){ setFilter({type:'continent',value:key,label:CONTINENT_META[key].name}, true); });
 
     var im=document.createElementNS(SVGNS,'image');
     im.setAttribute('href',img); im.setAttributeNS(XLINK,'href',img);
@@ -919,7 +993,8 @@ function repImage(key){
     var chip=document.createElement(n>0?'a':'span');
     chip.className='chip '+(n>0?'active':'muted');
     if(n>0){
-      chip.href='#c-'+key;
+      chip.href='#reviewsSection';
+      chip.addEventListener('click', function(e){ e.preventDefault(); setFilter({type:'continent',value:key,label:meta.name}, true); });
       chip.innerHTML='<span class="chip-ico" style="background-image:url('+repImage(key)+')"></span>'+
         meta.name+' <span class="chip-count">'+reviewWord(n)+'</span>';
     } else {
@@ -937,7 +1012,7 @@ function repImage(key){
     var meta=CONTINENT_META[key], n=continentReviews(key);
     var block=document.createElement('div'); block.className='continent-block'; block.id='c-'+key;
     var tiles=list.map(function(c){
-      return '<a href="/#reviews" class="dest-tile" aria-label="'+c.name+' — '+reviewWord(c.reviews)+'">'+
+      return '<a href="#reviewsSection" class="dest-tile" data-country="'+c.name+'" aria-label="'+c.name+' — '+reviewWord(c.reviews)+'">'+
         '<img src="'+c.img+'" alt="'+c.name+'" loading="lazy" />'+
         '<div class="label"><div class="name">'+c.name+'</div>'+
         '<div class="count">'+reviewWord(c.reviews)+'</div></div></a>';
@@ -948,6 +1023,9 @@ function repImage(key){
       '<span class="c-count">'+reviewWord(n)+' &middot; '+list.length+(list.length===1?' country':' countries')+'</span></div>'+
       '<div class="dest-grid">'+tiles+'</div>';
     host.appendChild(block);
+  });
+  document.querySelectorAll('#continentSections .dest-tile[data-country]').forEach(function(t){
+    t.addEventListener('click', function(e){ e.preventDefault(); setFilter({type:'country',value:t.getAttribute('data-country'),label:t.getAttribute('data-country')}, true); });
   });
 })();
 
@@ -985,6 +1063,14 @@ function scrollToContinent(key){
     if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search?q='+encodeURIComponent(q); }
     else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
   });
+})();
+
+// --- apply ?country= / ?continent= from URL (e.g. from breadcrumbs) ---
+(function(){
+  var p=new URLSearchParams(location.search);
+  var c=p.get('country'), k=p.get('continent');
+  if(c){ setFilter({type:'country',value:c,label:c}, true); }
+  else if(k && CONTINENT_META[k]){ setFilter({type:'continent',value:k,label:CONTINENT_META[k].name}, true); }
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();

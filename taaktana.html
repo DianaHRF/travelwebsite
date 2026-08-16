@@ -359,6 +359,8 @@ h1,h2,h3,h4,p{margin:0}
   font-weight:var(--weight-medium);text-align:justify}
 
 /* figures — full bleed to the wider container */
+.post-subtitle{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--accent-primary);margin:var(--space-8) 0 var(--space-4)}
 .figs{max-width:var(--container-narrow);margin:var(--space-10) auto;padding:0 var(--gutter)}
 .figs figure{margin:0}
 .figs img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-m);
@@ -391,6 +393,32 @@ h1,h2,h3,h4,p{margin:0}
 .glance-value{font-size:var(--text-body);color:var(--ink-900);font-weight:var(--weight-medium)}
 .glance-stars{color:var(--accent-secondary);letter-spacing:2px}
 @media (max-width:640px){.glance{grid-template-columns:repeat(2,1fr);padding:var(--space-5) var(--space-6)}}
+.subratings{max-width:var(--container-narrow);margin:var(--space-2) auto var(--space-8);display:grid;
+  grid-template-columns:1fr 1fr;gap:var(--space-3) var(--space-10)}
+.subrating{display:grid;grid-template-columns:5.5em 1fr 2.4em;align-items:center;gap:var(--space-3)}
+.subrating-label{font-size:var(--text-body-s);color:var(--ink-700);font-weight:var(--weight-medium)}
+.subrating-bar{height:8px;background:var(--sand-300);border-radius:var(--radius-pill);overflow:hidden}
+.subrating-fill{display:block;height:100%;background:var(--accent-secondary);border-radius:var(--radius-pill)}
+.subrating-num{font-size:var(--text-body-s);color:var(--ink-900);font-weight:var(--weight-semibold);text-align:right}
+@media (max-width:640px){.subratings{grid-template-columns:1fr}}
+.figs img{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(18,54,66,0.94);
+  display:none;align-items:center;justify-content:center;padding:var(--space-6)}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:var(--radius-m);box-shadow:var(--shadow-overlay)}
+.lightbox-cap{position:absolute;bottom:var(--space-6);left:0;right:0;text-align:center;
+  color:var(--sand-100);font-size:var(--text-body-s);padding:0 var(--space-8);margin:0}
+.lb-counter{position:absolute;top:var(--space-6);left:var(--space-8);color:var(--sand-200);
+  font-size:var(--text-caption);letter-spacing:var(--tracking-wide)}
+.lb-btn{position:absolute;background:rgba(255,255,255,0.12);border:none;color:#fff;
+  width:48px;height:48px;border-radius:var(--radius-pill);cursor:pointer;display:flex;
+  align-items:center;justify-content:center;transition:background var(--duration-fast) var(--ease-out)}
+.lb-btn:hover{background:rgba(255,255,255,0.25)}
+.lb-btn svg{width:24px;height:24px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lb-close{top:var(--space-5);right:var(--space-5)}
+.lb-prev{left:var(--space-5);top:50%;transform:translateY(-50%)}
+.lb-next{right:var(--space-5);top:50%;transform:translateY(-50%)}
+@media(max-width:640px){.lb-btn{width:40px;height:40px}.lb-prev{left:8px}.lb-next{right:8px}}
 .book-cta{max-width:var(--container-narrow);margin:var(--space-10) auto;display:flex;align-items:center;
   justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;background:var(--surface-sunken);
   border:1px solid var(--border-subtle);border-radius:var(--radius-l);padding:var(--space-6) var(--space-8)}
@@ -399,6 +427,12 @@ h1,h2,h3,h4,p{margin:0}
 .book-cta-note{font-size:var(--text-caption);color:var(--text-secondary);margin-top:var(--space-2);max-width:48ch}
 .book-cta .btn{flex:none}
 @media (max-width:520px){.book-cta{flex-direction:column;align-items:flex-start}}
+.breadcrumbs{max-width:var(--container-narrow);margin:0 auto var(--space-8);display:flex;flex-wrap:wrap;
+  align-items:center;gap:var(--space-2);font-size:var(--text-body-s);color:var(--text-secondary)}
+.breadcrumbs a{color:var(--text-link)}
+.breadcrumbs a:hover{color:var(--text-link-hover)}
+.breadcrumbs .bc-sep{color:var(--text-muted)}
+.breadcrumbs [aria-current="page"]{color:var(--ink-700)}
 .post-back{max-width:var(--container-narrow);margin:var(--space-12) auto 0}
 
 @media (max-width:900px){
@@ -429,6 +463,17 @@ h1,h2,h3,h4,p{margin:0}
   "publisher": { "@type": "Organization", "name": "The Hotel Trail" },
   "datePublished": "2025-11-30",
   "url": "https://thehoteltrail.com/taaktana"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thehoteltrail.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Indonesia", "item": "https://thehoteltrail.com/destinations?country=Indonesia" },
+    { "@type": "ListItem", "position": 3, "name": "Ta’aktana, a Luxury Collection Resort & Spa" }
+  ]
 }
 </script>
 </head>
@@ -494,8 +539,16 @@ h1,h2,h3,h4,p{margin:0}
 <article class="post">
   <div class="container">
 
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">&rsaquo;</span>
+      <a href="destinations?country=Indonesia">Indonesia</a>
+      <span class="bc-sep">&rsaquo;</span>
+      <span aria-current="page">Ta’aktana</span>
+    </nav>
+
     <div class="post-body">
-      <p class="post-lead">This hotel offered us an unforgettable experience, with outstanding service and quality of food, while the proximity to Komodo Island is a bonus. So far, it was our top stay in terms of overall stay, service and quality of food.</p>
+      <p class="post-lead">Every so often a hotel quietly ruins you for all the others. This was that hotel &mdash; faultless service, food we are still daydreaming about, and Komodo Island practically on the doorstep. So far, it is the best stay we have ever had, full stop.</p>
     </div>
 
     <div class="glance">
@@ -507,9 +560,17 @@ h1,h2,h3,h4,p{margin:0}
       <div class="glance-item"><span class="glance-label">Our rating</span><span class="glance-value"><span class="glance-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5/5</span></div>
     </div>
 
+    <div class="subratings">
+      <div class="subrating"><span class="subrating-label">Location</span><span class="subrating-bar"><span class="subrating-fill" style="width:90%"></span></span><span class="subrating-num">4.5</span></div>
+      <div class="subrating"><span class="subrating-label">Service</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
+      <div class="subrating"><span class="subrating-label">Room</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
+      <div class="subrating"><span class="subrating-label">Value</span><span class="subrating-bar"><span class="subrating-fill" style="width:90%"></span></span><span class="subrating-num">4.5</span></div>
+      <div class="subrating"><span class="subrating-label">Food</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
+    </div>
+
     <div class="post-body">
-      <h2 class="post-section-title">Arrival and Villa</h2>
-      <p>Ta&rsquo;aktana, a Luxury Collection Resort &amp; Spa is nestled in the enchanting landscapes of Komodo land in Indonesia, more specifically, in Labuan Bajo. There are not many daily flights to this airport, therefore we spent a night in Bali and left the next day. It was around a 1 hour flight and we were met at the airport by the chauffeur. The hotel itself is part of Marriott Bonvoy and we hold a Titanium Elite status with them, therefore we could take advantage of additional membership perks. We arrived in the evening and, from the moment we checked in, the service was impeccable. We were assigned a personal butler and she was the one supporting us with our schedule every day, offering tips for sightseeing and restaurants and making any required reservations. We were booked in a one bedroom villa with sea view &ndash; the only other room above this is the overwater sea villa. Our 112 square meter villa was beautifully designed &ndash; minimalistic and with great taste. It was one of the most stunning villas we have ever stayed at.</p>
+      <h2 class="post-section-title">Arrival</h2>
+      <p>Ta&rsquo;aktana, a Luxury Collection Resort &amp; Spa, is tucked into the almost unfairly beautiful landscapes of Komodo country in Indonesia &mdash; more precisely, Labuan Bajo. Getting there takes a little devotion: flights are few, so we broke the journey with a night in Bali before the short, roughly one-hour hop the next morning, where a chauffeur was waiting for us at the airport (a very civilised way to arrive anywhere). The hotel is part of Marriott Bonvoy and, as Titanium members, we were treated to a few extra perks. We rolled in that evening and the service was flawless from the very first hello. We were handed our own butler, who quietly ran our diary all week &mdash; sightseeing tips, restaurant bookings, the lot. We had booked a one-bedroom villa with sea view (only the overwater sea villa sits above it), and our 112 square metre villa was a minimalist stunner &mdash; genuinely one of the most beautiful rooms we have ever set foot in.</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-01.jpg" alt="Ta'aktana villa" loading="lazy" /></figure></div>
@@ -518,21 +579,47 @@ h1,h2,h3,h4,p{margin:0}
       <div class="fig-full"><figure><img src="images/taaktana-02.jpg" alt="Villa interior" loading="lazy" /></figure></div>
     </div>
     <div class="post-body">
-      <p>All curtains were electric and, the next morning, a beautiful view was revealed. The only slight downfall is that the sea view is not quite a full sea view, but rather a tiny sea view corner.</p>
+      <p>The curtains were all electric, and the next morning they glided back to reveal the view like a little theatre curtain. The only tiny catch: it is not quite the full sea view of your dreams, more a hopeful corner of sea &mdash; but we happily took it.</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-03.jpg" alt="Morning view from the villa" loading="lazy" /></figure></div>
     </div>
 
     <div class="post-body">
+      <h2 class="post-section-title">Room</h2>
+      <h3 class="post-subtitle">Bedroom</h3>
+      <p>The bedroom was the more understated part of the villa, but with a great view and a bed so comfortable we may have overslept once or twice. The one quibble: the TV sat off to one side, not exactly built for a cosy watch &mdash; though with a main one in the living room, it never really mattered.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/taaktana-07.jpg" alt="Bedroom with a towel swan" loading="lazy" /></figure></div>
+    </div>
+    <div class="post-body">
+      <h3 class="post-subtitle">Amenities</h3>
+      <p>Thoughtful extras were everywhere &mdash; hats, flip flops, umbrellas and all manner of useful bits. The fridge and snack selection punched well above the usual minibar weight, and the tea and coffee were properly good too.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-2 port">
+        <figure><img src="images/taaktana-08.jpg" alt="Minibar and snack selection" loading="lazy" /></figure>
+        <figure><img src="images/taaktana-09.jpg" alt="Safe, slippers and welcome amenities" loading="lazy" /></figure>
+      </div>
+    </div>
+    <div class="post-body">
+      <h3 class="post-subtitle">Private pool</h3>
+      <p>The villa came with its own private pool and two seating areas &mdash; one with chairs, and a covered spot with a couch and table for when the sun got a little too enthusiastic.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/taaktana-10.jpg" alt="Private pool and seating" loading="lazy" /></figure></div>
+    </div>
+
+    <div class="post-body">
       <h2 class="post-section-title">Bathroom</h2>
-      <p>The bathroom was outstanding, one of the best we have ever seen, extremely spacious and with amenities of very high quality (Dyson hair drier), and the villa had two toilets in total &ndash; one in the main bathroom and one closer to the entrance.</p>
+      <p>The bathroom was a showstopper, one of the best we have ever seen &mdash; vast, modern, his-and-hers sinks, and amenities that clearly meant business (yes, a Dyson hair dryer). The villa had two toilets in total, one in the main bathroom and one near the entrance, which is the sort of small luxury you do not know you want until you have it.</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-04.jpg" alt="Spacious bathroom" loading="lazy" /></figure></div>
     </div>
     <div class="post-body">
-      <p>The bathtub was exquisite and the garden view during the day gave it a special vibe. Bath salts were also provided alongside the usual products.</p>
+      <p>The bathtub was a thing of beauty, and the garden view turned a daytime soak into something rather special. Bath salts were provided alongside the usual line-up &mdash; a lovely touch.</p>
     </div>
     <div class="figs">
       <div class="grid-2 port">
@@ -542,36 +629,10 @@ h1,h2,h3,h4,p{margin:0}
     </div>
 
     <div class="post-body">
-      <h2 class="post-section-title">Bedroom</h2>
-      <p>The bedroom was standard, but with a great view and an extremely comfortable bed. The only slight downside was that the TV was on one side and it was not particularly comfortable to watch, but it was not used as there was a main one in the living room.</p>
-    </div>
-    <div class="figs">
-      <div class="fig-full"><figure><img src="images/taaktana-07.jpg" alt="Bedroom with a towel swan" loading="lazy" /></figure></div>
-    </div>
-
-    <div class="post-body">
-      <h2 class="post-section-title">Amenities</h2>
-      <p>There were hats, flip flops, umbrellas and many other useful items provided. The fridge and snack selection were also of high quality, as well as the tea and coffee.</p>
-    </div>
-    <div class="figs">
-      <div class="grid-2 port">
-        <figure><img src="images/taaktana-08.jpg" alt="Minibar and snack selection" loading="lazy" /></figure>
-        <figure><img src="images/taaktana-09.jpg" alt="Safe, slippers and welcome amenities" loading="lazy" /></figure>
-      </div>
-    </div>
-
-    <div class="post-body">
-      <h2 class="post-section-title">Outdoor Area</h2>
-      <p>The villa had a private pool and two seating areas, one with chairs and one with a couch and table that were covered.</p>
-    </div>
-    <div class="figs">
-      <div class="fig-full"><figure><img src="images/taaktana-10.jpg" alt="Private pool and seating" loading="lazy" /></figure></div>
-    </div>
-
-    <div class="post-body">
-      <h2 class="post-section-title">Breakfast</h2>
-      <p>Probably one of the best things about the resort was the quality of the food. Most things are locally sourced and everything tasted extremely sumptuous and fresh. The breakfast was a la carte, but also had a small buffet for topping up. It had a sambal section (amazing if you like spicy food!), and the selection, albeit small, was incredibly qualitative &ndash; from fruits to pastries, including local Indonesian flavours.</p>
-      <p>Eating both outside and inside was extremely pleasant, the restaurant was rather empty most times and the atmosphere was great. The service was comparable to Michelin star restaurants, with the waiters very attentive and ensuring we got everything we needed. Overall, breakfast was one of the main highlights of the stay.</p>
+      <h2 class="post-section-title">Food</h2>
+      <h3 class="post-subtitle">Breakfast</h3>
+      <p>If we had to crown one thing at the resort, it might just be the food. Almost everything is locally sourced, and it all tasted impossibly fresh. Breakfast was a la carte with a little buffet to top up, including a sambal section (pure joy if, like us, you like a bit of fire with your morning). The selection was small but faultless &mdash; from fruits to pastries and proper local Indonesian flavours.</p>
+      <p>Eating both inside and out was a pleasure, and with the restaurant usually near-empty the atmosphere was blissfully calm. The service would not have looked out of place in a Michelin-starred dining room &mdash; attentive without ever hovering. Breakfast, honestly, was one of the highlights of the whole trip.</p>
     </div>
     <div class="figs">
       <div class="grid-3 port">
@@ -585,11 +646,22 @@ h1,h2,h3,h4,p{margin:0}
         <figure><img src="images/taaktana-18.jpg" alt="Breakfast dish" loading="lazy" /></figure>
       </div>
     </div>
+    <div class="post-body">
+      <h3 class="post-subtitle">Dinner</h3>
+      <p>We do not usually eat at our hotels (breakfast aside), but with an early start and a late finish one day, we made an exception &mdash; and the Indonesian restaurant Umasa turned out to be a revelation. We rather overdid it with starters, mains and dessert, but every flavour earned its place and the service matched. The staff even snapped a photo of us, then framed it and left it in our room as a gift &mdash; the kind of attention to detail that stays with you.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/taaktana-33.jpg" alt="Dinner at Umasa" loading="lazy" /></figure></div>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/taaktana-34.jpg" alt="Umasa dishes" loading="lazy" /></figure></div>
+    </div>
 
     <div class="post-body">
-      <h2 class="post-section-title">Resort</h2>
-      <p>The resort has a beautiful setup, with a main body of rooms and a few layers of villas, as well as 7 overwater villas a bridge away. The pool is small, but beautiful and it was mostly empty. We have not used the public pool as we had a private one. The hotel offered unlimited water activities including snorkelling (there is a small coral reef in the hotel perimeter which was beautiful).</p>
-      <p>The one downside is that there is no beach really, there are bits and pieces on the left and right that are public, but they were quite dirty and not very appealing, at least while we were there. So, if you like a long beach walk from your hotel, this is not the place for it.</p>
+      <h2 class="post-section-title">Facilities</h2>
+      <h3 class="post-subtitle">Resort</h3>
+      <p>The resort itself is beautifully laid out &mdash; a main building, a few tiers of villas, and seven overwater villas a short bridge away. The pool is on the small side but lovely, and mostly deserted (we stuck to our private one, admittedly). Water activities are unlimited, snorkelling included &mdash; there is a little coral reef within the hotel&rsquo;s waters that is well worth a look.</p>
+      <p>Our one honest gripe: there is not really a beach. There are scrappy public patches to the left and right, but they were a touch grubby and uninviting, at least while we were there. So if a long, barefoot beach walk straight from your room is the dream, this is not quite the place.</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-20.jpg" alt="Resort setup" loading="lazy" /></figure></div>
@@ -603,10 +675,9 @@ h1,h2,h3,h4,p{margin:0}
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-23.jpg" alt="Overwater villas" loading="lazy" /></figure></div>
     </div>
-
     <div class="post-body">
-      <h2 class="post-section-title">Gym</h2>
-      <p>The gym is small, but has everything one needs and was empty when we visited a few times during our stay. The apparatus are older at times, but, overall, it does the job.</p>
+      <h3 class="post-subtitle">Gym</h3>
+      <p>The gym is compact but has everything you need, and it was empty every time we wandered in. Some of the kit is a little older, but it does the job without complaint.</p>
     </div>
     <div class="figs">
       <div class="grid-2 port">
@@ -614,10 +685,9 @@ h1,h2,h3,h4,p{margin:0}
         <figure><img src="images/taaktana-25.jpg" alt="Cardio machines" loading="lazy" /></figure>
       </div>
     </div>
-
     <div class="post-body">
-      <h2 class="post-section-title">Lounge</h2>
-      <p>Included in the stay was a tea afternoon in the lounge, where there were 3 &ldquo;courses&rdquo; of tea, taking us through an Indonesian journey. The quality of the tea was amazing, as well as the theatre around it and the history information provided. The lounge also has a view over the sunset and we caught a couple of good ones during our 5 night stay. The music is very relaxing, as well as the ambiance.</p>
+      <h3 class="post-subtitle">Lounge</h3>
+      <p>The stay included an afternoon tea in the lounge &mdash; three &ldquo;courses&rdquo; of tea taking us on a little Indonesian journey. The tea was superb, but so were the theatre and the history that came with it. The lounge also looks out over the sunset, and we caught a couple of real beauties across our five nights. Lovely music, lovelier ambiance.</p>
     </div>
     <div class="figs">
       <div class="grid-2 port">
@@ -631,16 +701,14 @@ h1,h2,h3,h4,p{margin:0}
         <figure><img src="images/taaktana-29.jpg" alt="Sunset view from the lounge" loading="lazy" /></figure>
       </div>
     </div>
-
     <div class="post-body">
-      <h2 class="post-section-title">Sunset</h2>
-      <p>Also part of the stay was an Indonesian fighting ritual at sunset, in which the history of the tradition was presented, as well as picture opportunities. As an experience, it felt authentic and special.</p>
+      <p>Also on the agenda was an Indonesian fighting ritual at sunset, complete with the story behind the tradition and, naturally, a few photo opportunities. It felt authentic and genuinely special rather than staged.</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-30.jpg" alt="Indonesian ritual at sunset" loading="lazy" /></figure></div>
     </div>
     <div class="post-body">
-      <p>The sunsets are truly gorgeous here&hellip;</p>
+      <p>And the sunsets here? Truly, ridiculously gorgeous&hellip;</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-31.jpg" alt="Sunset over the water" loading="lazy" /></figure></div>
@@ -649,20 +717,9 @@ h1,h2,h3,h4,p{margin:0}
       <div class="fig-full"><figure><img src="images/taaktana-32.jpg" alt="Sunset with palm silhouette" loading="lazy" /></figure></div>
     </div>
 
-    <div class="post-body">
-      <h2 class="post-section-title">Restaurants</h2>
-      <p>While we don&rsquo;t usually eat at the hotels we are staying at (except breakfast), we made an exception this time as we had an early start and late arrival on one of the days. The Indonesian restaurant Umasa turned out to also be incredible. We overdid it with starters, main and dessert, but the flavours were outstanding and the service as well. The staff also took a picture of us that they later framed and left in our room as a present. Their attention to detail is truly amazing.</p>
-    </div>
-    <div class="figs">
-      <div class="fig-full"><figure><img src="images/taaktana-33.jpg" alt="Dinner at Umasa" loading="lazy" /></figure></div>
-    </div>
-    <div class="figs">
-      <div class="fig-full"><figure><img src="images/taaktana-34.jpg" alt="Umasa dishes" loading="lazy" /></figure></div>
-    </div>
-
     <div class="verdict-block">
       <p class="eyebrow">The verdict</p>
-      <p>Overall, I cannot recommend this hotel more. So far, it was our top stay in terms of overall stay, service and quality of food. The area is still less touristy than others in Indonesia, but it is up and coming, and I would expect this hotel to go up significantly in price in the years to come. We were truly taken care of every moment of our stay &ndash; definitely one of the Marriott Bonvoy gems!</p>
+      <p>Overall? We could not recommend this hotel more. It is our top stay to date for the whole package &mdash; experience, service and food. The area is still less touristy than much of Indonesia, but it is clearly on the up, and we would happily bet the prices climb to match in the years ahead. We were looked after at every single moment &mdash; unquestionably one of the Marriott Bonvoy gems.</p>
     </div>
 
     <div class="book-cta">
@@ -680,6 +737,16 @@ h1,h2,h3,h4,p{margin:0}
   </div>
 </article>
 </main>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+  <span class="lb-counter" id="lbCounter"></span>
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close (Esc)"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <img id="lbImg" src="" alt="" />
+  <p class="lightbox-cap" id="lbCap"></p>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
 
 <!-- ============================ FOOTER ============================ -->
 <footer class="site-footer" id="about">
@@ -747,6 +814,22 @@ h1,h2,h3,h4,p{margin:0}
     if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search?q='+encodeURIComponent(q); }
     else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
   });
+})();
+
+// --- lightbox gallery ---
+(function(){
+  var imgs=[].slice.call(document.querySelectorAll('.figs img'));
+  var lb=document.getElementById('lightbox'); if(!imgs.length||!lb) return;
+  var lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),lbCount=document.getElementById('lbCounter'),idx=0;
+  function show(i){ idx=(i+imgs.length)%imgs.length; var im=imgs[idx]; lbImg.setAttribute('src',im.currentSrc||im.src); lbImg.setAttribute('alt',im.alt||''); lbCap.textContent=im.alt||''; lbCount.textContent=(idx+1)+' / '+imgs.length; }
+  function open(i){ show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  imgs.forEach(function(im,i){ im.addEventListener('click',function(){ open(i); }); });
+  document.getElementById('lbClose').addEventListener('click',close);
+  document.getElementById('lbPrev').addEventListener('click',function(e){ e.stopPropagation(); show(idx-1); });
+  document.getElementById('lbNext').addEventListener('click',function(e){ e.stopPropagation(); show(idx+1); });
+  lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown',function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(idx-1); else if(e.key==='ArrowRight') show(idx+1); });
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();
