@@ -6,12 +6,12 @@
 <title>Search — The Hotel Trail</title>
 <meta name="description" content="Search The Hotel Trail's honest hotel reviews by hotel name, city, month or keyword.">
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://thehoteltrail.com/search.html">
+<link rel="canonical" href="https://thehoteltrail.com/search">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Hotel Trail">
 <meta property="og:title" content="Search — The Hotel Trail">
 <meta property="og:description" content="Search our honest hotel reviews by hotel name, city, month or keyword.">
-<meta property="og:url" content="https://thehoteltrail.com/search.html">
+<meta property="og:url" content="https://thehoteltrail.com/search">
 <meta property="og:image" content="https://thehoteltrail.com/images/hero-web.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -350,17 +350,17 @@ mark{background:var(--clay-100);color:var(--clay-700);font-weight:var(--weight-s
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="index.html" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <a href="/" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
     <nav class="nav" aria-label="Primary">
-      <a href="all-reviews.html">Reviews</a>
-      <a href="destinations.html">Destinations</a>
-      <a href="index.html#about">About</a>
+      <a href="all-reviews">Reviews</a>
+      <a href="destinations">Destinations</a>
+      <a href="/#about">About</a>
     </nav>
     <div class="header-actions">
       <button class="icon-btn" id="searchToggle" aria-label="Search">
         <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       </button>
-      <a href="all-reviews.html" class="btn btn-primary">Latest reviews</a>
+      <a href="all-reviews" class="btn btn-primary">Latest reviews</a>
       <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -377,9 +377,9 @@ mark{background:var(--clay-100);color:var(--clay-700);font-weight:var(--weight-s
     </button>
   </div>
   <nav class="container mobile-nav-links" aria-label="Mobile">
-    <a href="all-reviews.html">Reviews</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="index.html#about">About</a>
+    <a href="all-reviews">Reviews</a>
+    <a href="destinations">Destinations</a>
+    <a href="/#about">About</a>
   </nav>
 </div>
 
@@ -411,7 +411,7 @@ mark{background:var(--clay-100);color:var(--clay-700);font-weight:var(--weight-s
       <div class="footer-cols">
         <div class="footer-col">
           <h4>About</h4>
-          <a href="our-story.html">Our story</a>
+          <a href="our-story">Our story</a>
           <a href="#">Get in touch</a>
         </div>
         <div class="footer-col">
@@ -430,16 +430,16 @@ mark{background:var(--clay-100);color:var(--clay-700);font-weight:var(--weight-s
 
 <script>
 /* ============================================================
-   The Hotel Trail — Search (keep `reviews` in sync with index.html)
+   The Hotel Trail — Search (keep `reviews` in sync with /)
    ============================================================ */
 var reviews = [
-  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"images/nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"nagasaki.html" },
+  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"images/nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"nagasaki" },
   { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"images/sheraton-hiroshima-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"images/aloft-osaka-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"images/fuji-marriott-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"images/sheraton-tokyo-bay-web.jpg", date:"April 2026", dateSort:"2026-04" },
   { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"images/w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" },
-  { tag:"Resort",      title:"Ta’aktana, a Luxury Collection Resort & Spa", place:"Labuan Bajo, Indonesia", rating:5, verdict:"Our top stay yet — outstanding service and food, a short hop from Komodo Island.", img:"images/taaktana-22.jpg", date:"November 2025", dateSort:"2025-11", link:"taaktana.html" }
+  { tag:"Resort",      title:"Ta’aktana, a Luxury Collection Resort & Spa", place:"Labuan Bajo, Indonesia", rating:5, verdict:"Our top stay yet — outstanding service and food, a short hop from Komodo Island.", img:"images/taaktana-22.jpg", date:"November 2025", dateSort:"2025-11", link:"taaktana" }
 ];
 
 function starRow(rating){

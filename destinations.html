@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Destinations — The Hotel Trail</title>
 <meta name="description" content="Browse every hotel we've reviewed by continent and country on an interactive world map — from Japan to Indonesia and Jordan.">
-<link rel="canonical" href="https://thehoteltrail.com/destinations.html">
+<link rel="canonical" href="https://thehoteltrail.com/destinations">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Hotel Trail">
 <meta property="og:title" content="Destinations — The Hotel Trail">
 <meta property="og:description" content="Every hotel we've reviewed, mapped by where in the world it sits.">
-<meta property="og:url" content="https://thehoteltrail.com/destinations.html">
+<meta property="og:url" content="https://thehoteltrail.com/destinations">
 <meta property="og:image" content="https://thehoteltrail.com/images/indonesia-web.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Destinations — The Hotel Trail">
@@ -432,11 +432,11 @@ h1,h2,h3,h4,p{margin:0}
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="index.html" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <a href="/" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
     <nav class="nav" aria-label="Primary">
-      <a href="all-reviews.html">Reviews</a>
-      <a href="destinations.html">Destinations</a>
-      <a href="index.html#about">About</a>
+      <a href="all-reviews">Reviews</a>
+      <a href="destinations">Destinations</a>
+      <a href="/#about">About</a>
     </nav>
     <div class="header-actions">
       <div class="header-search" id="headerSearch">
@@ -445,7 +445,7 @@ h1,h2,h3,h4,p{margin:0}
           <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         </button>
       </div>
-      <a href="index.html#reviews" class="btn btn-primary">Latest reviews</a>
+      <a href="/#reviews" class="btn btn-primary">Latest reviews</a>
       <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -462,9 +462,9 @@ h1,h2,h3,h4,p{margin:0}
     </button>
   </div>
   <nav class="container mobile-nav-links" aria-label="Mobile">
-    <a href="all-reviews.html">Reviews</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="index.html#about">About</a>
+    <a href="all-reviews">Reviews</a>
+    <a href="destinations">Destinations</a>
+    <a href="/#about">About</a>
   </nav>
 </div>
 
@@ -788,7 +788,7 @@ h1,h2,h3,h4,p{margin:0}
       <div class="footer-cols">
         <div class="footer-col">
           <h4>About</h4>
-          <a href="our-story.html">Our story</a>
+          <a href="our-story">Our story</a>
           <a href="#">Get in touch</a>
         </div>
         <div class="footer-col">
@@ -937,7 +937,7 @@ function repImage(key){
     var meta=CONTINENT_META[key], n=continentReviews(key);
     var block=document.createElement('div'); block.className='continent-block'; block.id='c-'+key;
     var tiles=list.map(function(c){
-      return '<a href="index.html#reviews" class="dest-tile" aria-label="'+c.name+' — '+reviewWord(c.reviews)+'">'+
+      return '<a href="/#reviews" class="dest-tile" aria-label="'+c.name+' — '+reviewWord(c.reviews)+'">'+
         '<img src="'+c.img+'" alt="'+c.name+'" loading="lazy" />'+
         '<div class="label"><div class="name">'+c.name+'</div>'+
         '<div class="count">'+reviewWord(c.reviews)+'</div></div></a>';
@@ -982,7 +982,7 @@ function scrollToContinent(key){
     if(open){ inp.focus(); } else { inp.value=''; }
   });
   inp.addEventListener('keydown', function(e){
-    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search.html?q='+encodeURIComponent(q); }
+    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search?q='+encodeURIComponent(q); }
     else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
   });
 })();

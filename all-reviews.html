@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>All reviews — The Hotel Trail</title>
 <meta name="description" content="Every hotel we've checked into, newest first — honest reviews with real photos, star ratings and one-line verdicts.">
-<link rel="canonical" href="https://thehoteltrail.com/all-reviews.html">
+<link rel="canonical" href="https://thehoteltrail.com/all-reviews">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Hotel Trail">
 <meta property="og:title" content="All reviews — The Hotel Trail">
 <meta property="og:description" content="Every hotel we've checked into, newest first — honest reviews with real photos and verdicts.">
-<meta property="og:url" content="https://thehoteltrail.com/all-reviews.html">
+<meta property="og:url" content="https://thehoteltrail.com/all-reviews">
 <meta property="og:image" content="https://thehoteltrail.com/images/taaktana-22.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="All reviews — The Hotel Trail">
@@ -347,11 +347,11 @@ h1,h2,h3,h4,p{margin:0}
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="index.html" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <a href="/" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
     <nav class="nav" aria-label="Primary">
-      <a href="all-reviews.html">Reviews</a>
-      <a href="destinations.html">Destinations</a>
-      <a href="index.html#about">About</a>
+      <a href="all-reviews">Reviews</a>
+      <a href="destinations">Destinations</a>
+      <a href="/#about">About</a>
     </nav>
     <div class="header-actions">
       <div class="header-search" id="headerSearch">
@@ -360,7 +360,7 @@ h1,h2,h3,h4,p{margin:0}
           <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         </button>
       </div>
-      <a href="all-reviews.html" class="btn btn-primary">Latest reviews</a>
+      <a href="all-reviews" class="btn btn-primary">Latest reviews</a>
       <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
         <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -377,9 +377,9 @@ h1,h2,h3,h4,p{margin:0}
     </button>
   </div>
   <nav class="container mobile-nav-links" aria-label="Mobile">
-    <a href="all-reviews.html">Reviews</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="index.html#about">About</a>
+    <a href="all-reviews">Reviews</a>
+    <a href="destinations">Destinations</a>
+    <a href="/#about">About</a>
   </nav>
 </div>
 
@@ -407,7 +407,7 @@ h1,h2,h3,h4,p{margin:0}
       <div class="footer-cols">
         <div class="footer-col">
           <h4>About</h4>
-          <a href="our-story.html">Our story</a>
+          <a href="our-story">Our story</a>
           <a href="#">Get in touch</a>
         </div>
         <div class="footer-col">
@@ -427,16 +427,16 @@ h1,h2,h3,h4,p{margin:0}
 <script>
 /* ============================================================
    The Hotel Trail — All reviews (chronological, oldest first)
-   Keep this `reviews` array in sync with index.html.
+   Keep this `reviews` array in sync with /.
    ============================================================ */
 var reviews = [
-  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"images/nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"nagasaki.html" },
+  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"images/nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"nagasaki" },
   { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"images/sheraton-hiroshima-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"images/aloft-osaka-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"images/fuji-marriott-web.jpg", date:"March 2026", dateSort:"2026-03" },
   { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"images/sheraton-tokyo-bay-web.jpg", date:"April 2026", dateSort:"2026-04" },
   { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"images/w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" },
-  { tag:"Resort",      title:"Ta’aktana, a Luxury Collection Resort & Spa", place:"Labuan Bajo, Indonesia", rating:5, verdict:"Our top stay yet — outstanding service and food, a short hop from Komodo Island.", img:"images/taaktana-22.jpg", date:"November 2025", dateSort:"2025-11", link:"taaktana.html" }
+  { tag:"Resort",      title:"Ta’aktana, a Luxury Collection Resort & Spa", place:"Labuan Bajo, Indonesia", rating:5, verdict:"Our top stay yet — outstanding service and food, a short hop from Komodo Island.", img:"images/taaktana-22.jpg", date:"November 2025", dateSort:"2025-11", link:"taaktana" }
 ];
 
 function starRow(rating){
@@ -524,7 +524,7 @@ function clock(){
     if(open){ inp.focus(); } else { inp.value=''; }
   });
   inp.addEventListener('keydown', function(e){
-    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search.html?q='+encodeURIComponent(q); }
+    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search?q='+encodeURIComponent(q); }
     else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
   });
 })();
