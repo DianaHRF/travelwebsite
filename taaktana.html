@@ -433,6 +433,23 @@ h1,h2,h3,h4,p{margin:0}
 .breadcrumbs a:hover{color:var(--text-link-hover)}
 .breadcrumbs .bc-sep{color:var(--text-muted)}
 .breadcrumbs [aria-current="page"]{color:var(--ink-700)}
+.goodtoknow{max-width:var(--container-narrow);margin:var(--space-2) auto var(--space-10);
+  background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-l);
+  padding:var(--space-6) var(--space-8);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5) var(--space-8)}
+.goodtoknow h3{grid-column:1/-1;font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--ink-900);margin:0 0 calc(-1 * var(--space-1))}
+.gtk-item{display:flex;flex-direction:column;gap:var(--space-1)}
+.gtk-label{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);
+  color:var(--text-secondary);font-weight:var(--weight-semibold);display:inline-flex;align-items:center;gap:var(--space-2)}
+.gtk-label svg{width:15px;height:15px;stroke:var(--accent-primary);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.gtk-value{font-size:var(--text-body-s);color:var(--ink-700);line-height:var(--lh-normal)}
+@media(max-width:640px){.goodtoknow{grid-template-columns:1fr;padding:var(--space-5) var(--space-6)}}
+.benefits-list{max-width:var(--container-narrow);margin:var(--space-4) auto 0;padding-left:0;list-style:none;
+  display:flex;flex-direction:column;gap:var(--space-3)}
+.benefits-list li{position:relative;padding-left:var(--space-6);font-size:var(--text-body-l);
+  color:var(--text-secondary);line-height:var(--lh-relaxed)}
+.benefits-list li::before{content:"";position:absolute;left:0;top:0.62em;width:7px;height:7px;
+  border-radius:50%;background:var(--accent-secondary)}
 .post-back{max-width:var(--container-narrow);margin:var(--space-12) auto 0}
 
 @media (max-width:900px){
@@ -568,9 +585,20 @@ h1,h2,h3,h4,p{margin:0}
       <div class="subrating"><span class="subrating-label">Food</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
     </div>
 
+    <div class="goodtoknow">
+      <h3>Good to know</h3>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Getting there</span><span class="gtk-value">Fly to Labuan Bajo (Komodo Airport) &mdash; about an hour from Bali; a hotel chauffeur meets you at arrivals.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg>Wi-Fi</span><span class="gtk-value">Free Wi-Fi throughout.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M4 8h13v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 9h2a2 2 0 0 1 0 4h-2"/><path d="M4 21h13"/></svg>Breakfast</span><span class="gtk-value">&Agrave; la carte with a small buffet &mdash; outstanding.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Check-in / out</span><span class="gtk-value">Standard 3pm check-in, 12pm checkout (early check-in and 4pm checkout for certain Marriott Bonvoy memberships).</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z"/></svg>Worth the points</span><span class="gtk-value">A strong Luxury Collection redemption; we used our Platinum Nightly Upgrade Awards for a villa upgrade that came with a personal butler.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Who it&rsquo;s for</span><span class="gtk-value">A luxury splurge, honeymoons and anyone who wants to see Komodo dragons. Not ideal if you want a proper beach on-site.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M4 20V12M10 20V6M16 20V9"/><path d="M3 20h18"/></svg>Marriott Bonvoy value</span><span class="gtk-value">313 &mdash; points per night &divide; price per night; the lower the better (under 150 is great value).</span></div>
+    </div>
+
     <div class="post-body">
       <h2 class="post-section-title">Arrival</h2>
-      <p>Ta&rsquo;aktana, a Luxury Collection Resort &amp; Spa, is tucked into the almost unfairly beautiful landscapes of Komodo country in Indonesia &mdash; more precisely, Labuan Bajo. Getting there takes a little devotion: flights are few, so we broke the journey with a night in Bali before the short, roughly one-hour hop the next morning, where a chauffeur was waiting for us at the airport (a very civilised way to arrive anywhere). The hotel is part of Marriott Bonvoy and, as Titanium members, we were treated to a few extra perks. We rolled in that evening and the service was flawless from the very first hello. We were handed our own butler, who quietly ran our diary all week &mdash; sightseeing tips, restaurant bookings, the lot. We had booked a one-bedroom villa with sea view (only the overwater sea villa sits above it), and our 112 square metre villa was a minimalist stunner &mdash; genuinely one of the most beautiful rooms we have ever set foot in.</p>
+      <p>Ta&rsquo;aktana, a Luxury Collection Resort &amp; Spa, is tucked into the almost unfairly beautiful landscapes of Komodo country in Indonesia &mdash; more precisely, Labuan Bajo. Getting there takes a little devotion: flights are few, so we broke the journey with a night in Bali before the short, roughly one-hour hop the next morning, where a chauffeur was waiting for us at the airport (a very civilised way to arrive anywhere). The hotel is part of Marriott Bonvoy and, as Platinum members, we were treated to a few extra perks. We rolled in that evening and the service was flawless from the very first hello. We were handed our own butler (a big shout out to Rini, she is efficient, kind and overall amazing!), who quietly ran our diary all week &mdash; sightseeing tips, restaurant bookings, the lot. We booked the Wae Rana Suite (King, Resort View, Balcony) at around &pound;225 a night, but we used our Nightly Upgrade Awards to upgrade to a one-bedroom villa with sea view (only the overwater sea villa sits above it). The 112 square metre villa was a minimalist stunner &mdash; genuinely one of the most beautiful rooms we have ever set foot in.</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-01.jpg" alt="Ta'aktana villa" loading="lazy" /></figure></div>
@@ -632,7 +660,7 @@ h1,h2,h3,h4,p{margin:0}
       <h2 class="post-section-title">Food</h2>
       <h3 class="post-subtitle">Breakfast</h3>
       <p>If we had to crown one thing at the resort, it might just be the food. Almost everything is locally sourced, and it all tasted impossibly fresh. Breakfast was a la carte with a little buffet to top up, including a sambal section (pure joy if, like us, you like a bit of fire with your morning). The selection was small but faultless &mdash; from fruits to pastries and proper local Indonesian flavours.</p>
-      <p>Eating both inside and out was a pleasure, and with the restaurant usually near-empty the atmosphere was blissfully calm. The service would not have looked out of place in a Michelin-starred dining room &mdash; attentive without ever hovering. Breakfast, honestly, was one of the highlights of the whole trip.</p>
+      <p>Eating both inside and out was a pleasure, and with the restaurant usually near-empty the atmosphere was blissfully calm. The service would not have looked out of place in a Michelin-starred dining room &mdash; attentive without ever hovering. Breakfast was one of the highlights of the whole trip.</p>
     </div>
     <div class="figs">
       <div class="grid-3 port">
@@ -660,8 +688,8 @@ h1,h2,h3,h4,p{margin:0}
     <div class="post-body">
       <h2 class="post-section-title">Facilities</h2>
       <h3 class="post-subtitle">Resort</h3>
-      <p>The resort itself is beautifully laid out &mdash; a main building, a few tiers of villas, and seven overwater villas a short bridge away. The pool is on the small side but lovely, and mostly deserted (we stuck to our private one, admittedly). Water activities are unlimited, snorkelling included &mdash; there is a little coral reef within the hotel&rsquo;s waters that is well worth a look.</p>
-      <p>Our one honest gripe: there is not really a beach. There are scrappy public patches to the left and right, but they were a touch grubby and uninviting, at least while we were there. So if a long, barefoot beach walk straight from your room is the dream, this is not quite the place.</p>
+      <p>The resort itself is beautifully laid out &mdash; a main building, a few tiers of villas, and seven overwater villas a short bridge away. The pool is on the small side but lovely, and mostly deserted (we stuck to our private one, admittedly). Water activities are unlimited, including kayaking, snorkelling, stand up paddleboarding &mdash; there is a little coral reef within the hotel&rsquo;s waters that is well worth a look.</p>
+      <p>Our one gripe: there is not really a beach. There are scrappy public patches to the left and right, but they were a touch grubby and uninviting, at least while we were there. So if a long, barefoot beach walk straight from your room is the dream, this is not quite the place.</p>
     </div>
     <div class="figs">
       <div class="fig-full"><figure><img src="images/taaktana-20.jpg" alt="Resort setup" loading="lazy" /></figure></div>
@@ -717,6 +745,27 @@ h1,h2,h3,h4,p{margin:0}
       <div class="fig-full"><figure><img src="images/taaktana-32.jpg" alt="Sunset with palm silhouette" loading="lazy" /></figure></div>
     </div>
 
+    <div class="post-body">
+      <h3 class="post-subtitle">WiFi</h3>
+      <p>WiFi was complimentary, however there were a few issues with it in certain days. The service was however outstanding as they installed a router in our villa to ensure the connection is strong.</p>
+    </div>
+
+    <div class="post-body">
+      <h3 class="post-subtitle">Benefits</h3>
+      <p>Regardless of the Marriott Bonvoy membership, the resort offers the following benefits to all:</p>
+      <ul class="benefits-list">
+        <li>Complimentary 24 hours breakfast for two persons served at All Day Dining restaurant (LEROS) or in-room breakfast at guests&rsquo; convenience with the exclusive options</li>
+        <li>Return airport transfer</li>
+        <li>Three types of local indigenous amenities upon arrival</li>
+        <li>Pressing service up to 2 pieces per person per day</li>
+        <li>Minibar (non-alcoholic beverages), including sweet &amp; savoury snacks per stay</li>
+        <li>Daily turndown service with special amenities</li>
+        <li>In-room and resort-wide high-speed Wi-Fi internet access</li>
+        <li>Complimentary access to facilities such as Gym, Sauna, Kids Club and daily activities as per resort schedule (charges may apply for selected activities)</li>
+        <li>Complimentary in-house water sport activities such as Kayak, Stand-up paddle, snorkelling gear and water scooter</li>
+      </ul>
+    </div>
+
     <div class="verdict-block">
       <p class="eyebrow">The verdict</p>
       <p>Overall? We could not recommend this hotel more. It is our top stay to date for the whole package &mdash; experience, service and food. The area is still less touristy than much of Indonesia, but it is clearly on the up, and we would happily bet the prices climb to match in the years ahead. We were looked after at every single moment &mdash; unquestionably one of the Marriott Bonvoy gems.</p>
@@ -754,7 +803,7 @@ h1,h2,h3,h4,p{margin:0}
     <div class="footer-top">
       <div>
         <span class="wordmark">The Hotel Trail</span>
-        <p class="footer-blurb">Honest hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
+        <p class="footer-blurb">Hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">

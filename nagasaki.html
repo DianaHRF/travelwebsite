@@ -433,6 +433,17 @@ h1,h2,h3,h4,p{margin:0}
 .breadcrumbs a:hover{color:var(--text-link-hover)}
 .breadcrumbs .bc-sep{color:var(--text-muted)}
 .breadcrumbs [aria-current="page"]{color:var(--ink-700)}
+.goodtoknow{max-width:var(--container-narrow);margin:var(--space-2) auto var(--space-10);
+  background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-l);
+  padding:var(--space-6) var(--space-8);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5) var(--space-8)}
+.goodtoknow h3{grid-column:1/-1;font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--ink-900);margin:0 0 calc(-1 * var(--space-1))}
+.gtk-item{display:flex;flex-direction:column;gap:var(--space-1)}
+.gtk-label{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);
+  color:var(--text-secondary);font-weight:var(--weight-semibold);display:inline-flex;align-items:center;gap:var(--space-2)}
+.gtk-label svg{width:15px;height:15px;stroke:var(--accent-primary);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.gtk-value{font-size:var(--text-body-s);color:var(--ink-700);line-height:var(--lh-normal)}
+@media(max-width:640px){.goodtoknow{grid-template-columns:1fr;padding:var(--space-5) var(--space-6)}}
 .post-back{max-width:var(--container-narrow);margin:var(--space-12) auto 0}
 
 @media (max-width:900px){
@@ -568,6 +579,17 @@ h1,h2,h3,h4,p{margin:0}
       <div class="subrating"><span class="subrating-label">Food</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
     </div>
 
+    <div class="goodtoknow">
+      <h3>Good to know</h3>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Getting there</span><span class="gtk-value">A 1-minute walk from JR Nagasaki Station; around 40 minutes from Nagasaki Airport.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg>Wi-Fi</span><span class="gtk-value">Free Wi-Fi throughout.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M4 8h13v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 9h2a2 2 0 0 1 0 4h-2"/><path d="M4 21h13"/></svg>Breakfast</span><span class="gtk-value">Buffet style &mdash; the best hotel breakfast we had in Japan (don&rsquo;t miss the fish and miso).</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Check-in / out</span><span class="gtk-value">Standard 3pm check-in, 12pm checkout (early check-in and 4pm checkout for certain Marriott Bonvoy memberships).</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z"/></svg>Worth the points</span><span class="gtk-value">Excellent value on points; Titanium status earned a Kamome suite upgrade, lounge access and that standout breakfast.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Who it&rsquo;s for</span><span class="gtk-value">City breaks and rail travellers wanting a smart, central base. Not a resort or beach destination.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M4 20V12M10 20V6M16 20V9"/><path d="M3 20h18"/></svg>Marriott Bonvoy value</span><span class="gtk-value">227 &mdash; points per night &divide; price per night; the lower the better (under 150 is great value).</span></div>
+    </div>
+
     <div class="post-body">
       <h2 class="post-section-title">Arrival</h2>
       <p>Our Japan adventure kicked off in Nagasaki, and we picked the Nagasaki Marriott for three nights. It is a one-minute walk from the train station &mdash; and we do mean one minute, not the optimistic kind &mdash; which was a genuine gift given it was absolutely bucketing down when we arrived. The hotel is a 5&ast; that opened in January 2024, and it never felt crowded (Nagasaki is far less touristy than Japan&rsquo;s bigger names), so first impressions were lovely. We had booked a regular king room, but our Titanium status with Marriott Bonvoy quietly bumped us up to the Kamome suite for the whole stay &mdash; and what a suite: 86 square metres of minimalist, beautifully judged design.</p>
@@ -683,7 +705,7 @@ h1,h2,h3,h4,p{margin:0}
     <div class="footer-top">
       <div>
         <span class="wordmark">The Hotel Trail</span>
-        <p class="footer-blurb">Honest hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
+        <p class="footer-blurb">Hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
