@@ -452,7 +452,7 @@ h1,h2,h3,h4,p{margin:0}
 .post-toc a{display:block;padding:7px 0 7px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--text-secondary);transition:color var(--duration-fast) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
 .post-toc a:hover{color:var(--ink-900)}
 .post-toc a.active{color:#8f4325;border-left-color:var(--accent-secondary);font-weight:var(--weight-semibold)}
-.post-section-title,.verdict-block{scroll-margin-top:96px}
+.post-section-title,.verdict-block,.goodtoknow{scroll-margin-top:96px}
 @media(max-width:900px){
   .post .container{grid-template-columns:1fr;gap:0}
   .post-toc{position:sticky;top:72px;z-index:20;background:var(--surface-page);padding:10px 0;margin-bottom:var(--space-6);border-bottom:1px solid var(--border-subtle)}
@@ -569,6 +569,7 @@ h1,h2,h3,h4,p{margin:0}
     <nav class="post-toc" aria-label="On this page">
       <p class="post-toc-lbl">On this page</p>
       <ul>
+        <li><a href="#s-goodtoknow">Good to know</a></li>
         <li><a href="#s-arrival">Arrival</a></li>
         <li><a href="#s-room">Room</a></li>
         <li><a href="#s-bathroom">Bathroom</a></li>
@@ -608,7 +609,7 @@ h1,h2,h3,h4,p{margin:0}
       <div class="subrating"><span class="subrating-label">Food</span><span class="subrating-bar"><span class="subrating-fill" style="width:100%"></span></span><span class="subrating-num">5.0</span></div>
     </div>
 
-    <div class="goodtoknow">
+    <div class="goodtoknow" id="s-goodtoknow">
       <h3>Good to know</h3>
       <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Getting there</span><span class="gtk-value">A 1-minute walk from JR Nagasaki Station; around 40 minutes from Nagasaki Airport.</span></div>
       <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg>Wi-Fi</span><span class="gtk-value">Free Wi-Fi throughout.</span></div>
@@ -823,7 +824,7 @@ h1,h2,h3,h4,p{margin:0}
     targets.forEach(function(t){ obs.observe(t); });
   }
   links.forEach(function(a){ a.addEventListener("click",function(){ setActive(a.getAttribute("href").slice(1)); }); });
-  if(map["s-arrival"]) setActive("s-arrival");
+  if(links.length) setActive(links[0].getAttribute("href").slice(1));
 })();
 
 document.getElementById('year').textContent = new Date().getFullYear();
