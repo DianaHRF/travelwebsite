@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marriott Bonvoy value explorer — The Hotel Trail</title>
+<meta name="description" content="Was it worth the points? Pick a country, area and hotel to see our Marriott Bonvoy value score for the stay — plus a league table of our best-value redemptions.">
+<link rel="canonical" href="https://thehoteltrail.com/value">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Hotel Trail">
+<meta property="og:title" content="Marriott Bonvoy value explorer — The Hotel Trail">
+<meta property="og:description" content="Pick a country, area and hotel to see our Marriott Bonvoy value score — plus a league table of our best-value redemptions.">
+<meta property="og:url" content="https://thehoteltrail.com/value">
+<meta property="og:image" content="https://thehoteltrail.com/images/taaktana-22.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Marriott Bonvoy value explorer — The Hotel Trail">
+<meta name="twitter:description" content="Pick a country, area and hotel to see our Marriott Bonvoy value score — plus a league table of our best-value redemptions.">
+<meta name="twitter:image" content="https://thehoteltrail.com/images/taaktana-22.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   The Hotel Trail — design tokens (from brand design system)
+   ============================================================ */
+:root{
+  --teal-900:#123642; --teal-700:#1c5a6b; --teal-600:#256f83; --teal-500:#2f8598;
+  --teal-400:#5aa3b3; --teal-100:#dcedf0;
+  --clay-700:#9a4a2c; --clay-600:#b85f38; --clay-500:#c8703d; --clay-400:#d99560; --clay-100:#f3ddc9;
+  --sand-050:#fdfaf5; --sand-100:#faf5ec; --sand-200:#f2e9d8; --sand-300:#e6d7bd;
+  --ink-900:#221f1c; --ink-700:#4a4540; --ink-500:#6f6a63; --ink-300:#a8a196; --ink-100:#d8d2c7;
+  --white:#ffffff;
+  --success-500:#4d7a52; --error-500:#b0452f; --warning-500:#c8942f;
+
+  --surface-page:var(--sand-050); --surface-card:var(--white); --surface-sunken:var(--sand-200);
+  --surface-inverse:var(--ink-900);
+  --text-primary:var(--ink-900); --text-secondary:#5e5a53; --text-muted:#6a655e;
+  --text-inverse:var(--sand-050); --text-link:var(--teal-700); --text-link-hover:var(--teal-600);
+  --accent-primary:var(--teal-600); --accent-primary-hover:var(--teal-700);
+  --accent-secondary:var(--clay-500); --accent-secondary-hover:var(--clay-600);
+  --border-subtle:var(--sand-300); --border-default:var(--ink-100); --border-strong:var(--ink-500);
+  --focus-ring:var(--teal-500);
+
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Jost',-apple-system,'Segoe UI',sans-serif;
+  --text-display-xl:clamp(2.75rem,5vw,4.5rem);
+  --text-display-l:clamp(2.25rem,3.6vw,3.25rem);
+  --text-display-m:1.75rem; --text-title:1.375rem;
+  --text-body-l:1.125rem; --text-body:1rem; --text-body-s:0.875rem;
+  --text-caption:0.75rem; --text-overline:0.75rem;
+  --lh-tight:1.1; --lh-snug:1.28; --lh-normal:1.55; --lh-relaxed:1.7;
+  --tracking-tight:-0.01em; --tracking-wide:0.08em; --tracking-wider:0.16em;
+  --weight-regular:400; --weight-medium:500; --weight-semibold:600;
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px;
+  --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px; --space-20:80px;
+  --space-24:96px; --space-32:128px;
+  --container-max:1200px; --container-narrow:760px; --gutter:24px;
+
+  --radius-s:2px; --radius-m:4px; --radius-l:8px; --radius-pill:999px;
+  --shadow-card:0 1px 2px rgba(34,31,28,0.04),0 6px 20px rgba(34,31,28,0.06);
+  --shadow-raised:0 4px 12px rgba(34,31,28,0.08),0 1px 3px rgba(34,31,28,0.05);
+  --shadow-overlay:0 20px 48px rgba(34,31,28,0.18);
+  --shadow-focus:0 0 0 3px rgba(47,133,152,0.28);
+  --ease-standard:cubic-bezier(0.4,0,0.2,1); --ease-out:cubic-bezier(0,0,0.2,1);
+  --duration-fast:140ms; --duration-normal:220ms; --blur-overlay:8px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);color:var(--text-primary);
+  background:var(--surface-page);line-height:var(--lh-normal);
+  -webkit-font-smoothing:antialiased;font-size:var(--text-body)}
+img{max-width:100%;display:block}
+a{color:var(--text-link);text-decoration:none;transition:color var(--duration-fast) var(--ease-out)}
+a:hover{color:var(--text-link-hover)}
+:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-m)}
+h1,h2,h3,h4,p{margin:0}
+.container{max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter)}
+
+.wordmark{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  color:var(--ink-900);letter-spacing:var(--tracking-tight);font-size:1.625rem}
+.eyebrow{font-size:var(--text-overline);text-transform:uppercase;letter-spacing:var(--tracking-wider);
+  font-weight:var(--weight-semibold);color:#8f4325;margin-bottom:var(--space-4)}
+.display-l{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-l);line-height:var(--lh-tight);letter-spacing:var(--tracking-tight)}
+.lead{font-size:var(--text-body-l);color:var(--text-secondary);line-height:var(--lh-relaxed);max-width:60ch}
+
+.btn{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-body);
+  font-size:var(--text-body-s);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);
+  text-transform:uppercase;padding:var(--space-3) var(--space-6);border-radius:var(--radius-pill);
+  border:1px solid transparent;cursor:pointer;transition:background var(--duration-fast) var(--ease-out),
+  transform var(--duration-fast) var(--ease-out),color var(--duration-fast) var(--ease-out)}
+.btn:hover{text-decoration:none}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:var(--accent-primary);color:var(--text-inverse)}
+.btn-primary:hover{background:var(--accent-primary-hover);color:var(--text-inverse)}
+
+.icon{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.site-header{position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--sand-050) 82%,transparent);
+  backdrop-filter:blur(var(--blur-overlay));-webkit-backdrop-filter:blur(var(--blur-overlay));
+  border-bottom:1px solid var(--border-subtle)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav{display:flex;align-items:center;gap:var(--space-6)}
+.nav a{font-size:var(--text-body-s);font-weight:var(--weight-medium);color:var(--ink-700);
+  letter-spacing:var(--tracking-wide);text-transform:uppercase}
+.nav a:hover{color:var(--accent-primary)}
+.nav a.current{color:var(--accent-primary)}
+.header-actions{display:flex;align-items:center;gap:var(--space-4)}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border-radius:var(--radius-pill);background:transparent;border:1px solid transparent;
+  color:var(--ink-700);cursor:pointer;transition:background var(--duration-fast) var(--ease-out)}
+.icon-btn:hover{background:var(--sand-200);color:var(--ink-900)}
+.menu-toggle{display:none}
+.header-search{display:inline-flex;align-items:center}
+.header-search-input{width:0;opacity:0;pointer-events:none;padding:0;border:1px solid transparent;
+  border-radius:var(--radius-pill);background:var(--surface-card);font-family:var(--font-body);
+  font-size:var(--text-body-s);color:var(--ink-900);
+  transition:width var(--duration-normal) var(--ease-out),opacity var(--duration-fast) var(--ease-out),
+  padding var(--duration-normal) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
+.header-search.open .header-search-input{width:200px;opacity:1;pointer-events:auto;
+  padding:var(--space-2) var(--space-4);border-color:var(--border-default);margin-right:var(--space-1)}
+.header-search-input:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
+
+.site-footer{background:var(--surface-inverse);color:var(--sand-200);padding:var(--space-20) 0 var(--space-10)}
+.footer-top{display:flex;justify-content:space-between;gap:var(--space-16);
+  flex-wrap:wrap;padding-bottom:var(--space-12);border-bottom:1px solid rgba(255,255,255,0.1)}
+.site-footer .wordmark{color:var(--sand-050)}
+.footer-blurb{color:var(--ink-300);max-width:34ch;margin-top:var(--space-4);font-size:var(--text-body-s)}
+.footer-cols{display:flex;gap:var(--space-16);flex-wrap:wrap}
+.footer-col h4{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wider);
+  color:var(--ink-300);margin-bottom:var(--space-4);font-weight:var(--weight-semibold)}
+.footer-col a{display:block;color:var(--sand-200);font-size:var(--text-body-s);margin-bottom:var(--space-3)}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{padding-top:var(--space-8);display:flex;justify-content:space-between;
+  gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-caption);color:var(--ink-300)}
+
+.mobile-nav{position:fixed;inset:0;z-index:60;background:var(--surface-page);
+  display:flex;flex-direction:column;padding:var(--space-6) var(--gutter);
+  transform:translateY(-100%);transition:transform var(--duration-normal) var(--ease-standard);visibility:hidden}
+.mobile-nav.open{transform:translateY(0);visibility:visible}
+.mobile-nav-head{display:flex;align-items:center;justify-content:space-between;height:72px}
+.mobile-nav-links{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-8)}
+.mobile-nav-links a{font-family:var(--font-display);font-style:italic;font-size:1.75rem;
+  color:var(--ink-900);padding:var(--space-3) 0;border-bottom:1px solid var(--border-subtle)}
+.mobile-nav-links a:hover{color:var(--accent-primary)}
+
+/* ============================================================
+   value explorer
+   ============================================================ */
+.explorer{padding:var(--space-16) 0 var(--space-20)}
+.explorer-head{text-align:center;margin-bottom:var(--space-10)}
+.explorer-head .display-l{margin-top:var(--space-2)}
+.explorer-head .lead{margin:var(--space-5) auto 0}
+
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border-subtle);
+  border-radius:14px;overflow:hidden;background:var(--surface-card);box-shadow:var(--shadow-card);
+  max-width:var(--container-narrow);margin:0 auto}
+.calc-in{padding:var(--space-8);border-right:1px solid var(--border-subtle)}
+.calc-out{padding:var(--space-8);background:var(--sand-100);display:flex;flex-direction:column;justify-content:center}
+.calc h2{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:1.25rem;margin:0 0 var(--space-5)}
+.field{margin-bottom:var(--space-5)}
+.field:last-child{margin-bottom:0}
+.field label{display:block;font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);
+  font-weight:var(--weight-semibold);color:var(--text-secondary);margin-bottom:var(--space-2)}
+.field select{width:100%;font-family:inherit;font-size:var(--text-body);padding:11px 12px;color:var(--ink-900);
+  background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:9px;cursor:pointer;appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236a655e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center}
+.field select:focus{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
+.field select:disabled{color:var(--text-muted);background-color:var(--sand-100);cursor:not-allowed}
+
+.score-lab{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wider);
+  font-weight:var(--weight-semibold);color:var(--text-muted);margin-bottom:2px}
+.score{font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:3.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.badge{display:inline-block;margin-top:var(--space-3);font-size:var(--text-body-s);font-weight:var(--weight-semibold);
+  padding:5px 14px;border-radius:var(--radius-pill)}
+.badge.ex{background:var(--teal-100);color:var(--teal-700)}
+.badge.good{background:#e3efe4;color:var(--success-500)}
+.badge.fair{background:#f7ecd2;color:#8a6410}
+.badge.weak{background:#f6ddd4;color:var(--error-500)}
+.badge.none{background:var(--sand-300);color:var(--text-secondary)}
+.cpp{margin-top:var(--space-4);font-size:var(--text-body-s);color:var(--text-secondary)}
+.cpp b{color:var(--ink-900)}
+.verdict{margin-top:var(--space-3);font-size:var(--text-body-s);color:var(--text-secondary);line-height:1.5}
+
+.league{margin-top:var(--space-16);max-width:var(--container-narrow);margin-left:auto;margin-right:auto}
+.league h2{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);font-size:1.5rem;margin:0 0 var(--space-1)}
+.league p.k{color:var(--text-muted);font-size:var(--text-body-s);margin:0 0 var(--space-4)}
+table.lg{border-collapse:collapse;width:100%;background:var(--surface-card);border:1px solid var(--border-subtle);
+  border-radius:12px;overflow:hidden;font-size:var(--text-body-s)}
+table.lg thead th{background:var(--sand-200);text-align:left;font-weight:var(--weight-semibold);font-size:var(--text-caption);
+  text-transform:uppercase;letter-spacing:var(--tracking-wide);padding:11px 14px;border-bottom:1px solid var(--border-subtle);white-space:nowrap}
+table.lg tbody td{padding:12px 14px;border-bottom:1px solid var(--sand-200);vertical-align:middle}
+table.lg tbody tr:last-child td{border-bottom:none}
+.rank{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);color:var(--accent-secondary);font-size:1.1rem;width:34px}
+.hname{font-weight:var(--weight-medium)}
+.hname a{color:var(--text-link)}
+.hname a:hover{text-decoration:underline}
+.hplace{display:block;color:var(--text-muted);font-size:var(--text-caption);margin-top:1px}
+.vscore{font-weight:var(--weight-semibold);font-variant-numeric:tabular-nums}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
+.dot.ex{background:var(--teal-600)} .dot.good{background:var(--success-500)} .dot.fair{background:var(--warning-500)} .dot.weak{background:var(--error-500)}
+tr.sel{background:#fbf3e8}
+tr.sel .hname,tr.sel .hname a{color:var(--clay-700)}
+.legend{color:var(--text-muted);font-size:var(--text-caption);margin-top:var(--space-4);max-width:66ch;line-height:1.5}
+
+@media (max-width:640px){
+  .nav,.header-actions .btn{display:none}
+  .menu-toggle{display:inline-flex}
+  .calc{grid-template-columns:1fr}
+  .calc-in{border-right:none;border-bottom:1px solid var(--border-subtle)}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="all-reviews">Reviews</a>
+      <a href="hotels">All hotels</a>
+      <a href="value" class="current" aria-current="page">Points value</a>
+      <a href="destinations">Destinations</a>
+      <a href="/#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <div class="header-search" id="headerSearch">
+        <input type="search" id="searchInput" class="header-search-input" placeholder="Search reviews&hellip;" aria-label="Search reviews" autocomplete="off" />
+        <button class="icon-btn" id="searchToggle" aria-label="Search" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      </div>
+      <a href="all-reviews" class="btn btn-primary">Latest reviews</a>
+      <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="container mobile-nav-head">
+    <span class="wordmark">The Hotel Trail</span>
+    <button class="icon-btn" id="menuClose" aria-label="Close menu">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="container mobile-nav-links" aria-label="Mobile">
+    <a href="all-reviews">Reviews</a>
+    <a href="hotels">All hotels</a>
+    <a href="value">Points value</a>
+    <a href="destinations">Destinations</a>
+    <a href="/#about">About</a>
+  </nav>
+</div>
+
+<main>
+<section class="explorer">
+  <div class="container">
+    <div class="explorer-head">
+      <p class="eyebrow">Points &amp; value</p>
+      <h1 class="display-l">Marriott Bonvoy value explorer</h1>
+      <p class="lead">Was it worth the points? Choose a country, area and one of our hotels, and we'll show the redemption value score exactly the way we work it out in every review &mdash; then show where that stay sits against the rest.</p>
+    </div>
+
+    <div class="calc">
+      <div class="calc-in">
+        <h2>Choose a stay</h2>
+        <div class="field">
+          <label for="fCountry">Country</label>
+          <select id="fCountry"><option value="">Select a country&hellip;</option></select>
+        </div>
+        <div class="field">
+          <label for="fCity">City / area</label>
+          <select id="fCity" disabled><option value="">Select an area&hellip;</option></select>
+        </div>
+        <div class="field">
+          <label for="fHotel">Hotel</label>
+          <select id="fHotel" disabled><option value="">Select a hotel&hellip;</option></select>
+        </div>
+      </div>
+      <div class="calc-out">
+        <div class="score-lab">Value score</div>
+        <div class="score" id="score">&mdash;</div>
+        <div><span class="badge none" id="badge">Choose a hotel</span></div>
+        <p class="cpp" id="cpp"></p>
+        <p class="verdict" id="verdict">Pick a country, area and hotel on the left to see its value score.</p>
+      </div>
+    </div>
+
+    <div class="league">
+      <h2>Our stays, ranked by value</h2>
+      <p class="k">Lower score = better value.</p>
+      <table class="lg">
+        <thead><tr><th>#</th><th>Hotel</th><th>Value score</th><th>≈ per point</th><th>Verdict</th></tr></thead>
+        <tbody id="board"></tbody>
+      </table>
+      <p class="legend">Value score = points per night &divide; cash price per night. A lower number means you're spending fewer points for each &pound; of room &mdash; so the lower, the better. As a rough guide: under 150 is excellent, up to 250 is good, up to 350 is fair, and above that the cash rate is usually the smarter buy.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer" id="about">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="wordmark">The Hotel Trail</span>
+        <p class="footer-blurb">Hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="all-reviews">All reviews</a>
+          <a href="hotels">All hotels</a>
+          <a href="value">Points value</a>
+          <a href="destinations">Destinations</a>
+        </div>
+        <div class="footer-col">
+          <h4>About</h4>
+          <a href="our-story">Our story</a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <a href="https://www.instagram.com/thehoteltrail/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span style="flex-basis:100%">Some links on The Hotel Trail are affiliate links &mdash; if you book through them we may earn a small commission, at no extra cost to you.</span>
+      <span>&copy; <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
+      <span>Made on the road.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   The Hotel Trail — Bonvoy value explorer
+   score: points per night ÷ cash price per night (lower = better).
+   link: review page slug, if published.  Keep in sync with the reviews list.
+   ============================================================ */
+var MAX_ROWS = 10;
+var HOTELS=[
+  {name:"Nagasaki Marriott Hotel",            country:"Japan",     city:"Nagasaki",      score:227,  link:"nagasaki"},
+  {name:"Sheraton Grand Hiroshima Hotel",     country:"Japan",     city:"Hiroshima",     score:null, link:""},
+  {name:"Aloft by Marriott Osaka Dojima",     country:"Japan",     city:"Osaka",         score:null, link:""},
+  {name:"Fuji Marriott Hotel Lake Yamanaka",  country:"Japan",     city:"Lake Yamanaka", score:null, link:""},
+  {name:"Sheraton Grande Tokyo Bay Hotel",    country:"Japan",     city:"Tokyo",         score:null, link:""},
+  {name:"W Amman",                            country:"Jordan",    city:"Amman",         score:null, link:""},
+  {name:"Ta’aktana, a Luxury Collection Resort & Spa", country:"Indonesia", city:"Labuan Bajo", score:313, link:"taaktana"}
+];
+
+function band(s){
+  if(s==null) return {cls:"none",label:"Not scored yet"};
+  if(s<150) return {cls:"ex",label:"Excellent value"};
+  if(s<=250) return {cls:"good",label:"Good value"};
+  if(s<=350) return {cls:"fair",label:"Fair"};
+  return {cls:"weak",label:"Cash is better"};
+}
+function cpp(s){ return (100/s).toFixed(2); }
+function verdictText(s){
+  if(s<150) return "A standout redemption — you're squeezing a lot of room out of very few points.";
+  if(s<=250) return "A solid use of points. You're getting good value versus paying cash.";
+  if(s<=350) return "Reasonable, but not a steal — worth it if you're short on cash or saving status.";
+  return "The points are working hard for little back here — paying cash is probably the smarter call.";
+}
+function esc(t){ return (''+t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function uniq(arr){ var s={},o=[]; arr.forEach(function(v){ if(!s[v]){s[v]=1;o.push(v);} }); return o; }
+
+var cSel=document.getElementById('fCountry'),
+    citySel=document.getElementById('fCity'),
+    hSel=document.getElementById('fHotel');
+
+uniq(HOTELS.map(function(h){return h.country;})).sort().forEach(function(v){
+  cSel.insertAdjacentHTML('beforeend','<option value="'+esc(v)+'">'+esc(v)+'</option>');
+});
+
+function fillCities(){
+  var c=cSel.value;
+  citySel.innerHTML='<option value="">Select an area&hellip;</option>';
+  hSel.innerHTML='<option value="">Select a hotel&hellip;</option>';
+  hSel.disabled=true;
+  if(!c){ citySel.disabled=true; showResult(null); return; }
+  citySel.disabled=false;
+  uniq(HOTELS.filter(function(h){return h.country===c;}).map(function(h){return h.city;})).sort().forEach(function(v){
+    citySel.insertAdjacentHTML('beforeend','<option value="'+esc(v)+'">'+esc(v)+'</option>');
+  });
+  showResult(null);
+}
+function fillHotels(){
+  var c=cSel.value, ct=citySel.value;
+  hSel.innerHTML='<option value="">Select a hotel&hellip;</option>';
+  if(!ct){ hSel.disabled=true; showResult(null); return; }
+  hSel.disabled=false;
+  HOTELS.filter(function(h){return h.country===c && h.city===ct;}).forEach(function(h){
+    hSel.insertAdjacentHTML('beforeend','<option value="'+esc(h.name)+'">'+esc(h.name)+'</option>');
+  });
+  showResult(null);
+}
+function selectedHotel(){
+  return HOTELS.filter(function(h){return h.name===hSel.value;})[0]||null;
+}
+function showResult(h){
+  var scoreEl=document.getElementById('score'), badgeEl=document.getElementById('badge'),
+      cppEl=document.getElementById('cpp'), verEl=document.getElementById('verdict');
+  if(!h){
+    scoreEl.textContent='—'; badgeEl.textContent='Choose a hotel'; badgeEl.className='badge none';
+    cppEl.textContent=''; verEl.textContent='Pick a country, area and hotel on the left to see its value score.';
+  } else if(h.score==null){
+    scoreEl.textContent='—'; badgeEl.textContent='Not scored yet'; badgeEl.className='badge none';
+    cppEl.textContent=''; verEl.textContent='We haven’t logged the points and cash rate for this stay yet — its score fills in when the full review goes up.';
+  } else {
+    var bd=band(h.score);
+    scoreEl.textContent=h.score; badgeEl.textContent=bd.label; badgeEl.className='badge '+bd.cls;
+    cppEl.innerHTML='That’s about <b>'+cpp(h.score)+'p</b> per point.';
+    verEl.textContent=verdictText(h.score);
+  }
+  renderBoard();
+}
+function renderBoard(){
+  var sel=hSel.value;
+  var rows=HOTELS.filter(function(h){return h.score!=null;})
+    .sort(function(a,b){ return a.score-b.score; })
+    .slice(0, MAX_ROWS);
+  document.getElementById('board').innerHTML=rows.map(function(r,i){
+    var b=band(r.score);
+    var name=r.link?'<a href="'+r.link+'">'+esc(r.name)+'</a>':esc(r.name);
+    return '<tr class="'+(r.name===sel?'sel':'')+'">'+
+      '<td class="rank">'+(i+1)+'</td>'+
+      '<td><span class="hname">'+name+'</span><span class="hplace">'+esc(r.city)+', '+esc(r.country)+'</span></td>'+
+      '<td class="vscore">'+r.score+'</td>'+
+      '<td>'+cpp(r.score)+'p</td>'+
+      '<td><span class="dot '+b.cls+'"></span>'+b.label+'</td>'+
+    '</tr>';
+  }).join('');
+}
+
+cSel.addEventListener('change', fillCities);
+citySel.addEventListener('change', fillHotels);
+hSel.addEventListener('change', function(){ showResult(selectedHotel()); });
+renderBoard();
+
+// --- mobile nav ---
+(function(){
+  var nav=document.getElementById('mobileNav');
+  var openBtn=document.getElementById('menuOpen');
+  var closeBtn=document.getElementById('menuClose');
+  function open(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function close(){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+
+// --- header search ---
+(function(){
+  var box=document.getElementById('headerSearch');
+  var btn=document.getElementById('searchToggle');
+  var inp=document.getElementById('searchInput');
+  if(!box||!btn||!inp) return;
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    var open=box.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+    if(open){ inp.focus(); } else { inp.value=''; }
+  });
+  inp.addEventListener('keydown', function(e){
+    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search?q='+encodeURIComponent(q); }
+    else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
+  });
+})();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
