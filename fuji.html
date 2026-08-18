@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuji Marriott Hotel Lake Yamanaka — The Hotel Trail</title>
+<meta name="description" content="Our full review of the Fuji Marriott Hotel Lake Yamanaka — the private hot spring room, the mountain setting near Mt Fuji, the breakfast, the lounge, and our verdict.">
+<link rel="canonical" href="https://thehoteltrail.com/fuji">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Hotel Trail">
+<meta property="og:title" content="Fuji Marriott Hotel Lake Yamanaka — full review">
+<meta property="og:description" content="A calm mountain retreat near Mt Fuji, with spacious rooms, a good breakfast and your own private hot spring.">
+<meta property="og:url" content="https://thehoteltrail.com/fuji">
+<meta property="og:image" content="https://thehoteltrail.com/images/fuji-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fuji Marriott Hotel Lake Yamanaka — full review">
+<meta name="twitter:description" content="A calm mountain retreat near Mt Fuji, with spacious rooms and your own private hot spring.">
+<meta name="twitter:image" content="https://thehoteltrail.com/images/fuji-01.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   The Hotel Trail — design tokens (from brand design system)
+   ============================================================ */
+:root{
+  /* color */
+  --teal-900:#123642; --teal-700:#1c5a6b; --teal-600:#256f83; --teal-500:#2f8598;
+  --teal-400:#5aa3b3; --teal-100:#dcedf0;
+  --clay-700:#9a4a2c; --clay-600:#b85f38; --clay-500:#c8703d; --clay-400:#d99560; --clay-100:#f3ddc9;
+  --sand-050:#fdfaf5; --sand-100:#faf5ec; --sand-200:#f2e9d8; --sand-300:#e6d7bd;
+  --ink-900:#221f1c; --ink-700:#4a4540; --ink-500:#6f6a63; --ink-300:#a8a196; --ink-100:#d8d2c7;
+  --white:#ffffff;
+  --success-500:#4d7a52; --error-500:#b0452f; --warning-500:#c8942f;
+
+  --surface-page:var(--sand-050); --surface-card:var(--white); --surface-sunken:var(--sand-200);
+  --surface-inverse:var(--ink-900);
+  --text-primary:var(--ink-900); --text-secondary:#5e5a53; --text-muted:#6a655e;
+  --text-inverse:var(--sand-050); --text-link:var(--teal-700); --text-link-hover:var(--teal-600);
+  --accent-primary:var(--teal-600); --accent-primary-hover:var(--teal-700);
+  --accent-secondary:var(--clay-500); --accent-secondary-hover:var(--clay-600);
+  --border-subtle:var(--sand-300); --border-default:var(--ink-100); --border-strong:var(--ink-500);
+  --focus-ring:var(--teal-500);
+
+  /* type */
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Jost',-apple-system,'Segoe UI',sans-serif;
+  --text-display-xl:clamp(2.75rem,5vw,4.5rem);
+  --text-display-l:clamp(2.25rem,3.6vw,3.25rem);
+  --text-display-m:1.75rem; --text-title:1.375rem;
+  --text-body-l:1.125rem; --text-body:1rem; --text-body-s:0.875rem;
+  --text-caption:0.75rem; --text-overline:0.75rem;
+  --lh-tight:1.1; --lh-snug:1.28; --lh-normal:1.55; --lh-relaxed:1.7;
+  --tracking-tight:-0.01em; --tracking-wide:0.08em; --tracking-wider:0.16em;
+  --weight-regular:400; --weight-medium:500; --weight-semibold:600;
+
+  /* space */
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px;
+  --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px; --space-20:80px;
+  --space-24:96px; --space-32:128px;
+  --container-max:1200px; --container-narrow:760px; --gutter:24px;
+
+  /* effects */
+  --radius-s:2px; --radius-m:4px; --radius-l:8px; --radius-pill:999px;
+  --shadow-card:0 1px 2px rgba(34,31,28,0.04),0 6px 20px rgba(34,31,28,0.06);
+  --shadow-raised:0 4px 12px rgba(34,31,28,0.08),0 1px 3px rgba(34,31,28,0.05);
+  --shadow-overlay:0 20px 48px rgba(34,31,28,0.18);
+  --shadow-focus:0 0 0 3px rgba(47,133,152,0.28);
+  --ease-standard:cubic-bezier(0.4,0,0.2,1); --ease-out:cubic-bezier(0,0,0.2,1);
+  --duration-fast:140ms; --duration-normal:220ms; --blur-overlay:8px;
+}
+
+/* ============================================================
+   base reset
+   ============================================================ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:var(--font-body); color:var(--text-primary);
+  background:var(--surface-page); line-height:var(--lh-normal);
+  -webkit-font-smoothing:antialiased; font-size:var(--text-body);
+}
+img{max-width:100%;display:block}
+a{color:var(--text-link);text-decoration:none;transition:color var(--duration-fast) var(--ease-out)}
+a:hover{color:var(--text-link-hover)}
+:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-m)}
+h1,h2,h3,h4,p{margin:0}
+
+.container{max-width:var(--container-max);margin:0 auto;padding:0 var(--gutter)}
+
+.wordmark{
+  font-family:var(--font-display); font-style:italic; font-weight:var(--weight-semibold);
+  color:var(--ink-900); letter-spacing:var(--tracking-tight); font-size:1.625rem;
+}
+.eyebrow{
+  font-size:var(--text-overline); text-transform:uppercase; letter-spacing:var(--tracking-wider);
+  font-weight:var(--weight-semibold); color:#8f4325; margin-bottom:var(--space-4);
+}
+.display-l{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-l);line-height:var(--lh-tight);letter-spacing:var(--tracking-tight)}
+.lead{font-size:var(--text-body-l);color:var(--text-secondary);line-height:var(--lh-relaxed);max-width:52ch}
+
+.btn{
+  display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--font-body);
+  font-size:var(--text-body-s);font-weight:var(--weight-semibold);letter-spacing:var(--tracking-wide);
+  text-transform:uppercase;padding:var(--space-3) var(--space-6);border-radius:var(--radius-pill);
+  border:1px solid transparent;cursor:pointer;transition:background var(--duration-fast) var(--ease-out),
+  transform var(--duration-fast) var(--ease-out),color var(--duration-fast) var(--ease-out);
+}
+.btn:hover{text-decoration:none}
+.btn:active{transform:scale(0.97)}
+.btn-primary{background:var(--accent-primary);color:var(--text-inverse)}
+.btn-primary:hover{background:var(--accent-primary-hover);color:var(--text-inverse)}
+.btn-link{
+  display:inline-flex;align-items:center;gap:var(--space-2);font-weight:var(--weight-semibold);
+  font-size:var(--text-body-s);letter-spacing:var(--tracking-wide);text-transform:uppercase;
+  color:var(--text-link);
+}
+.btn-link:hover{color:var(--text-link-hover)}
+.btn-link svg{transition:transform var(--duration-fast) var(--ease-out)}
+.btn-link:hover svg{transform:translateX(3px)}
+
+.icon{width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;flex:none}
+.icon-sm{width:16px;height:16px}
+
+/* header */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--sand-050) 82%,transparent);
+  backdrop-filter:blur(var(--blur-overlay));-webkit-backdrop-filter:blur(var(--blur-overlay));
+  border-bottom:1px solid var(--border-subtle);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav{display:flex;align-items:center;gap:var(--space-8)}
+.nav a{
+  font-size:var(--text-body-s);font-weight:var(--weight-medium);color:var(--ink-700);
+  letter-spacing:var(--tracking-wide);text-transform:uppercase;
+}
+.nav a:hover{color:var(--accent-primary)}
+.header-actions{display:flex;align-items:center;gap:var(--space-4)}
+.icon-btn{
+  display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border-radius:var(--radius-round);background:transparent;border:1px solid transparent;
+  color:var(--ink-700);cursor:pointer;transition:background var(--duration-fast) var(--ease-out)}
+.icon-btn:hover{background:var(--sand-200);color:var(--ink-900)}
+.menu-toggle{display:none}
+.header-search{display:inline-flex;align-items:center}
+.header-search-input{width:0;opacity:0;pointer-events:none;padding:0;border:1px solid transparent;
+  border-radius:var(--radius-pill);background:var(--surface-card);font-family:var(--font-body);
+  font-size:var(--text-body-s);color:var(--ink-900);
+  transition:width var(--duration-normal) var(--ease-out),opacity var(--duration-fast) var(--ease-out),
+  padding var(--duration-normal) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
+.header-search.open .header-search-input{width:200px;opacity:1;pointer-events:auto;
+  padding:var(--space-2) var(--space-4);border-color:var(--border-default);margin-right:var(--space-1)}
+.header-search-input:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
+
+/* footer */
+.site-footer{background:var(--surface-inverse);color:var(--sand-200);padding:var(--space-20) 0 var(--space-10)}
+.footer-top{display:flex;justify-content:space-between;gap:var(--space-16);
+  flex-wrap:wrap;padding-bottom:var(--space-12);border-bottom:1px solid rgba(255,255,255,0.1)}
+.site-footer .wordmark{color:var(--sand-050)}
+.footer-blurb{color:var(--ink-300);max-width:34ch;margin-top:var(--space-4);font-size:var(--text-body-s)}
+.footer-cols{display:flex;gap:var(--space-16);flex-wrap:wrap}
+.footer-col h4{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wider);
+  color:var(--ink-300);margin-bottom:var(--space-4);font-weight:var(--weight-semibold)}
+.footer-col a{display:block;color:var(--sand-200);font-size:var(--text-body-s);margin-bottom:var(--space-3)}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{padding-top:var(--space-8);display:flex;justify-content:space-between;
+  gap:var(--space-4);flex-wrap:wrap;font-size:var(--text-caption);color:var(--ink-300)}
+
+/* mobile nav */
+.mobile-nav{
+  position:fixed;inset:0;z-index:60;background:var(--surface-page);
+  display:flex;flex-direction:column;padding:var(--space-6) var(--gutter);
+  transform:translateY(-100%);transition:transform var(--duration-normal) var(--ease-standard);
+  visibility:hidden;
+}
+.mobile-nav.open{transform:translateY(0);visibility:visible}
+.mobile-nav-head{display:flex;align-items:center;justify-content:space-between;height:72px}
+.mobile-nav-links{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-8)}
+.mobile-nav-links a{font-family:var(--font-display);font-style:italic;font-size:1.75rem;
+  color:var(--ink-900);padding:var(--space-3) 0;border-bottom:1px solid var(--border-subtle)}
+.mobile-nav-links a:hover{color:var(--accent-primary)}
+
+/* ============================================================
+   full review page
+   ============================================================ */
+.post-hero{position:relative;height:min(78vh,720px);min-height:420px;overflow:hidden;
+  display:flex;align-items:flex-end}
+.post-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.post-hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top, rgba(18,54,66,0.82) 0%, rgba(18,54,66,0.25) 45%, rgba(18,54,66,0.05) 100%)}
+.post-hero .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:var(--space-16)}
+.post-hero .eyebrow{color:var(--clay-400)}
+.post-hero h1{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-l);line-height:var(--lh-tight);color:var(--sand-050);max-width:20ch}
+.post-meta{display:flex;align-items:center;gap:var(--space-4);flex-wrap:wrap;margin-top:var(--space-5);
+  color:var(--sand-100);font-size:var(--text-body-s)}
+.post-meta .rating .icon{width:16px;height:16px}
+.post-meta .dot{opacity:.5}
+.post-meta .m{display:inline-flex;align-items:center;gap:var(--space-2)}
+.post-meta .m .icon{width:16px;height:16px;stroke:var(--sand-100);stroke-width:1.5;fill:none;
+  stroke-linecap:round;stroke-linejoin:round}
+
+.post{padding:var(--space-16) 0 var(--space-20)}
+.post-body{max-width:var(--container-narrow);margin:0 auto}
+.post-body p{font-size:var(--text-body-l);color:var(--text-secondary);line-height:var(--lh-relaxed);
+  margin-bottom:var(--space-6);text-align:justify}
+.post-section-title{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-semibold);
+  font-size:var(--text-display-m);color:var(--ink-900);margin:var(--space-12) 0 var(--space-6)}
+.post-lead{font-size:var(--text-body-l);color:var(--text-primary);line-height:var(--lh-relaxed);
+  font-weight:var(--weight-medium);text-align:justify}
+
+.post-subtitle{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--accent-primary);margin:var(--space-8) 0 var(--space-4)}
+.figs{max-width:var(--container-narrow);margin:var(--space-10) auto;padding:0 var(--gutter)}
+.figs figure{margin:0}
+.figs img{width:100%;height:100%;object-fit:cover;border-radius:var(--radius-m);
+  box-shadow:var(--shadow-card);display:block}
+.fig-full img{aspect-ratio:16/9}
+.fig-portrait{max-width:430px;margin:0 auto}
+.fig-portrait img{aspect-ratio:3/4}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+.grid-2.land img{aspect-ratio:16/9}
+.grid-3.land img{aspect-ratio:16/9}
+.grid-2.port img{aspect-ratio:3/4}
+.grid-3.port img{aspect-ratio:3/4}
+.grid-4.port img{aspect-ratio:3/4}
+.figcap{text-align:center;font-size:var(--text-caption);color:var(--text-muted);
+  margin-top:var(--space-3);letter-spacing:var(--tracking-wide);text-transform:uppercase}
+
+.verdict-block{max-width:var(--container-narrow);margin:var(--space-16) auto 0;
+  background:var(--surface-sunken);border:1px solid var(--border-subtle);border-left:4px solid var(--accent-secondary);
+  border-radius:var(--radius-m);padding:var(--space-8)}
+.verdict-block .eyebrow{color:#8f4325}
+.verdict-block p{font-size:var(--text-body-l);color:var(--text-primary);line-height:var(--lh-relaxed);
+  margin-bottom:0;text-align:justify}
+.glance{max-width:var(--container-narrow);margin:var(--space-8) auto;background:var(--surface-sunken);
+  border:1px solid var(--border-subtle);border-radius:var(--radius-l);padding:var(--space-6) var(--space-8);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5) var(--space-6)}
+.glance-item{display:flex;flex-direction:column;gap:3px}
+.glance-label{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);
+  color:var(--text-secondary);font-weight:var(--weight-semibold)}
+.glance-value{font-size:var(--text-body);color:var(--ink-900);font-weight:var(--weight-medium)}
+.glance-stars{color:var(--accent-secondary);letter-spacing:2px}
+@media (max-width:640px){.glance{grid-template-columns:repeat(2,1fr);padding:var(--space-5) var(--space-6)}}
+.subratings{max-width:var(--container-narrow);margin:var(--space-2) auto var(--space-8);display:grid;
+  grid-template-columns:1fr 1fr;gap:var(--space-3) var(--space-10)}
+.subrating{display:grid;grid-template-columns:5.5em 1fr 2.4em;align-items:center;gap:var(--space-3)}
+.subrating-label{font-size:var(--text-body-s);color:var(--ink-700);font-weight:var(--weight-medium)}
+.subrating-bar{height:8px;background:var(--sand-300);border-radius:var(--radius-pill);overflow:hidden}
+.subrating-fill{display:block;height:100%;background:var(--accent-secondary);border-radius:var(--radius-pill)}
+.subrating-num{font-size:var(--text-body-s);color:var(--ink-900);font-weight:var(--weight-semibold);text-align:right}
+@media (max-width:640px){.subratings{grid-template-columns:1fr}}
+.figs img{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(18,54,66,0.94);
+  display:none;align-items:center;justify-content:center;padding:var(--space-6)}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92vw;max-height:82vh;object-fit:contain;border-radius:var(--radius-m);box-shadow:var(--shadow-overlay)}
+.lightbox-cap{position:absolute;bottom:var(--space-6);left:0;right:0;text-align:center;
+  color:var(--sand-100);font-size:var(--text-body-s);padding:0 var(--space-8);margin:0}
+.lb-counter{position:absolute;top:var(--space-6);left:var(--space-8);color:var(--sand-200);
+  font-size:var(--text-caption);letter-spacing:var(--tracking-wide)}
+.lb-btn{position:absolute;background:rgba(255,255,255,0.12);border:none;color:#fff;
+  width:48px;height:48px;border-radius:var(--radius-pill);cursor:pointer;display:flex;
+  align-items:center;justify-content:center;transition:background var(--duration-fast) var(--ease-out)}
+.lb-btn:hover{background:rgba(255,255,255,0.25)}
+.lb-btn svg{width:24px;height:24px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.lb-close{top:var(--space-5);right:var(--space-5)}
+.lb-prev{left:var(--space-5);top:50%;transform:translateY(-50%)}
+.lb-next{right:var(--space-5);top:50%;transform:translateY(-50%)}
+@media(max-width:640px){.lb-btn{width:40px;height:40px}.lb-prev{left:8px}.lb-next{right:8px}}
+.book-cta{max-width:var(--container-narrow);margin:var(--space-10) auto;display:flex;align-items:center;
+  justify-content:space-between;gap:var(--space-6);flex-wrap:wrap;background:var(--surface-sunken);
+  border:1px solid var(--border-subtle);border-radius:var(--radius-l);padding:var(--space-6) var(--space-8)}
+.book-cta-title{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--ink-900)}
+.book-cta-note{font-size:var(--text-caption);color:var(--text-secondary);margin-top:var(--space-2);max-width:48ch}
+.book-cta .btn{flex:none}
+@media (max-width:520px){.book-cta{flex-direction:column;align-items:flex-start}}
+.breadcrumbs{max-width:var(--container-narrow);margin:0 auto var(--space-8);display:flex;flex-wrap:wrap;
+  align-items:center;gap:var(--space-2);font-size:var(--text-body-s);color:var(--text-secondary)}
+.breadcrumbs a{color:var(--text-link)}
+.breadcrumbs a:hover{color:var(--text-link-hover)}
+.breadcrumbs .bc-sep{color:var(--text-muted)}
+.breadcrumbs [aria-current="page"]{color:var(--ink-700)}
+.goodtoknow{max-width:var(--container-narrow);margin:var(--space-2) auto var(--space-10);
+  background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-l);
+  padding:var(--space-6) var(--space-8);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5) var(--space-8)}
+.goodtoknow h3{grid-column:1/-1;font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--ink-900);margin:0 0 calc(-1 * var(--space-1))}
+.gtk-item{display:flex;flex-direction:column;gap:var(--space-1)}
+.gtk-label{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);
+  color:var(--text-secondary);font-weight:var(--weight-semibold);display:inline-flex;align-items:center;gap:var(--space-2)}
+.gtk-label svg{width:15px;height:15px;stroke:var(--accent-primary);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.gtk-value{font-size:var(--text-body-s);color:var(--ink-700);line-height:var(--lh-normal)}
+@media(max-width:640px){.goodtoknow{grid-template-columns:1fr;padding:var(--space-5) var(--space-6)}}
+.post .container{display:grid;grid-template-columns:200px minmax(0,1fr);gap:var(--space-12);max-width:1060px;align-items:start}
+.post-flow{min-width:0}
+.post-toc{position:sticky;top:92px;font-size:var(--text-body-s)}
+.post-toc-lbl{font-size:var(--text-caption);text-transform:uppercase;letter-spacing:var(--tracking-wide);font-weight:var(--weight-semibold);color:var(--text-secondary);margin:0 0 var(--space-3) 14px}
+.post-toc ul{list-style:none;margin:0;padding:0;border-left:2px solid var(--sand-300)}
+.post-toc a{display:block;padding:7px 0 7px 14px;margin-left:-2px;border-left:2px solid transparent;color:var(--text-secondary);transition:color var(--duration-fast) var(--ease-out),border-color var(--duration-fast) var(--ease-out)}
+.post-toc a:hover{color:var(--ink-900)}
+.post-toc a.active{color:#8f4325;border-left-color:var(--accent-secondary);font-weight:var(--weight-semibold)}
+.post-section-title,.verdict-block,.goodtoknow{scroll-margin-top:96px}
+@media(max-width:900px){
+  .post .container{grid-template-columns:1fr;gap:0}
+  .post-toc{position:sticky;top:72px;z-index:20;background:var(--surface-page);padding:10px 0;margin-bottom:var(--space-6);border-bottom:1px solid var(--border-subtle)}
+  .post-toc-lbl{display:none}
+  .post-toc ul{display:flex;gap:var(--space-2);overflow-x:auto;border-left:none;padding-bottom:4px}
+  .post-toc a{white-space:nowrap;border:1px solid var(--border-subtle);border-radius:var(--radius-pill);padding:6px 14px;margin:0}
+  .post-toc a.active{border-color:var(--accent-secondary);background:var(--sand-100)}
+}
+.post-back{max-width:var(--container-narrow);margin:var(--space-12) auto 0}
+
+@media (max-width:900px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .nav,.header-actions .btn{display:none}
+  .menu-toggle{display:inline-flex}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr 1fr}
+  .fig-full img{aspect-ratio:4/3}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Hotel",
+    "name": "Fuji Marriott Hotel Lake Yamanaka",
+    "image": "https://thehoteltrail.com/images/fuji-01.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Yamanakako",
+      "addressCountry": "JP"
+    }
+  },
+  "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" },
+  "author": { "@type": "Organization", "name": "The Hotel Trail" },
+  "publisher": { "@type": "Organization", "name": "The Hotel Trail" },
+  "datePublished": "2026-03-31",
+  "url": "https://thehoteltrail.com/fuji"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thehoteltrail.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Japan", "item": "https://thehoteltrail.com/destinations?country=Japan" },
+    { "@type": "ListItem", "position": 3, "name": "Fuji Marriott Hotel Lake Yamanaka" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="all-reviews">Reviews</a>
+      <a href="hotels">All hotels</a>
+      <a href="destinations">Destinations</a>
+      <a href="value" style="line-height:1.15;text-align:center">Marriott Bonvoy<br>Points Value</a>
+      <a href="/#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <div class="header-search" id="headerSearch">
+        <input type="search" id="searchInput" class="header-search-input" placeholder="Search reviews&hellip;" aria-label="Search reviews" autocomplete="off" />
+        <button class="icon-btn" id="searchToggle" aria-label="Search" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      </div>
+      <a href="all-reviews" class="btn btn-primary">Latest reviews</a>
+      <button class="icon-btn menu-toggle" id="menuOpen" aria-label="Open menu" aria-expanded="false">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="container mobile-nav-head">
+    <span class="wordmark">The Hotel Trail</span>
+    <button class="icon-btn" id="menuClose" aria-label="Close menu">
+      <svg class="icon" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="container mobile-nav-links" aria-label="Mobile">
+    <a href="all-reviews">Reviews</a>
+    <a href="hotels">All hotels</a>
+    <a href="destinations">Destinations</a>
+    <a href="value" style="line-height:1.15">Marriott Bonvoy<br>Points Value</a>
+    <a href="/#about">About</a>
+  </nav>
+</div>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="post-hero">
+  <img src="images/fuji-01.jpg" alt="Fuji Marriott Hotel Lake Yamanaka premium king room" />
+  <div class="container hero-inner">
+    <p class="eyebrow">Mountain &middot; Japan</p>
+    <h1>Fuji Marriott Hotel Lake Yamanaka</h1>
+    <div class="post-meta">
+      <span class="rating" id="heroStars" aria-label="4 out of 5"></span>
+      <span class="dot">&middot;</span>
+      <span class="m"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Lake Yamanaka, Japan</span>
+      <span class="dot">&middot;</span>
+      <span class="m"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>2-night stay</span>
+    </div>
+  </div>
+</section>
+
+<article class="post">
+  <div class="container">
+    <nav class="post-toc" aria-label="On this page">
+      <p class="post-toc-lbl">On this page</p>
+      <ul>
+        <li><a href="#s-goodtoknow">Good to know</a></li>
+        <li><a href="#s-arrival">Arrival</a></li>
+        <li><a href="#s-room">Room</a></li>
+        <li><a href="#s-bathroom">Bathroom</a></li>
+        <li><a href="#s-food">Food</a></li>
+        <li><a href="#s-facilities">Facilities</a></li>
+        <li><a href="#s-verdict">Verdict</a></li>
+      </ul>
+    </nav>
+    <div class="post-flow">
+
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="bc-sep">&rsaquo;</span>
+      <a href="destinations?country=Japan">Japan</a>
+      <span class="bc-sep">&rsaquo;</span>
+      <span aria-current="page">Fuji Marriott Hotel Lake Yamanaka</span>
+    </nav>
+
+    <div class="post-body">
+      <p class="post-lead">A calm mountain retreat in the Fuji Five Lakes, a short drive from Mt Fuji &mdash; spacious rooms, a genuinely good breakfast, and the quiet luxury of your own private hot spring.</p>
+    </div>
+
+    <div class="glance">
+      <div class="glance-item"><span class="glance-label">Location</span><span class="glance-value">Lake Yamanaka, Japan</span></div>
+      <div class="glance-item"><span class="glance-label">Room</span><span class="glance-value">Premium king with private onsen</span></div>
+      <div class="glance-item"><span class="glance-label">Length of stay</span><span class="glance-value">2 nights</span></div>
+      <div class="glance-item"><span class="glance-label">When</span><span class="glance-value">March 2026</span></div>
+      <div class="glance-item"><span class="glance-label">Price</span><span class="glance-value">&pound;&pound; &middot; mid-range</span></div>
+      <div class="glance-item"><span class="glance-label">Our rating</span><span class="glance-value"><span class="glance-stars">&#9733;&#9733;&#9733;&#9733;</span>&#9734; 4/5</span></div>
+    </div>
+
+    <div class="subratings">
+      <div class="subrating"><span class="subrating-label">Location</span><span class="subrating-bar"><span class="subrating-fill" style="width:80%"></span></span><span class="subrating-num">4.0</span></div>
+      <div class="subrating"><span class="subrating-label">Service</span><span class="subrating-bar"><span class="subrating-fill" style="width:70%"></span></span><span class="subrating-num">3.5</span></div>
+      <div class="subrating"><span class="subrating-label">Room</span><span class="subrating-bar"><span class="subrating-fill" style="width:90%"></span></span><span class="subrating-num">4.5</span></div>
+      <div class="subrating"><span class="subrating-label">Value</span><span class="subrating-bar"><span class="subrating-fill" style="width:80%"></span></span><span class="subrating-num">4.0</span></div>
+      <div class="subrating"><span class="subrating-label">Food</span><span class="subrating-bar"><span class="subrating-fill" style="width:80%"></span></span><span class="subrating-num">4.0</span></div>
+    </div>
+
+    <div class="goodtoknow" id="s-goodtoknow">
+      <h3>Good to know</h3>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Getting there</span><span class="gtk-value">A bus from Mishima Station (South Gate) to Fujisan Yamanakako, then a 10-minute hotel shuttle. Much easier with a car.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg>Wi-Fi</span><span class="gtk-value">Free Wi-Fi throughout.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M4 8h13v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 9h2a2 2 0 0 1 0 4h-2"/><path d="M4 21h13"/></svg>Breakfast</span><span class="gtk-value">Buffet with Japanese and Western dishes &mdash; plenty of choice, with excellent fruit and pastries.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Check-in / out</span><span class="gtk-value">Standard 3pm check-in, 12pm checkout (early check-in and 4pm checkout for certain Marriott Bonvoy memberships).</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z"/></svg>Worth the points</span><span class="gtk-value">A solid mid-tier redemption &mdash; we paid around &pound;165 a night in cash. Book a room with a private hot spring; it&rsquo;s the highlight.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Who it&rsquo;s for</span><span class="gtk-value">Nature lovers, hikers and couples wanting a private onsen near Mt Fuji. Trickier without a car.</span></div>
+      <div class="gtk-item"><span class="gtk-label"><svg viewBox="0 0 24 24"><path d="M4 20V12M10 20V6M16 20V9"/><path d="M3 20h18"/></svg>Marriott Bonvoy value</span><span class="gtk-value">232 &mdash; points per night &divide; price per night; the lower the better (under 150 is great value).</span></div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title" id="s-arrival">Arrival</h2>
+      <p>We gave the Fuji Marriott Hotel Lake Yamanaka two nights, drawn by its spot up in the Fuji Five Lakes region. Getting there is a small adventure in itself: a bus from Mishima Station&rsquo;s South Gate to Fujisan Yamanakako, where the hotel shuttle scooped us up for the last ten-minute leg. The hotel is a 5&ast; that opened back in July 2017. We had booked a premium king room with its own private hot spring for around &pound;165 a night and, with the place fully booked, no upgrade came our way this time &mdash; no matter, that private onsen was the reason we came.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/fuji-01.jpg" alt="Premium king room with forest view" loading="lazy" /></figure></div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title" id="s-room">Room</h2>
+      <h3 class="post-subtitle">Bedroom</h3>
+      <p>The room came in at 42 square metres, nicely designed, with a large TV facing the bed and a wall of forest filling the window. One quirk worth flagging: there is no balcony &mdash; not in ours, and not in any of the rooms.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-full"><figure><img src="images/fuji-02.jpg" alt="Bedroom with forest view" loading="lazy" /></figure></div>
+    </div>
+    <div class="figs">
+      <div class="grid-2 port">
+        <figure><img src="images/fuji-03.jpg" alt="Room design and layout" loading="lazy" /></figure>
+        <figure><img src="images/fuji-04.jpg" alt="Room detail" loading="lazy" /></figure>
+      </div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title" id="s-bathroom">Bathroom</h2>
+      <p>The bathroom itself was on the modest side, but that hardly registered &mdash; because tucked into it was our own private onsen, comfortably one of the highlights of the whole stay.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-2 port">
+        <figure><img src="images/fuji-05.jpg" alt="Private onsen bathroom" loading="lazy" /></figure>
+        <figure><img src="images/fuji-06.jpg" alt="Private hot spring in the room" loading="lazy" /></figure>
+      </div>
+    </div>
+    <div class="post-body">
+      <h3 class="post-subtitle">Amenities</h3>
+      <p>The usual comforts were all present and a notch above: bathrobes, flip flops and umbrellas, plus properly good tea and coffee to see us through the quiet evenings.</p>
+    </div>
+    <div class="figs">
+      <div class="fig-portrait"><figure><img src="images/fuji-07.jpg" alt="Bathrobes and in-room amenities" loading="lazy" /></figure></div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title" id="s-food">Food</h2>
+      <h3 class="post-subtitle">Breakfast</h3>
+      <p>Breakfast was a buffet with a foot in both camps, Japanese and Western. There were several kinds of fish, cold cuts and a soup station, and the fruit and pastries were particularly good. All told, a high-quality spread with plenty of choice to fuel a day on the trails.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-3 port">
+        <figure><img src="images/fuji-08.jpg" alt="Breakfast buffet" loading="lazy" /></figure>
+        <figure><img src="images/fuji-09.jpg" alt="Japanese breakfast dishes" loading="lazy" /></figure>
+        <figure><img src="images/fuji-10.jpg" alt="Fresh fish and cold cuts" loading="lazy" /></figure>
+        <figure><img src="images/fuji-11.jpg" alt="Soup station" loading="lazy" /></figure>
+        <figure><img src="images/fuji-12.jpg" alt="Pastries and fruit" loading="lazy" /></figure>
+        <figure><img src="images/fuji-13.jpg" alt="Breakfast plate" loading="lazy" /></figure>
+      </div>
+    </div>
+
+    <div class="post-body">
+      <h2 class="post-section-title" id="s-facilities">Facilities</h2>
+      <h3 class="post-subtitle">Lounge</h3>
+      <p>The lounge here was unlike any we had used before. A little special tea and coffee appeared through the day, but its real purpose came at dinner &mdash; a takeaway buffet (yes, takeaway only). They handed out trays to carry the food back to the room, along with a choice of drinks to take with it. The food itself was nothing to write home about, but with no restaurants nearby it was a welcome way to keep hunger at bay and end the evening content.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-2 port">
+        <figure><img src="images/fuji-14.jpg" alt="Executive lounge" loading="lazy" /></figure>
+        <figure><img src="images/fuji-15.jpg" alt="Lounge takeaway buffet" loading="lazy" /></figure>
+      </div>
+    </div>
+    <div class="post-body">
+      <h3 class="post-subtitle">Gym and onsen</h3>
+      <p>There was a well-equipped gym and even ping pong tables, but the real draw was the outdoor mineral hot spring &mdash; a proper open-air onsen, with separate areas for men and women.</p>
+    </div>
+    <div class="figs">
+      <div class="grid-2 port">
+        <figure><img src="images/fuji-16.jpg" alt="Well-equipped gym" loading="lazy" /></figure>
+        <figure><img src="images/fuji-17.jpg" alt="Outdoor mineral hot spring" loading="lazy" /></figure>
+      </div>
+    </div>
+
+    <div class="verdict-block" id="s-verdict">
+      <p class="eyebrow">The verdict</p>
+      <p>This is a hotel in the shadow of Mt Fuji, so the location is a gift for anyone who loves nature and hiking. Reaching it without a car takes a bit of effort &mdash; a train and then a bus &mdash; but once you are there the rooms are spacious, the breakfast is very good, and the whole place has a wonderfully relaxing feel. Our one tip: book a room with a private hot spring. You won&rsquo;t regret it.</p>
+    </div>
+
+    <div class="book-cta">
+      <div>
+        <p class="book-cta-title">Ready to book the Fuji Marriott?</p>
+        <p class="book-cta-note">Compare live rates across booking sites. We may earn a small commission if you book through our link &mdash; at no extra cost to you.</p>
+      </div>
+      <a class="btn btn-primary" href="https://www.stay22.com/allez/roam?aid=thehoteltrail&amp;address=Fuji%20Marriott%20Hotel%20Lake%20Yamanaka%2C%20Yamanakako%2C%20Japan&amp;campaign=fuji-review-foot" target="_blank" rel="sponsored nofollow noopener">Check rates &amp; availability</a>
+    </div>
+
+    <div class="post-back">
+      <a href="/" class="btn-link"><svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back to home</a>
+    </div>
+
+    </div>
+  </div>
+</article>
+</main>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Photo viewer">
+  <span class="lb-counter" id="lbCounter"></span>
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close (Esc)"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <img id="lbImg" src="" alt="" />
+  <p class="lightbox-cap" id="lbCap"></p>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+</div>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer" id="about">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="wordmark">The Hotel Trail</span>
+        <p class="footer-blurb">Hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>About</h4>
+          <a href="our-story">Our story</a>
+        </div>
+        <div class="footer-col">
+          <h4>Follow</h4>
+          <a href="https://www.instagram.com/thehoteltrail/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span style="flex-basis:100%">Some links on The Hotel Trail are affiliate links &mdash; if you book through them we may earn a small commission, at no extra cost to you.</span>
+      <span>&copy; <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
+      <span>Made on the road.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// --- hero star rating (4 of 5) ---
+(function(){
+  var el=document.getElementById('heroStars'); if(!el) return;
+  var sp='M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z';
+  var s='';for(var i=0;i<5;i++){ var cls=i<4?'star-filled':'star-empty'; s+='<svg class="icon '+cls+'" viewBox="0 0 24 24"><path d="'+sp+'"/></svg>'; }
+  el.innerHTML=s;
+})();
+
+// --- mobile nav ---
+(function(){
+  var nav=document.getElementById('mobileNav');
+  var openBtn=document.getElementById('menuOpen');
+  var closeBtn=document.getElementById('menuClose');
+  function open(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function close(){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+
+// --- header search (expands on click; navigates only on Enter) ---
+(function(){
+  var box=document.getElementById('headerSearch');
+  var btn=document.getElementById('searchToggle');
+  var inp=document.getElementById('searchInput');
+  if(!box||!btn||!inp) return;
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    var open=box.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open?'true':'false');
+    if(open){ inp.focus(); } else { inp.value=''; }
+  });
+  inp.addEventListener('keydown', function(e){
+    if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search?q='+encodeURIComponent(q); }
+    else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
+  });
+})();
+
+// --- lightbox gallery ---
+(function(){
+  var imgs=[].slice.call(document.querySelectorAll('.figs img'));
+  var lb=document.getElementById('lightbox'); if(!imgs.length||!lb) return;
+  var lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap'),lbCount=document.getElementById('lbCounter'),idx=0;
+  function show(i){ idx=(i+imgs.length)%imgs.length; var im=imgs[idx]; lbImg.setAttribute('src',im.currentSrc||im.src); lbImg.setAttribute('alt',im.alt||''); lbCap.textContent=im.alt||''; lbCount.textContent=(idx+1)+' / '+imgs.length; }
+  function open(i){ show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  imgs.forEach(function(im,i){ im.addEventListener('click',function(){ open(i); }); });
+  document.getElementById('lbClose').addEventListener('click',close);
+  document.getElementById('lbPrev').addEventListener('click',function(e){ e.stopPropagation(); show(idx-1); });
+  document.getElementById('lbNext').addEventListener('click',function(e){ e.stopPropagation(); show(idx+1); });
+  lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown',function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(idx-1); else if(e.key==='ArrowRight') show(idx+1); });
+})();
+
+// --- sticky TOC scroll-spy ---
+(function(){
+  var links=[].slice.call(document.querySelectorAll(".post-toc a")); if(!links.length) return;
+  var map={},targets=[];
+  links.forEach(function(a){ var id=a.getAttribute("href").slice(1),el=document.getElementById(id); if(el){map[id]=a;targets.push(el);} });
+  function setActive(id){ links.forEach(function(a){a.classList.remove("active");}); if(map[id]) map[id].classList.add("active"); }
+  if("IntersectionObserver" in window){
+    var obs=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) setActive(e.target.id); }); },{rootMargin:"-45% 0px -50% 0px",threshold:0});
+    targets.forEach(function(t){ obs.observe(t); });
+  }
+  links.forEach(function(a){ a.addEventListener("click",function(){ setActive(a.getAttribute("href").slice(1)); }); });
+  if(links.length) setActive(links[0].getAttribute("href").slice(1));
+})();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
