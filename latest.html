@@ -3,20 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="google-site-verification" content="KMFrnxEdksVjUP2cDJn-mLilFghAHZHPuNvifj6O7ww" />
-<title>The Hotel Trail — hotel reviews, country by country</title>
-<meta name="description" content="Photo-rich hotel reviews from a UK couple — real stays, plain verdicts and tips for booking better. Browse reviews by country.">
-<link rel="canonical" href="https://thehoteltrail.com/">
+<title>Latest reviews — The Hotel Trail</title>
+<meta name="description" content="Our five most recent hotel stays — the newest reviews first, with real photos, star ratings and one-line verdicts.">
+<link rel="canonical" href="https://thehoteltrail.com/latest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Hotel Trail">
-<meta property="og:title" content="The Hotel Trail — hotel reviews, country by country">
-<meta property="og:description" content="Photo-rich hotel reviews from a UK couple — real stays, plain verdicts and tips for booking better.">
-<meta property="og:url" content="https://thehoteltrail.com/">
-<meta property="og:image" content="https://thehoteltrail.com/images/hero-web.jpg">
+<meta property="og:title" content="Latest reviews — The Hotel Trail">
+<meta property="og:description" content="Our five most recent hotel stays, newest first — with real photos and verdicts.">
+<meta property="og:url" content="https://thehoteltrail.com/latest">
+<meta property="og:image" content="https://thehoteltrail.com/images/taaktana-22.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Hotel Trail — hotel reviews, country by country">
-<meta name="twitter:description" content="Photo-rich hotel reviews from a UK couple — real stays, plain verdicts and tips for booking better.">
-<meta name="twitter:image" content="https://thehoteltrail.com/images/hero-web.jpg">
+<meta name="twitter:title" content="Latest reviews — The Hotel Trail">
+<meta name="twitter:description" content="Our five most recent hotel stays, newest first — with real photos and verdicts.">
+<meta name="twitter:image" content="https://thehoteltrail.com/images/taaktana-22.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&amp;family=Jost:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -279,23 +278,6 @@ h1,h2,h3,h4,p{margin:0}
 /* ============================================================
    footer
    ============================================================ */
-/* newsletter */
-.newsletter{background:var(--surface-sunken);border-top:1px solid var(--border-subtle);
-  border-bottom:1px solid var(--border-subtle);padding:var(--space-16) 0}
-.newsletter-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--space-10) var(--space-16);align-items:center}
-.newsletter-copy .display-m{margin-top:var(--space-2)}
-.newsletter-blurb{margin-top:var(--space-3);color:var(--text-secondary);font-size:var(--text-body-l);
-  line-height:var(--lh-relaxed);max-width:46ch}
-.newsletter-form{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center}
-.newsletter-form input{flex:1 1 240px;min-width:0;font-family:var(--font-body);font-size:var(--text-body-l);
-  color:var(--ink-900);background:var(--surface-card);border:1px solid var(--border-default);
-  border-radius:var(--radius-pill);padding:var(--space-3) var(--space-5)}
-.newsletter-form input:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
-.newsletter-form .btn{flex:0 0 auto}
-.newsletter-note{flex-basis:100%;font-size:var(--text-caption);color:var(--text-muted);margin:0}
-.newsletter-note.success{color:var(--success-500);font-weight:var(--weight-semibold);font-size:var(--text-body-s)}
-.newsletter-note.error{color:var(--error-500)}
-@media(max-width:800px){.newsletter-inner{grid-template-columns:1fr;gap:var(--space-6)}}
 .site-footer{background:var(--surface-inverse);color:var(--sand-200);padding:var(--space-20) 0 var(--space-10)}
 .footer-top{display:flex;justify-content:space-between;gap:var(--space-16);
   flex-wrap:wrap;padding-bottom:var(--space-12);border-bottom:1px solid rgba(255,255,255,0.1)}
@@ -346,44 +328,43 @@ h1,h2,h3,h4,p{margin:0}
   .country-grid{grid-template-columns:1fr 1fr}
   .footer-top{flex-direction:column;gap:var(--space-10)}
 }
+
+/* ============================================================
+   all reviews page
+   ============================================================ */
+.allrev{padding:var(--space-16) 0 var(--space-20)}
+.allrev-head{text-align:center;margin-bottom:var(--space-12)}
+.allrev-head .display-l{margin-top:var(--space-2)}
+.allrev-head .lead{margin:var(--space-5) auto 0}
+.rev-controls{display:flex;flex-wrap:wrap;gap:var(--space-4);align-items:flex-end;justify-content:center;margin-bottom:var(--space-5)}
+.rev-controls label{display:flex;flex-direction:column;gap:var(--space-1);font-size:var(--text-caption);
+  text-transform:uppercase;letter-spacing:var(--tracking-wide);color:var(--text-secondary);font-weight:var(--weight-semibold)}
+.rev-controls select{font-family:var(--font-body);font-size:var(--text-body-s);color:var(--ink-900);
+  background:var(--surface-card);border:1px solid var(--border-default);border-radius:var(--radius-m);
+  padding:var(--space-2) var(--space-3);cursor:pointer}
+.rev-controls select:focus-visible{outline:none;border-color:var(--accent-primary);box-shadow:var(--shadow-focus)}
+.rev-clear{background:none;border:none;color:var(--text-link);cursor:pointer;font:inherit;
+  font-size:var(--text-body-s);font-weight:var(--weight-semibold);padding:var(--space-2)}
+.rev-clear:hover{color:var(--text-link-hover)}
+.rev-count{text-align:center;color:var(--text-secondary);font-size:var(--text-body-s);margin-bottom:var(--space-8)}
+.year-group{margin-top:var(--space-12)}
+.year-label{font-family:var(--font-display);font-style:italic;font-weight:var(--weight-medium);
+  font-size:var(--text-title);color:var(--accent-secondary);margin-bottom:var(--space-6);
+  padding-bottom:var(--space-3);border-bottom:1px solid var(--border-subtle)}
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "name": "The Hotel Trail",
-      "url": "https://thehoteltrail.com/",
-      "description": "Photo-rich hotel reviews from a UK couple — real stays, plain verdicts and tips for booking better.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://thehoteltrail.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@type": "Organization",
-      "name": "The Hotel Trail",
-      "url": "https://thehoteltrail.com/",
-      "logo": "https://thehoteltrail.com/images/hero-web.jpg"
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
 <!-- ============================ HEADER ============================ -->
 <header class="site-header">
   <div class="container header-inner">
-    <a href="#" class="wordmark" aria-label="The Hotel Trail — home" style="display:inline-flex;align-items:center;gap:10px"><img src="images/logo-mark.png" alt="" width="40" height="40" style="width:40px;height:40px;border-radius:50%;display:block" />The Hotel Trail</a>
+    <a href="/" class="wordmark" aria-label="The Hotel Trail — home">The Hotel Trail</a>
     <nav class="nav" aria-label="Primary">
       <a href="all-reviews">Reviews</a>
       <a href="hotels">Hotels</a>
       <a href="destinations">Destinations</a>
       <a href="value" style="line-height:1.15;text-align:center">Marriott Bonvoy<br>Points Value</a>
-      <a href="#about">About</a>
+      <a href="/#about">About</a>
     </nav>
     <div class="header-actions">
       <div class="header-search" id="headerSearch">
@@ -413,81 +394,23 @@ h1,h2,h3,h4,p{margin:0}
     <a href="hotels">Hotels</a>
     <a href="destinations">Destinations</a>
     <a href="value" style="line-height:1.15">Marriott Bonvoy<br>Points Value</a>
-    <a href="#about">About</a>
+    <a href="/#about">About</a>
   </nav>
 </div>
 
 <main>
-
-<!-- ============================ HERO + FEATURED ============================ -->
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Featured stay</p>
-      <h1 class="display-xl">TA’AKTANA, a true luxury resort in Labuan Bajo, Indonesia</h1>
-      <p class="lead">This hotel offered us an unforgettable experience, with outstanding service and quality of food, while the proximity to Komodo Island is a bonus.</p>
-      <div class="hero-cta">
-        <a href="taaktana" class="btn btn-primary">Read the full stay</a>
-        <a href="#reviews" class="btn btn-ghost">Browse all reviews</a>
-      </div>
-    </div>
-    <img class="hero-media" src="images/hero-web.jpg" alt="Featured hotel" loading="eager" />
-  </div>
-</section>
-
-<!-- ============================ REVIEWS GRID ============================ -->
-<section class="section" id="reviews">
+<section class="allrev">
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Recent reviews</p>
-        <h2 class="display-l">The latest hotels we've checked into</h2>
-      </div>
-      <a href="all-reviews" class="btn-link">See all reviews
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
+    <div class="allrev-head">
+      <p class="eyebrow">Just checked out</p>
+      <h1 class="display-l">Latest reviews</h1>
+      <p class="lead">Our five most recent stays, newest first.</p>
     </div>
-
-    <div class="card-grid" id="reviewGrid"><!-- cards injected by JS from placeholder data --></div>
+    <div id="allReviews"></div>
+    <p style="text-align:center;margin-top:var(--space-12)"><a href="all-reviews" class="btn btn-ghost">See all reviews</a></p>
   </div>
 </section>
-
-<!-- ============================ BROWSE BY COUNTRY ============================ -->
-<section class="section country-section" id="countries">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Destinations</p>
-        <h2 class="display-l">Browse by country</h2>
-      </div>
-      <a href="destinations" class="btn-link">All destinations
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-
-    <div class="country-grid" id="countryGrid"><!-- tiles injected by JS from placeholder data --></div>
-  </div>
-</section>
-
 </main>
-
-<!-- ============================ NEWSLETTER ============================ -->
-<section class="newsletter">
-  <div class="container newsletter-inner">
-    <div class="newsletter-copy">
-      <p class="eyebrow">Newsletter</p>
-      <h2 class="display-m">Get our latest hotel reviews</h2>
-      <p class="newsletter-blurb">New reviews, points sweet spots and the odd travel tip &mdash; straight to your inbox. No spam, unsubscribe anytime.</p>
-    </div>
-    <form class="newsletter-form" id="signupForm" novalidate>
-      <input type="email" id="signupEmail" name="fields[email]" placeholder="you@email.com" aria-label="Email address" autocomplete="email" required />
-      <input type="hidden" name="ml-submit" value="1" />
-      <input type="hidden" name="anticsrf" value="true" />
-      <button type="submit" class="btn btn-primary">Subscribe</button>
-      <p class="newsletter-note" id="signupMsg">We&rsquo;ll only email you new reviews.</p>
-    </form>
-  </div>
-</section>
 
 <!-- ============================ FOOTER ============================ -->
 <footer class="site-footer" id="about">
@@ -495,7 +418,7 @@ h1,h2,h3,h4,p{margin:0}
     <div class="footer-top">
       <div>
         <span class="wordmark">The Hotel Trail</span>
-        <p class="footer-blurb">Hotel reviews from the road — real photos, plain verdicts, and the tips that make a stay worth it.</p>
+        <p class="footer-blurb">Hotel reviews from the road &mdash; real photos, plain verdicts, and the tips that make a stay worth it.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
@@ -510,7 +433,7 @@ h1,h2,h3,h4,p{margin:0}
     </div>
     <div class="footer-bottom">
       <span style="flex-basis:100%">Some links on The Hotel Trail are affiliate links &mdash; if you book through them we may earn a small commission, at no extra cost to you.</span>
-      <span>© <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
+      <span>&copy; <span id="year"></span> The Hotel Trail. All reviews are our own.</span>
       <span>Made on the road.</span>
     </div>
   </div>
@@ -518,29 +441,19 @@ h1,h2,h3,h4,p{margin:0}
 
 <script>
 /* ============================================================
-   The Hotel Trail — page behavior (vanilla JS)
-   Placeholder data lives here so you can swap in real reviews
-   by editing the two arrays below.
+   The Hotel Trail — All reviews (chronological, oldest first)
+   Keep this `reviews` array in sync with /.
    ============================================================ */
-
-// --- placeholder review data (edit these) ---
 var reviews = [
-  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"images/nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"nagasaki" },
-  { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"images/sheraton-hiroshima-web.jpg", date:"March 2026", dateSort:"2026-03" },
-  { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"images/aloft-osaka-web.jpg", date:"March 2026", dateSort:"2026-03" },
-  { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"images/fuji-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"fuji" },
-  { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"images/sheraton-tokyo-bay-web.jpg", date:"April 2026", dateSort:"2026-04" },
-  { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", rating:4.5, verdict:"A bit of luxury amongst history.", img:"images/w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" }
+  { tag:"City stay",   title:"Nagasaki Marriott Hotel", place:"Nagasaki, Japan", country:"Japan", chain:"Marriott", rating:5, verdict:"A true gem in a less touristy area of Japan.", img:"images/nagasaki-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"nagasaki" },
+  { tag:"City stay",   title:"Sheraton Grand Hiroshima Hotel", place:"Hiroshima, Japan", country:"Japan", chain:"Sheraton", rating:4, verdict:"Great location overlooking the Shinkansen trains.", img:"images/sheraton-hiroshima-web.jpg", date:"March 2026", dateSort:"2026-03" },
+  { tag:"City stay",   title:"Aloft by Marriott Osaka Dojima", place:"Osaka, Japan", country:"Japan", chain:"Aloft", rating:3.5, verdict:"Perfect for getting some rest after a day of steps.", img:"images/aloft-osaka-web.jpg", date:"March 2026", dateSort:"2026-03" },
+  { tag:"Mountain",    title:"Fuji Marriott Hotel Lake Yamanaka", place:"Lake Yamanaka, Japan", country:"Japan", chain:"Marriott", rating:4, verdict:"Great location for hiking and admiring Mount Fuji.", img:"images/fuji-marriott-web.jpg", date:"March 2026", dateSort:"2026-03", link:"fuji" },
+  { tag:"Resort",      title:"Sheraton Grande Tokyo Bay Hotel", place:"Tokyo, Japan", country:"Japan", chain:"Sheraton", rating:3.5, verdict:"Right next to Disneyland, so a bit crowded, but good value for money.", img:"images/sheraton-tokyo-bay-web.jpg", date:"April 2026", dateSort:"2026-04" },
+  { tag:"City stay",   title:"W Amman", place:"Amman, Jordan", country:"Jordan", chain:"W Hotels", rating:4.5, verdict:"A bit of luxury amongst history.", img:"images/w-amman-web.jpg", date:"February 2026", dateSort:"2026-02" },
+  { tag:"Resort",      title:"Ta’aktana, a Luxury Collection Resort & Spa", place:"Labuan Bajo, Indonesia", country:"Indonesia", chain:"Luxury Collection", rating:5, verdict:"Our top stay yet — outstanding service and food, a short hop from Komodo Island.", img:"images/taaktana-22.jpg", date:"November 2025", dateSort:"2025-11", link:"taaktana" }
 ];
 
-// --- placeholder country data (edit these) ---
-var countries = [
-  { name:"Japan",      count:"5 reviews", img:"images/japan-web.jpg" },
-  { name:"Indonesia",  count:"1 review",  img:"images/indonesia-web.jpg" },
-  { name:"Jordan",     count:"1 review",  img:"images/jordan-web.jpg" }
-];
-
-// --- svg helpers ---
 function starRow(rating){
   var s = '';
   var starPath = 'M12 3l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 18.7 6.2 21.7l1.1-6.4L2.6 10.7l6.5-.9z';
@@ -565,56 +478,33 @@ function pin(){
 function clock(){
   return '<svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
 }
-function photoLabel(text){
-  return '<span class="ph-label"><svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>'+text+'</span>';
-}
 
-// --- render review cards ---
+// --- render the 5 newest reviews ---
 (function(){
-  var grid = document.getElementById('reviewGrid');
-  reviews.forEach(function(r){
-    var card = document.createElement('article');
-    card.className = 'review-card';
-    var media = r.img
-      ? '<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />'
-      : '<div class="img-ph" role="img" aria-label="Hotel photo placeholder">'+photoLabel('Photo')+'</div>';
-    card.innerHTML =
-      media+
+  var host=document.getElementById('allReviews');
+  var list=reviews.slice().sort(function(a,b){
+    return a.dateSort>b.dateSort?-1:a.dateSort<b.dateSort?1:0;
+  }).slice(0,5);
+  host.innerHTML='<div class="card-grid">'+list.map(function(r){
+    var media=r.img?'<img class="card-photo" src="'+r.img+'" alt="'+r.title+'" loading="lazy" />':'';
+    return '<article class="review-card">'+media+
       '<div class="card-body">'+
         '<div class="card-meta"><span class="tag">'+r.tag+'</span>'+starRow(r.rating)+'</div>'+
         '<h3 class="card-title">'+r.title+'</h3>'+
         '<span class="card-place">'+pin()+r.place+'</span>'+
-        (r.date ? '<span class="card-place">'+clock()+r.date+'</span>' : '')+
+        '<span class="card-place">'+clock()+r.date+'</span>'+
         '<p class="card-verdict">'+r.verdict+'</p>'+
         '<div class="card-foot"><a href="'+(r.link||'#')+'" class="btn-link">Read the full stay '+
           '<svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
-      '</div>';
-    grid.appendChild(card);
-  });
-})();
-
-// --- render country tiles ---
-(function(){
-  var grid = document.getElementById('countryGrid');
-  countries.forEach(function(c){
-    var tile = document.createElement('a');
-    tile.href = '#';
-    tile.className = 'country-tile';
-    tile.setAttribute('aria-label', c.name + ' — ' + c.count);
-    var photo = c.img ? '<img class="country-photo" src="'+c.img+'" alt="'+c.name+'" loading="lazy" />' : '';
-    tile.innerHTML =
-      photo+
-      '<div class="country-label"><div class="name">'+c.name+'</div>'+
-      '<div class="count">'+c.count+'</div></div>';
-    grid.appendChild(tile);
-  });
+      '</div></article>';
+  }).join('')+'</div>';
 })();
 
 // --- mobile nav ---
 (function(){
-  var nav = document.getElementById('mobileNav');
-  var openBtn = document.getElementById('menuOpen');
-  var closeBtn = document.getElementById('menuClose');
+  var nav=document.getElementById('mobileNav');
+  var openBtn=document.getElementById('menuOpen');
+  var closeBtn=document.getElementById('menuClose');
   function open(){ nav.classList.add('open'); nav.setAttribute('aria-hidden','false'); openBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
   function close(){ nav.classList.remove('open'); nav.setAttribute('aria-hidden','true'); openBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
   openBtn.addEventListener('click', open);
@@ -623,7 +513,6 @@ function photoLabel(text){
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 })();
 
-// --- current year ---
 // --- header search (expands on click; navigates only on Enter) ---
 (function(){
   var box=document.getElementById('headerSearch');
@@ -639,32 +528,6 @@ function photoLabel(text){
   inp.addEventListener('keydown', function(e){
     if(e.key==='Enter'){ var q=inp.value.trim(); if(q) location.href='search?q='+encodeURIComponent(q); }
     else if(e.key==='Escape'){ box.classList.remove('open'); btn.setAttribute('aria-expanded','false'); inp.value=''; inp.blur(); }
-  });
-})();
-
-// --- newsletter signup ---
-// To collect real signups, paste your email provider's form action URL
-// (MailerLite, Kit/ConvertKit, Buttondown, Mailchimp, etc.) into SIGNUP_ENDPOINT below.
-// Leave it empty and the form still validates and shows a thank-you, but won't store addresses.
-(function(){
-  // MailerLite embedded-form endpoint (form 196075405915981689, account 2581162)
-  var SIGNUP_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2581162/forms/196075405915981689/subscribe';
-  var form=document.getElementById('signupForm'); if(!form) return;
-  var email=document.getElementById('signupEmail'), msg=document.getElementById('signupMsg');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var v=(email.value||'').trim();
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){ msg.innerHTML='Please enter a valid email address.'; msg.className='newsletter-note error'; return; }
-    function thanks(){ form.innerHTML='<p class="newsletter-note success">Thanks &mdash; you&rsquo;re on the list! Check your inbox to confirm your subscription.</p>'; }
-    var btn=form.querySelector('button'); if(btn){ btn.disabled=true; btn.textContent='Subscribing…'; }
-    var data=new URLSearchParams();
-    data.append('fields[email]', v);
-    data.append('ml-submit', '1');
-    data.append('anticsrf', 'true');
-    // no-cors: the request registers the subscriber; response is opaque, so we optimistically confirm
-    fetch(SIGNUP_ENDPOINT, { method:'POST', mode:'no-cors', body:data })
-      .then(function(){ thanks(); })
-      .catch(function(){ msg.innerHTML='Something went wrong &mdash; please try again.'; msg.className='newsletter-note error'; if(btn){ btn.disabled=false; btn.textContent='Subscribe'; } });
   });
 })();
 
