@@ -55,6 +55,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://thehoteltrail.com/manchester</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://thehoteltrail.com/our-story</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>yearly</changefreq>
